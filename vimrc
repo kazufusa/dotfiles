@@ -81,6 +81,9 @@ set clipboard+=autoselect
 
 set foldmethod=marker
 
+set splitbelow "新しいウィンドウを下に開く
+set splitright "新しいウィンドウを右に開く
+
 " codec settings
 "{{{
 if &encoding !=# 'utf-8'
@@ -300,8 +303,11 @@ noremap <silent> G<C-]> :<C-u>execute "PopupTags "
 
 
 " setings of quickrun.
-let g:quickrun_config = {}
-let g:quickrun_config['_'] = {}
+"let g:quickrun_config = {}
+"let g:quickrun_config['_'] = {}
+" カーソルを専用バッファに移動
+let g:quickrun_config = {
+       \  "_" : { "outputter/buffer/into" : 1,},}
 "let g:quickrun_config = { '*' : {'shebang' : '0' }}
 let g:quickrun_config['_']['runner'] = 'vimproc'
 let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
