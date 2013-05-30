@@ -1,3 +1,9 @@
+#setup.sh
+- Link all dotfiles from HOME dir
+- execute git clone of antigen repository
+- execute git clone of vim neobundle repository
+
+# dotfiles
 - vimrc
 - zshrc
 - zshrc.antigen
