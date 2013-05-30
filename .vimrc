@@ -239,6 +239,7 @@ NeoBundle "ujihisa/unite-colorscheme"
 NeoBundle 'altercation/vim-colors-solarized'
 "use word search in browser, need 'sudo aptitude install w3m'
 NeoBundle 'thinca/vim-ref'
+NeoBundle "tpope/vim-fugitive"
 
 " settings of SCCompileRun
 """"""""""""""""""""""""""

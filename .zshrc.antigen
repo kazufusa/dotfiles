@@ -24,4 +24,3 @@ antigen-apply
 export WORKON_HOME=$HOME/Dropbox/dotfiles/virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 source `which virtualenvwrapper.sh`
-
