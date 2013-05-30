@@ -21,6 +21,7 @@ antigen-theme gallois
 antigen-apply
 
 # virtualenv
-export WORKON_HOME=$HOME/Dropbox/dotfiles/virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-source `which virtualenvwrapper.sh`
+if [-f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    #export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+    source /usr/local/bin/virtualenvwrapper.sh
