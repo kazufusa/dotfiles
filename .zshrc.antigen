@@ -24,7 +24,7 @@ case "${OSTYPE}" in
 # Linux
 linux*)
      # python virtualenv
-    if [-f /usr/local/bin/virtualenvwrapper.sh ]; then
+    if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
         export WORKON_HOME=$HOME/.virtualenvs
         #export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
         source /usr/local/bin/virtualenvwrapper.sh
@@ -43,7 +43,7 @@ darwin*)
      export PYTHONPATH=$MACPORTS_PREFIX/lib/python$PYTHON_VER/:$PYTHONPATH
      export WORKON_HOME=$HOME/.virtualenvs
      . $VIRTUALENV_BIN/bin/virtualenvwrapper.sh
-    ;;  
+    ;;
 esac
 
  # multi version python virtualenv
