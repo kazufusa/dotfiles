@@ -1,0 +1,57 @@
+[global_config]
+  window_state = maximise
+  hide_on_lose_focus = True
+  sticky = True
+  always_on_top = True
+  borderless = True
+  geometry_hinting = False
+  hide_from_taskbar = True
+[keybindings]
+  hide_window = F12
+[profiles]
+  [[default]]
+    background_darkness = 0.66
+    use_system_font = False
+    font = Inconsolata Medium 10
+    background_type = transparent
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+  [[workspace]]
+    [[[child0]]]
+      position = 0:0
+      type = Window
+      order = 0
+      parent = ""
+      size = 732, 451
+    [[[child1]]]
+      position = 859
+      type = HPaned
+      order = 0
+      parent = child0
+    [[[child3]]]
+      position = 539
+      type = VPaned
+      order = 1
+      parent = child1
+    [[[terminal2]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child1
+    [[[terminal5]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child3
+    [[[terminal4]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child3
+[plugins]
