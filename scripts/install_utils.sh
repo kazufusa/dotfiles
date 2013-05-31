@@ -14,6 +14,7 @@ sudo aptitude install -y git
 sudo aptitude install -y ttf-inconsolata
 sudo aptitude install -y ibus-mozc
 sudo aptitude install -y figlet
+sudo aptitude install -y clang libclang-dev
 
 # change login shell
 sudo chsh -s /bin/zsh $USER

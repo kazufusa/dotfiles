@@ -1,7 +1,9 @@
-
-" general settings {{{
 set nocompatible
 filetype off
+filetype plugin indent off
+
+
+" general settings {{{
 
 set background=dark
 colorscheme default  "desert molokai
@@ -143,6 +145,7 @@ endif
 " }}}
 " }}}
 
+
 " key mappings{{{
 nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
 nnoremap <Space>w :write<CR>
@@ -153,6 +156,7 @@ nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
 " }}}
+
 
 " command groups{{{
 " binary mode (-b)
@@ -180,6 +184,7 @@ autocmd BufWritePre * :%s/\s\+$//ge
 " Replace tab with space
 autocmd BufWritePre * :%s/\t/    /ge
 "}}}
+
 
 " template{{{
 "python template
@@ -230,39 +235,33 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle "tpope/vim-fugitive"
 
 " C++
-NeoBundle "git://github.com/osyo-manga/neocomplcache-clang_complete.git"
 NeoBundle "git://github.com/Rip-Rip/clang_complete.git"
 NeoBundle "git://github.com/vim-jp/cpp-vim.git"
 
 "  }}}
-filetype plugin indent on
 
 " settings of SCCompileRun
 " {{{
 nnoremap <Space>s :SCCompileRun<CR>
 "}}}
 
+
+
 " neocomplcache
 " {{{
 
-" 有効にする
+" active at startup
 let g:neocomplcache_enable_at_startup=1
 
-" キーワード補完を行う入力数
+" entered key num
 let g:neocomplcache_auto_completion_start_length=2
 
-let g:neocomplcache_enable_ignore_case=0 " 大文字、小文字を無視する
-
-"入力に大文字が含まれている場合は、大文字・小文字を無視する
+let g:neocomplcache_enable_ignore_case=0
 let g:neocomplcache_enable_smart_case=0
-
-"大文字を入力したときに、それを単語の区切りとしてあいまい検索を行う
 let g:neocomplcache_enable_camel_case_completion=1
-
-"_を入力したときに、それを単語の区切りとしてあいまい検索を行う
 let g:neocomplcache_enable_underbar_completion=1
 
-" Plugin key-mappings.
+" Plugin key-mappings for snippets.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -297,29 +296,28 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 let g:neocomplcache_enable_cursor_hold_i=0
-
 let g:neocomplcache_max_list=1000
+
+" for clang_complete
+let g:neocomplcache_force_overwrite_completefunc=1
+if !exists("g:neocomplcache_force_omni_patterns")
+    let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
 " }}}
 
 " clang_complete
 "  {{{
- let g:clang_conceal_snippets=1
- " let g:clang_snippets=1
- let g:clang_complete_auto=1
- let g:clang_sort_algo="none"
-
- let g:clang_exec = "/usr/bin/clang"
- let g:clang_use_library=1
- let g:clang_library_path = "/usr/share/clang"
- let g:clang_debug=0
- let g:clang_auto_select = 0
- let g:clang_complete_copen=1
-
- let g:clang_user_options =
- \ '-fms-extensions -fgnu-runtime '.
- \ '-include malloc.h '.
- \ '-std=gnu++0x '
-" }}}
+"" let g:clang_snippets=1
+let g:clang_complete_auto=0
+let g:clang_auto_select=0
+let g:clang_sort_algo="alpha"
+"let g:clang_sort_algo="priority"
+let g:clang_use_library=1
+let g:clang_debug=1
+let g:clang_library_path="/usr/lib/"
+let g:clang_user_options = '-std=c++11'
+"" }}}
 
 " neocomplcache が作成した tag ファイルのパスを tags に追加する
 " {{{
@@ -436,6 +434,7 @@ nmap <Leader>re :<C-u>Ref webdict ej<Space>
 " }}}
 " }}}
 
+
 " quickrun.{{{
 "let g:quickrun_config = {}
 "let g:quickrun_config['_'] = {}
@@ -455,3 +454,6 @@ let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
 " " quickrun.vim が実行していない場合には <C-c> を呼び出す
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 " }}}
+
+
+filetype plugin indent on
