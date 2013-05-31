@@ -1,4 +1,8 @@
 #!/bin/sh
+
+mkdir -p python_setup
+cd python_setup
+
 #install python-dev
 sudo aptitude install -y python-dev
 # install distribute.
