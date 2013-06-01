@@ -1,6 +1,13 @@
 set nocompatible
 filetype off
 filetype plugin indent off
+let OSTYPE = system('uname')
+
+"if OSTYPE == "Darwin\n"
+"""ここにMac向けの設定
+"elseif OSTYPE == "Linux\n"
+"""ここにLinux向けの設定
+"endif
 
 
 " general settings {{{
@@ -313,10 +320,16 @@ let g:clang_complete_auto=0
 let g:clang_auto_select=0
 let g:clang_sort_algo="alpha"
 "let g:clang_sort_algo="priority"
-let g:clang_use_library=1
 let g:clang_debug=1
-let g:clang_library_path="/usr/lib/"
 let g:clang_user_options = '-std=c++11'
+" exec or library use
+if has('macunix')
+    let g:clang_exec="/usr/lib/clang"
+elseif has('unix')
+    let g:clang_use_library=1
+    let g:clang_library_path="/usr/lib/"
+elseif has('win32') || has('win64')
+endif
 "" }}}
 
 " neocomplcache が作成した tag ファイルのパスを tags に追加する
