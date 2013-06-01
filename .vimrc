@@ -318,14 +318,14 @@ let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
 "" let g:clang_snippets=1
 let g:clang_complete_auto=0
 let g:clang_auto_select=0
-let g:clang_sort_algo="alpha"
-"let g:clang_sort_algo="priority"
+"let g:clang_sort_algo="alpha"
+let g:clang_sort_algo="priority"
 let g:clang_debug=1
 let g:clang_user_options = '-std=c++11'
 " exec or library use
-if has('macunix')
-    let g:clang_exec="/usr/lib/clang"
-elseif has('unix')
+if OSTYPE == "Darwin\n"
+    let g:clang_exec="/usr/bin/clang"
+elseif OSTYPE == "Linux\n"
     let g:clang_use_library=1
     let g:clang_library_path="/usr/lib/"
 elseif has('win32') || has('win64')
