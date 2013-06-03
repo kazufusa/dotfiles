@@ -208,8 +208,7 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle'
 " }}}
 
-"NeoBundle list
-" {{{
+"NeoBundle list {{{
 NeoBundle 'vim-scripts/SingleCompile'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
@@ -246,13 +245,11 @@ NeoBundle "git://github.com/vim-jp/cpp-vim.git"
 
 "  }}}
 
-" settings of SCCompileRun
-" {{{
+" settings of SCCompileRun {{{
 nnoremap <Space>s :SCCompileRun<CR>
 "}}}
 
-" neocomplcache
-" {{{
+" neocomplcache {{{
 
 " active at startup
 let g:neocomplcache_enable_at_startup=1
@@ -315,8 +312,7 @@ endif
 let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
 " }}}
 
-" clang_complete
-"  {{{
+" clang_complete  {{{
 "" let g:clang_snippets=1
 let g:clang_complete_auto=0
 let g:clang_auto_select=0
@@ -334,8 +330,7 @@ elseif has('win32') || has('win64')
 endif
 "" }}}
 
-" neocomplcache が作成した tag ファイルのパスを tags に追加する
-" {{{
+" neocomplcache が作成した tag ファイルのパスを tags に追加する {{{
 function! s:TagsUpdate()
     " setlocal tags に neocomplcache が出力した tag ファイルのパスを追加する
     " include している tag ファイルが毎回同じとは限らないので1度初期化
@@ -360,10 +355,8 @@ noremap <silent> G<C-]> :<C-u>execute "PopupTags "
 nnoremap <Space>ns :execute "tabnew\|:NeoComplCacheEditSnippets ".&filetype<CR>
 " }}}
 
-" unite-vim
-" {{{
-" key map
-" {{{
+" unite-vim {{{
+" key map {{{
 nnoremap <Space>ub :Unite buffer -input=!split<CR>
 nnoremap <Space>ufm :Unite file_mru2<CR>
 nnoremap <Space><Space>ufm :Unite file_mru<CR>
@@ -387,8 +380,7 @@ nnoremap <Space>ubb :Unite boost-online-doc -default-action=ref_lynx_tabnew<CR>
 inoremap <C-y> <esc>:Unite history/yank -direction=belowright -winheight=12<CR>
 " }}}
 
-" settings
-" {{{
+" settings {{{
 call unite#custom_default_action('directory' , 'tabvimfiler')
 
 let g:unite_data_directory = $VIMLOCALUSER."~/.vim/.unite"
@@ -404,8 +396,7 @@ call unite#custom_default_action("directory_mru", "vimfiler")
 
 " }}}
 
-" colorscheme solarized
-" {{{
+" colorscheme solarized {{{
 syntax enable
 " setting of  background color transparently
 let g:solarized_termtrans=1
@@ -414,8 +405,7 @@ set background=dark
 colorscheme solarized
 " }}}
 
-" ref.vim
-"{{{
+" ref.vim {{{
 "webdictサイトの設定
 let g:ref_source_webdict_sites = {
 \   'je': {
@@ -447,8 +437,6 @@ nmap ,re :<C-u>Ref webdict<Space>
 nmap <Leader>rj :<C-u>Ref webdict je<Space>
 nmap <Leader>re :<C-u>Ref webdict ej<Space>
 " }}}
-" }}}
-
 
 " quickrun.{{{
 "let g:quickrun_config = {}
@@ -470,5 +458,8 @@ let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 " }}}
 
+" }}}
 
+
+filetype on
 filetype plugin indent on
