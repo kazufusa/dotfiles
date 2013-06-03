@@ -421,9 +421,6 @@ colorscheme solarized
 "webdict reffering site
 let g:ref_open = 'split'
 let g:ref_source_webdict_sites = {
-\ 'normal': {
-\ 'url': 'http://ejje.weblio.jp/content/%s',
-\ },
 \ 'ej': {
 \ 'url': 'http://ejje.weblio.jp/content/%s',
 \ },
@@ -440,10 +437,7 @@ let g:ref_source_webdict_sites.default = 'ej'
 
 " output filter
 function! g:ref_source_webdict_sites.ej.filter(output)
-  return join(split(a:output, "\n")[78 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.normal.filter(output)
-  return join(split(a:output, "\n")[52 :], "\n")
+  return join(split(a:output, "\n")[54 :], "\n")
 endfunction
 function! g:ref_source_webdict_sites.th.filter(output)
   return join(split(a:output, "\n")[47 :], "\n")
