@@ -155,6 +155,7 @@ endif
 
 " key mappings{{{
 nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
+nnoremap <Space>.. :<C-u>edit ~/dotfiles/readme<CR>
 nnoremap <Space>w :write<CR>
 nnoremap <Space>d :bd<CR>
 nnoremap <Space>q :q<CR>
@@ -381,8 +382,6 @@ inoremap <C-y> <esc>:Unite history/yank -direction=belowright -winheight=12<CR>
 " }}}
 
 " settings {{{
-call unite#custom_default_action('directory' , 'tabvimfiler')
-
 let g:unite_data_directory = $VIMLOCALUSER."~/.vim/.unite"
 let g:unite_source_history_yank_enable=1
 
@@ -391,7 +390,9 @@ let g:unite_source_file_mru_limit = 5000
 let g:unite_source_file_mru2_limit = 200
 
 " default action
+call unite#custom_default_action('directory' , 'tabvimfiler')
 call unite#custom_default_action("directory_mru", "vimfiler")
+let g:vimfiler_as_default_explorer = 1
 " }}}
 
 " }}}
