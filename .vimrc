@@ -406,37 +406,44 @@ set background=dark
 colorscheme solarized
 " }}}
 
-" ref.vim {{{
-"webdictサイトの設定
+" vim-ref {{{
+"webdict reffering site
+let g:ref_open = 'split'
 let g:ref_source_webdict_sites = {
-\   'je': {
-\     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
-\   },
-\   'ej': {
-\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
-\   },
-\   'wiki': {
-\     'url': 'http://ja.wikipedia.org/wiki/%s',
-\   },
+\ 'normal': {
+\ 'url': 'http://ejje.weblio.jp/content/%s',
+\ },
+\ 'ej': {
+\ 'url': 'http://ejje.weblio.jp/content/%s',
+\ },
+\ 'th': {
+\ 'url': 'http://ejje.weblio.jp/english-thesaurus/content/%s',
+\ },
+\ 'wiki': {
+\ 'url': 'http://ja.wikipedia.org/wiki/%s',
+\ },
 \ }
 
-"デフォルトサイト
+" default site
 let g:ref_source_webdict_sites.default = 'ej'
 
-"出力に対するフィルタ。最初の数行を削除
-function! g:ref_source_webdict_sites.je.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
+" output filter
 function! g:ref_source_webdict_sites.ej.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
+  return join(split(a:output, "\n")[69 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.normal.filter(output)
+  return join(split(a:output, "\n")[52 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.th.filter(output)
+  return join(split(a:output, "\n")[47 :], "\n")
 endfunction
 function! g:ref_source_webdict_sites.wiki.filter(output)
-  return join(split(a:output, "\n")[17 :], "\n")
+  return join(split(a:output, "\n")[5 :], "\n")
 endfunction
 
-nmap ,re :<C-u>Ref webdict<Space>
-nmap <Leader>rj :<C-u>Ref webdict je<Space>
-nmap <Leader>re :<C-u>Ref webdict ej<Space>
+nnoremap <space>re :<C-u>Ref webdict ej<Space>
+nnoremap <space>rt :<C-u>Ref webdict th<Space>
+nnoremap <space>rw :<C-u>Ref webdict wiki<Space>
 " }}}
 
 " quickrun.{{{
