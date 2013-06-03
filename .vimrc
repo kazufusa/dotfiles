@@ -150,6 +150,12 @@ if exists('&ambiwidth')
   set ambiwidth=double
 endif
 " }}}
+
+" Joint yank and clipboard copy
+" http://nanasi.jp/articles/howto/editing/clipboard.html
+set clipboard=autoselect
+set clipboard+=unnamed
+set clipboard=unnamedplus
 " }}}
 
 
