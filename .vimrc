@@ -440,7 +440,7 @@ let g:ref_source_webdict_sites.default = 'ej'
 
 " output filter
 function! g:ref_source_webdict_sites.ej.filter(output)
-  return join(split(a:output, "\n")[69 :], "\n")
+  return join(split(a:output, "\n")[78 :], "\n")
 endfunction
 function! g:ref_source_webdict_sites.normal.filter(output)
   return join(split(a:output, "\n")[52 :], "\n")
