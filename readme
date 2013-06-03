@@ -1,9 +1,60 @@
-#setup.sh
+# setup.sh
 - Link all dotfiles from HOME dir
 - execute git clone of antigen repository
 - execute git clone of vim neobundle repository
 
 # dotfiles
-- vimrc
-- zshrc
-- zshrc.antigen
+- .vimrc
+- .zshrc
+- .zshrc.antigen
+
+# vimrc tips
+- short cut
+  1. space + "."
+    Open vimrc.
+  2. space + ".."
+    Open readme.
+
+- clang complete
+  1. Type "." or "::" or "-+" and the candidates listed by clang are popup.
+
+- snippet complete
+  1. Input word.
+  2. Candidates are ed.
+  3. Push Key "tab" and select a snippet candidate.
+  4. Push key "Ctrl+k" and snippet candidate is written.
+  5. Push "tab" and move in the snippet.
+
+- unite (normal mode)
+ 1. Space+ub :Unite buffer -input=!split
+ 2. Space+ufm :Unite file_mru2
+ 3. Space+Space+ufm :Unite file_mru
+ 4. Space+udm :Unite directory_mru
+ 5. Space+urm :UniteResume
+ 6. Space+uff :Unite file
+ 7. Space+uol :Unite outline
+ 8. Space+unb :Unite neobundle
+ 9. Space+ugr :Unite grep
+ 10. Space+um :Unite menu
+ 11. Space+urrr :Unite rofi
+ 12. Space+url :Unite reanimate -default-action=reanimate_load
+ 13. Space+urs :Unite reanimate -default-action=reanimate_save
+ 14. Space+umes :Unite output:mes
+ 15. Space+uqh :Unite qfixhowm:nocache
+ 16. Space+ubb :Unite boost-online-doc -default-action=ref_lynx_tabnew
+ 17. Space+ub :Unite bookmark
+ 18. Space+ucmd :Unite commandsCR+
+ 19. Space+uw :Unite window
+ 20. Space+ut :Unite tab
+
+- unite(input mode)
+ 1. Ctrl+y
+   Unite history/yank -direction=belowright -winheight=12
+
+- vimfiler
+ 1. :e .
+   Open current dir.
+ 2. Push key "a".
+   display how-to-use"
+ 3. push ".".
+   Show hidden files.
