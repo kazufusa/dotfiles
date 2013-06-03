@@ -63,20 +63,6 @@ set display=uhex
 set laststatus=2
 " Show invisible character.
 set listchars=tab:>\-
-" Statusline
-set statusline=%{expand('%:p:t')}\ %<\(%{SnipMid(expand('%:p:h'),80-len(expand('%:p:t')),'...')}\)%=\ [%{&fenc}:%{&ff}%{&bomb?':BOM':''}:%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]
-function! SnipMid(str, len, mask)
-  if a:len >= len(a:str)
-    return a:str
-  elseif a:len <= len(a:mask)
-    return a:mask
-  endif
-
-  let len_head = (a:len - len(a:mask)) / 2
-  let len_tail = a:len - len(a:mask) - len_head
-
-  return (len_head > 0 ? a:str[: len_head - 1] : '') . a:mask . (len_tail > 0 ? a:str[-len_tail :] : '')
-endfunction
 
 " Highlight brackets
 set showmatch
@@ -92,8 +78,25 @@ set foldmethod=marker
 set splitbelow "新しいウィンドウを下に開く
 set splitright "新しいウィンドウを右に開く
 
-" codec settings
-"{{{
+
+" Statusline {{{
+set statusline=%{expand('%:p:t')}\ %<\(%{SnipMid(expand('%:p:h'),80-len(expand('%:p:t')),'...')}\)%=\ [%{&fenc}:%{&ff}%{&bomb?':BOM':''}:%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]
+function! SnipMid(str, len, mask)
+  if a:len >= len(a:str)
+    return a:str
+  elseif a:len <= len(a:mask)
+    return a:mask
+  endif
+
+  let len_head = (a:len - len(a:mask)) / 2
+  let len_tail = a:len - len(a:mask) - len_head
+
+  return (len_head > 0 ? a:str[: len_head - 1] : '') . a:mask . (len_tail > 0 ? a:str[-len_tail :] : '')
+endfunction
+" }}}
+
+
+" codec settings{{{
 if &encoding !=# 'utf-8'
   set encoding=japan
   set fileencoding=japan
@@ -151,18 +154,20 @@ if exists('&ambiwidth')
 endif
 " }}}
 
-" Joint yank and clipboard copy
+
+" Joint yank and clipboard copy {{{
 " http://nanasi.jp/articles/howto/editing/clipboard.html
 set clipboard=autoselect
 set clipboard+=unnamed
 set clipboard=unnamedplus
+" }}}
 " }}}
 
 
 " key mappings{{{
 nnoremap <Space>. :<C-u>edit $MYVIMRC<CR>
 nnoremap <Space>.. :<C-u>edit ~/dotfiles/readme<CR>
-nnoremap <Space>w :write<CR>
+"neoremap <Space>w :write<CR>
 nnoremap <Space>d :bd<CR>
 nnoremap <Space>q :q<CR>
 nnoremap j gj
