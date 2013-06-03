@@ -200,8 +200,7 @@ autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
 
 
 " NeoBundle settings{{{
-"NeoBundle basic settings
-" {{{
+"NeoBundle basic settings {{{
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle/
 endif
@@ -252,8 +251,6 @@ NeoBundle "git://github.com/vim-jp/cpp-vim.git"
 nnoremap <Space>s :SCCompileRun<CR>
 "}}}
 
-
-
 " neocomplcache
 " {{{
 
@@ -268,15 +265,20 @@ let g:neocomplcache_enable_smart_case=0
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 
+inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+
 " Plugin key-mappings for snippets.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+" \ "\<Plug>(neosnippet_expand_or_jump)"
+" \: pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><TAB> pumvisible() ?
+\ "\<C-n>" : neosnippet#jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)"
 \: "\<TAB>"
