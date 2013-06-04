@@ -170,6 +170,7 @@ nnoremap <Space>.. :<C-u>edit ~/dotfiles/readme<CR>
 "neoremap <Space>w :write<CR>
 nnoremap <Space>d :bd<CR>
 nnoremap <Space>q :q<CR>
+nnoremap <Space>o :only<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
