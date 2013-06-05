@@ -255,6 +255,8 @@ NeoBundle "tpope/vim-fugitive"
 " C++
 NeoBundle "git://github.com/Rip-Rip/clang_complete.git"
 NeoBundle "git://github.com/vim-jp/cpp-vim.git"
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle "fuenor/qfixgrep.vim"
 
 "  }}}
 
@@ -417,6 +419,15 @@ set background=dark
 "set background=light
 colorscheme solarized
 " }}}
+
+" memolist {{{
+let g:memolist_path = "$HOME/Dropbox/memo"
+"let g:memolist_qfixgrep = 1
+map <Space>mn  :MemoNew<CR>
+map <Space>ml  :MemoList<CR>
+map <Space>mg  :MemoGrep<CR>
+"
+"}}}
 
 " vim-ref {{{
 "webdict reffering site
