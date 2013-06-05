@@ -80,6 +80,7 @@ set splitright "新しいウィンドウを右に開く
 
 
 " tab settings {{{
+nnoremap <Space>t :tabe<CR>
 nnoremap <S-Tab> gt
 nnoremap <Tab><Tab> gT
 for i in range(1, 9)
