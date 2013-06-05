@@ -431,6 +431,7 @@ colorscheme solarized
 
 " memolist {{{
 let g:memolist_path = "$HOME/Dropbox/memo"
+let g:memolist_vimfiler = 1
 let g:memolist_qfixgrep = 1
 map <Space>mn  :MemoNew<CR>
 map <Space>ml  :MemoList<CR>
