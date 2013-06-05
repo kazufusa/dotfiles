@@ -256,9 +256,18 @@ NeoBundle "tpope/vim-fugitive"
 NeoBundle "git://github.com/Rip-Rip/clang_complete.git"
 NeoBundle "git://github.com/vim-jp/cpp-vim.git"
 NeoBundle 'glidenote/memolist.vim'
-NeoBundle "fuenor/qfixgrep.vim"
+NeoBundle 'fuenor/qfixgrep'
 
 "  }}}
+
+" qfixgrep {{{
+"デフォルトで使用する外部grep
+set grepprg=grep
+""grepに含めたくない拡張子
+let MyGrep_ExcludeReg = '[~#]$\|\.dll$\|\.exe$\|\.lnk$\|\.o$\|\.obj$\|\.pdf$\|\.xls$'
+"大文字、小文字を気にせずに検索する。
+let g:MyGrepDefault_Ignorecase = 1
+"}}}
 
 " settings of SCCompileRun {{{
 nnoremap <Space>s :SCCompileRun<CR>
@@ -422,7 +431,7 @@ colorscheme solarized
 
 " memolist {{{
 let g:memolist_path = "$HOME/Dropbox/memo"
-"let g:memolist_qfixgrep = 1
+let g:memolist_qfixgrep = 1
 map <Space>mn  :MemoNew<CR>
 map <Space>ml  :MemoList<CR>
 map <Space>mg  :MemoGrep<CR>
