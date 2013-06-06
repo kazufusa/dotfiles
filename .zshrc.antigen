@@ -47,8 +47,14 @@ darwin*)
 esac
 
  # multi version python virtualenv
- mkvenv () {
+mkvenv () {
     base_python=`which python$1`
     mkvirtualenv --distribute --python=$base_python $2
- }
+}
+
+# nodejs settings.
+if [ -f $HOME/.nvm/nvm.sh ]; then
+    source $HOME/.nvm/nvm.sh
+fi
+
 
