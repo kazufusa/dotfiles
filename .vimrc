@@ -330,14 +330,14 @@ NeoBundle "git://github.com/vim-jp/cpp-vim.git"
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'fuenor/qfixgrep'
 
-" JavaScript
+"" JavaScript
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle "osyo-manga/vim-hideout"
 NeoBundle "teramako/jscomplete-vim"
 NeoBundle "heavenshell/vim-jsdoc"
-
-"Indent
+"
+""Indent
 NeoBundle "nathanaelkane/vim-indent-guides"
 NeoBundle "vim-scripts/JavaScript-Indent"
 
@@ -347,6 +347,16 @@ NeoBundle "vim-scripts/JavaScript-Indent"
 
 " vim-indent-guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
+" 自動カラーを無効にする
+let g:indent_guides_auto_colors=0
+" 奇数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=darkgreen
+" 偶数インデントのカラー
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=black
+" ハイライト色の変化の幅
+let g:indent_guides_color_change_percent = 20
+" ガイドの幅
+let g:indent_guides_guide_size = 1
 "}}}
 
 " jscomplete-vim {{{
