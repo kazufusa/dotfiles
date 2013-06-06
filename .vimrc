@@ -330,9 +330,35 @@ NeoBundle "git://github.com/vim-jp/cpp-vim.git"
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'fuenor/qfixgrep'
 
+" JavaScript
+NeoBundle 'JavaScript-syntax'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle "osyo-manga/vim-hideout"
+NeoBundle "teramako/jscomplete-vim"
+NeoBundle "heavenshell/vim-jsdoc"
+
+"Indent
+NeoBundle "nathanaelkane/vim-indent-guides"
+NeoBundle "vim-scripts/JavaScript-Indent"
+
 " powerline
 "NeoBundle 'Lokaltog/vim-powerline'
 "  }}}
+
+" vim-indent-guides {{{
+let g:indent_guides_enable_on_vim_startup = 1
+"}}}
+
+" jscomplete-vim {{{
+autocmd FileType javascript,coffee setlocal omnifunc=javascriptcomplete#CompleteJS
+
+let g:neocomplcache_source_rank = {
+  \ 'jscomplete' : 500,
+  \ }
+
+" dom も含める
+" let g:jscomplete_use = ['dom']
+" }}}
 
 " qfixgrep {{{
 "デフォルトで使用する外部grep

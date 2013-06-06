@@ -15,6 +15,18 @@
   2. space + ".."
     Open readme.
 
+- vim-hideout
+  - :HideoutOn
+    change display
+  - :HideoutClear
+  - let g:hideout_unicode_user_text = "虎眈々"
+    表示したい文字をユーザ側で設定する
+    例）虎視眈々も表示したい
+  - let g:hideout_kanzi_disable = 1
+    重く感じる場合は、デフォルトの漢字を非表示に設定
+  - :HideoutRefreshCache
+    設定した後はキャッシュをリフレッシュする
+
 - clang complete
   1. Type "." or "::" or "-+" and the candidates listed by clang are popup.
 
