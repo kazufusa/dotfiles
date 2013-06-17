@@ -274,9 +274,9 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 " Remove space at line last
-autocmd BufWritePre * :%s/\s\+$//ge
+" autocmd BufWritePre * :%s/\s\+$//ge
 " Replace tab with space
-autocmd BufWritePre * :%s/\t/    /ge
+" autocmd BufWritePre * :%s/\t/    /ge
 "}}}
 
 
