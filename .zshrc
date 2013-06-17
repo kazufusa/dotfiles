@@ -33,3 +33,14 @@ esac
     mkvirtualenv --distribute --python=$base_python $2
  }
 
+#z.sh settings
+if [ ! -d $HOME/.zsh/z ] ; then
+    cd $HOME/.zsh
+    git clone https://github.com/rupa/z.git
+fi
+_Z_CMD=j
+source ~/.zsh/z/z.sh
+precmd() {
+  _z --add "$(pwd -P)"
+}
+

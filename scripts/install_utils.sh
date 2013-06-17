@@ -1,7 +1,6 @@
 #!/bin/sh
 sudo aptitude install -y ssh
 sudo aptitude install -y zsh
-sudo aptitude install -y autojump
 sudo aptitude install -y vim vim-gtk vim-athena vim-gnome
 #sudo aptitude install -y linux-headers-$(uname -r)
 sudo aptitude install -y build-essential
