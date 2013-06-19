@@ -12,8 +12,9 @@
   [[default]]
     background_darkness = 0.66
     use_system_font = False
-    font = Inconsolata Medium 10
+    font = Ricty 10
     background_type = transparent
+    login_shell = True
 [layouts]
   [[default]]
     [[[child1]]]
