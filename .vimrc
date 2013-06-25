@@ -12,8 +12,8 @@ let OSTYPE = system('uname')
 
 " general settings {{{
 
-set background=dark
-colorscheme default  "desert molokai
+"set background=dark
+"colorscheme default  "desert molokai
 "highlight on
 syntax on
 
@@ -70,14 +70,16 @@ set showmatch
 set list
 set lazyredraw
 set ttyfast
-set clipboard=unnamed
-set clipboard+=autoselect
+"set clipboard=unnamed
+"set clipboard+=autoselect
+set clipboard=unnamedplus,autoselect
 
 set foldmethod=marker
 
 set splitbelow "新しいウィンドウを下に開く
 set splitright "新しいウィンドウを右に開く
 
+set cursorline
 
 " tab settings {{{
 nnoremap <Space>t :tabe<CR>
