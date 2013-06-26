@@ -24,3 +24,10 @@ REPO=https://github.com/Shougo/neobundle.vim
 if [ ! -d $DIR ]; then
     git clone $REPO $DIR
 fi
+
+#vim template
+mkdir -p $HOME/.vim/template
+for templatefile in template.*
+do
+    ln -fs "$PWD/$templatefile" $HOME/.vim/template/$templatefile
+done
