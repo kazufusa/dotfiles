@@ -109,6 +109,7 @@ nnoremap <Space>.. :<C-u>tabe ~/dotfiles/readme<CR>
 "nnoremap <Space>w :write<CR>
 nnoremap <Space>d :bd<CR>
 nnoremap <Space>q :q<CR>
+nnoremap <Space>a :qa<CR>
 nnoremap <Space>o :only<CR>
 nnoremap j gj
 nnoremap k gk
@@ -255,9 +256,7 @@ endif
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
 " □とか○の文字があってもカーソル位置がずれないようにする
-if exists('&ambiwidth')
-    set ambiwidth=double
-endif
+set ambiwidth=double
 " }}}
 
 "tab settings {{{
@@ -880,37 +879,4 @@ filetype plugin indent on
 " }}}
 
 " }}}
-
-
-"filetype on
-"filetype plugin indent on
-"
-"let maplerder = ","
-"set autoread
-"set whichwrap=b,s,h,l,<,>,[,]
-"set wrapscan
-"
-"" Tab and Indent Settings.
-"augroup vimrc
-"autocmd! FileType CPP    setlocal tabstop=2 shiftwidth=2 softtabstop=2
-"autocmd! FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
-"augroup END
-"""set autoindent
-"set cindent
-"" Autocomplite settings.
-"set wildmode=longest:full,full
-"" Convert "\" to "/" (for windows).
-"set shellslash
-""Appearance settings.
-"set showcmd
-"set title
-"set ruler
-"set showmode
-"" Display multibyte character with 2 chara width
-""set ambiwidth=double
-"set display=uhex
-"
-"set lazyredraw
-"set ttyfast
-
 

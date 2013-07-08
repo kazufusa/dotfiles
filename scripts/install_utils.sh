@@ -14,6 +14,7 @@ sudo aptitude install -y ttf-inconsolata
 sudo aptitude install -y ibus-mozc
 sudo aptitude install -y figlet
 sudo aptitude install -y clang libclang-dev
+sudo aptitude install -y exuberant-ctags
 sudo aptitude install -y w3m
 
 # change login shell to zsh
