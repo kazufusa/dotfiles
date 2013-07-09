@@ -18,7 +18,7 @@ sudo aptitude install -y exuberant-ctags
 sudo aptitude install -y w3m
 
 # change login shell to zsh
-sudo chsh -s /bin/zsh $USER
+chsh -s /bin/zsh $USER
 
 # terminator configuration
 mkdir -p $HOME/.config/terminator/
