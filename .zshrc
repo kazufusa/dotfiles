@@ -50,3 +50,7 @@ if [ -d $HOME/.rbenv ] ; then
     eval "$(rbenv init - zsh)"
 fi
 
+#SimpleHTTPServer
+shttps (){
+    python -m SimpleHTTPServer
+}
