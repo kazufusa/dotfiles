@@ -31,3 +31,6 @@ for templatefile in template.*
 do
     ln -fs "$PWD/$templatefile" $HOME/.vim/template/$templatefile
 done
+
+#git config
+cat $HOME/dotfiles/configfiles/git_config >> $HOME/.gitconfig
