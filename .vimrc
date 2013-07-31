@@ -865,6 +865,14 @@ let g:PyFlakeRangeCommand = 'Q'
 
 " }}}
 
+" coffeescript{{{
+
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+      \ "autoload": {
+      \   "filetypes": ["coffee", "COFFEE"],
+      \ }}
+" }}}
+
 " Base settings after {{{
     " インストールされていないプラグインのチェックおよびダウンロード
     NeoBundleCheck
