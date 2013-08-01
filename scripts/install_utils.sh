@@ -25,6 +25,6 @@ mkdir -p $HOME/.config/terminator/
 mv $HOME/.config/terminator/config $HOME/.config/terminator/config.default
 cp $HOME/dotfiles/configfiles/terminator_config $HOME/.config/terminator/config
 if [ -e /etc/xdg/lxsession/Lubuntu/autostart ]; then
-    sudo sh -c "echo '@terminator -l workspace' >> /etc/xdg/lxsession/Lubuntu/autostart"
+    sudo sh -c "echo '@VTE_CJK_WIDTH=1 terminator -l workspace' >> /etc/xdg/lxsession/Lubuntu/autostart"
 fi
 
