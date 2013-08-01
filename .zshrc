@@ -60,3 +60,5 @@ shttps (){
     python -m SimpleHTTPServer
 }
 nvm use v0.11.4
+
+export VTE_CJK_WIDTH=1
