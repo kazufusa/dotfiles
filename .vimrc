@@ -659,9 +659,6 @@ function! s:hooks.on_source(bundle)
     \}
     let g:quickrun_config['_']['runner'] = 'vimproc'
     let g:quickrun_config['_']['runner/vimproc/updatetime'] = 100
-    "let g:quickrun_config = {
-    "  \ "*": {"runner": "remote/vimproc"},
-    "  \ }
     " <C-c> で実行を強制終了させる
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 endfunction
@@ -810,37 +807,37 @@ nnoremap <space>rt :<C-u>Ref webdict th<Space>
 nnoremap <space>rw :<C-u>Ref webdict wiki<Space>
 " }}}
 
-" {{{ shareboard
-" setup
-" 1. % sudo aptitude install python-pyside
-" 2. % pip install shareboard
-" 3. % shareboard start
-"    in other terminal
-"    % shareboard set "Hello"
-"    % shareboard get
-"    Hello  <- OK?
-" 4. shareboard start -v 
-NeoBundleLazy "lambdalisue/shareboard.vim", {
-      \ "autoload": {
-      \   "commands": ["ShareboardPreview", "ShareboardCompile"],
-      \ },
-      \ "build": {
-      \   "mac": "pip install shareboard",
-      \   "unix": "pip install shareboard",
-      \ }}
-function! s:shareboard_settings()
-  nnoremap <buffer>[shareboard] <Nop>
-  nmap <buffer><Leader> [shareboard]
-  nnoremap <buffer><silent> [shareboard]v :ShareboardPreview<CR>
-  nnoremap <buffer><silent> [shareboard]c :ShareboardCompile<CR>
-endfunction
-autocmd MyAutoCmd FileType rst,text,pandoc,markdown,textile call s:shareboard_settings()
-let s:hooks = neobundle#get_hooks("shareboard.vim")
-function! s:hooks.on_source(bundle)
-  " VimからPandocが見えないことが多々あるので念の為~/.cabal/binをPATHに追加
-  let $PATH=expand("~/.cabal/bin:") . $PATH
-endfunction
-" }}}
+"" {{{ shareboard
+"" setup
+"" 1. % sudo aptitude install python-pyside
+"" 2. % pip install shareboard
+"" 3. % shareboard start
+""    in other terminal
+""    % shareboard set "Hello"
+""    % shareboard get
+""    Hello  <- OK?
+"" 4. shareboard start -v 
+"NeoBundleLazy "lambdalisue/shareboard.vim", {
+"      \ "autoload": {
+"      \   "commands": ["ShareboardPreview", "ShareboardCompile"],
+"      \ },
+"      \ "build": {
+"      \   "mac": "pip install shareboard",
+"      \   "unix": "pip install shareboard",
+"      \ }}
+"function! s:shareboard_settings()
+"  nnoremap <buffer>[shareboard] <Nop>
+"  nmap <buffer><Leader> [shareboard]
+"  nnoremap <buffer><silent> [shareboard]v :ShareboardPreview<CR>
+"  nnoremap <buffer><silent> [shareboard]c :ShareboardCompile<CR>
+"endfunction
+"autocmd MyAutoCmd FileType rst,text,pandoc,markdown,textile call s:shareboard_settings()
+"let s:hooks = neobundle#get_hooks("shareboard.vim")
+"function! s:hooks.on_source(bundle)
+"  " VimからPandocが見えないことが多々あるので念の為~/.cabal/binをPATHに追加
+"  let $PATH=expand("~/.cabal/bin:") . $PATH
+"endfunction
+"" }}}
 
 " solarized {{{
 NeoBundle "altercation/vim-colors-solarized"
@@ -866,6 +863,14 @@ let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
 ""visualモードでQを押すと自動で修正
 let g:PyFlakeRangeCommand = 'Q'
 
+" }}}
+
+" coffeescript{{{
+
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+      \ "autoload": {
+      \   "filetypes": ["coffee", "COFFEE"],
+      \ }}
 " }}}
 
 " Base settings after {{{

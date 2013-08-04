@@ -52,9 +52,16 @@ if [ -d $HOME/.rbenv ] ; then
     eval "$(rbenv init - zsh)"
 fi
 
+#nodejs
+if [ -d $HOME/.nvm ] ; then
+    source $HOME/.nvm/nvm.sh
+fi
+
 #SimpleHTTPServer
 shttps (){
     python -m SimpleHTTPServer
 }
 
+nvm use v0.11.4
 
+export VTE_CJK_WIDTH=1

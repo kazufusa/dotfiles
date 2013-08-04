@@ -24,7 +24,6 @@ chsh -s /bin/zsh $USER
 mkdir -p $HOME/.config/terminator/
 mv $HOME/.config/terminator/config $HOME/.config/terminator/config.default
 cp $HOME/dotfiles/configfiles/terminator_config $HOME/.config/terminator/config
-if [ -e /etc/xdg/lxsession/Lubuntu/autostart ]; then
-    sudo sh -c "echo '@terminator -l workspace' >> /etc/xdg/lxsession/Lubuntu/autostart"
-fi
 
+mkdir -p $HOME/.config/autostart
+cp $HOME/dotfiles/configfiles/terminator.desktop $HOME/.config/autostart/
