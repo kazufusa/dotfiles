@@ -1,2 +1,2 @@
-[alias]
-hist = log --graph --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %Cgreen(%an)%Creset %s  %Cred%d%Creset' --date=iso
+[include]
+    path = dotfiles/.gitconfig.common

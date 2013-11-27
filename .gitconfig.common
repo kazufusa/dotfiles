@@ -1,0 +1,6 @@
+[alias]
+    hist = log --graph --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %Cgreen(%an)%Creset %s  %Cred%d%Creset' --date=iso
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
