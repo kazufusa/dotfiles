@@ -123,6 +123,9 @@ nnoremap <Up>   gk
 " 入力モード中に素早くjjと入力した場合はESCとみなす
 inoremap jj <Esc>
 
+" leaderをカンマに割り当て
+let mapleader=","
+
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
