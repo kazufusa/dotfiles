@@ -62,9 +62,6 @@ set clipboard=unnamedplus
 set nowritebackup
 set nobackup
 set noswapfile
-set undodir=./.vimundo,~/.vimundo
-set undofile
-
 " }}}
 
 " About display {{{
@@ -894,3 +891,4 @@ filetype plugin indent on
 " }}}
 
 " }}}
+
