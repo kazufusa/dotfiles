@@ -29,6 +29,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smartindent
+set modeline
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
@@ -44,14 +45,17 @@ set matchpairs& matchpairs+=<:>
 " バックスペースでなんでも消せるようにする
 set backspace=indent,eol,start
 
+set modeline
+
 " クリップボードをデフォルトのレジスタとして指定。後にYankRingを使うので
 " 'unnamedplus'が存在しているかどうかで設定を分ける必要がある
-if has('unnamedplus')
-    set clipboard& clipboard+=unnamedplus
-else
-    " set clipboard& clipboard+=unnamed,autoselect 2013-06-24 10:00 autoselect 削除
-    set clipboard& clipboard+=unnamed
-endif
+"if has('unnamedplus')
+"    set clipboard& clipboard+=unnamedplus
+"else
+"    " set clipboard& clipboard+=unnamed,autoselect 2013-06-24 10:00 autoselect 削除
+"    set clipboard& clipboard+=unnamed
+"endif
+set clipboard=unnamedplus
 
 " Swapファイル？Backupファイル？前時代的すぎ
 " なので全て無効化する
@@ -68,7 +72,7 @@ set textwidth=0         " 自動的に改行が入るのを無効化
 set colorcolumn=80      " その代わり80文字目にラインを入れる
 
 " 起動時に折り畳み
-set foldmethod=marker
+"set foldmethod=marker
 
 " 前時代的スクリーンベルを無効化
 set t_vb=
@@ -726,18 +730,18 @@ NeoBundleLazy "gregsexton/gitv", {
 " }}}
 
 " vim-indent-guides {{{
-NeoBundle "nathanaelkane/vim-indent-guides"
-let g:indent_guides_enable_on_vim_startup = 1
-" 自動カラーを無効にする
-let g:indent_guides_auto_colors=0
-" 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=green
-" 偶数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=cyan
-" ハイライト色の変化の幅
-let g:indent_guides_color_change_percent = 20
-" ガイドの幅
-let g:indent_guides_guide_size = 1
+"NeoBundle "nathanaelkane/vim-indent-guides"
+"let g:indent_guides_enable_on_vim_startup = 1
+"" 自動カラーを無効にする
+"let g:indent_guides_auto_colors=0
+"" 奇数インデントのカラー
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=green
+"" 偶数インデントのカラー
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=cyan
+"" ハイライト色の変化の幅
+"let g:indent_guides_color_change_percent = 20
+"" ガイドの幅
+"let g:indent_guides_guide_size = 1
 
 "}}}
 
