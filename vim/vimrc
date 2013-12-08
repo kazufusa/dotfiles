@@ -1,0 +1,18 @@
+let OSTYPE = system('uname')
+
+" release autogroup in MyAutoCmd
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+set t_Co=256
+
+source ~/.vim/vimrc_sets
+source ~/.vim/vimrc_keymaps
+source ~/.vim/vimrc_plugins
+
+"load local vimrc
+if filereadable(expand('./.vimrc.local'))
+  source ./.vimrc.local
+endif
+
