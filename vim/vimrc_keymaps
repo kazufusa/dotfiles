@@ -8,34 +8,31 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 " map
 " ctrlをspaceで置き換える
-noremap <SPACE>a <C-a>
-noremap <SPACE>b <C-b>
-noremap <SPACE>c <C-c>
-noremap <SPACE>d <C-d>
-noremap <SPACE>e <C-e>
-noremap <SPACE>f <C-f>
-noremap <SPACE>g <C-g>
-noremap <SPACE>i <C-i>
-noremap <SPACE>m <C-m>
-noremap <SPACE>n <C-n>
-noremap <SPACE>o <C-o>
-noremap <SPACE>p <C-p>
-noremap <SPACE>q <C-q>
-noremap <SPACE>r <C-r>
-noremap <SPACE>s <C-s>
-noremap <SPACE>t <C-t>
-noremap <SPACE>u <C-u>
-noremap <SPACE>v <C-v>
-noremap <SPACE>w <C-w>
-noremap <SPACE>x <C-x>
-noremap <SPACE>y <C-y>
-noremap <SPACE>z <C-z>
-noremap 0 $
-noremap 1 ^
-noremap <SPACE>h <C-w>h
-noremap <SPACE>j <C-w>j
-noremap <SPACE>k <C-w>k
-noremap <SPACE>l <C-w>l
+map <SPACE>a <C-a>
+map <SPACE>b <C-b>
+map <SPACE>c <C-c>
+map <SPACE>d <C-d>
+map <SPACE>e <C-e>
+map <SPACE>f <C-f>
+map <SPACE>g <C-g>
+map <SPACE>i <C-i>
+map <SPACE>m <C-m>
+map <SPACE>n <C-n>
+map <SPACE>o <C-o>
+map <SPACE>p <C-p>
+map <SPACE>q <C-q>
+map <SPACE>r <C-r>
+map <SPACE>s <C-s>
+map <SPACE>t <C-t>
+map <SPACE>u <C-u>
+map <SPACE>v <C-v>
+map <SPACE>w <C-w>
+map <SPACE>x <C-x>
+map <SPACE>y <C-y>
+map <SPACE>z <C-z>
+
+nnoremap 0 $
+nnoremap 1 ^
 
 " カーソル下の単語を * で検索
 noremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), "\n", '\\n', 'g')<CR><CR>

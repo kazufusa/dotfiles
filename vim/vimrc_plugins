@@ -343,7 +343,6 @@ let g:auto_write = 1
 
 " yankround.vim {{{
 NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'kien/ctrlp.vim'
 "" キーマップ
 nmap p <Plug>(yankround-p)
 nmap P <Plug>(yankround-P)
