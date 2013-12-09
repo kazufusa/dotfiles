@@ -312,7 +312,8 @@ function! s:hooks.on_source(bundle)
     "McCabe複雑度の最大値
     "let g:PyFlakeDefaultComplexity=10
     ""visualモードでQを押すと自動で修正
-    let g:PyFlakeRangeCommand = 'Q'
+    "let g:PyFlakeRangeCommand = 'Q'
+    nnoremap <Leader>q :PyFlakeAuto<CR>
 endfunction
 " }}}
 

@@ -50,7 +50,8 @@ set novisualbell
 
 " デフォルト不可視文字は美しくないのでUnicodeで綺麗に
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:% ",eol:↲
+highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 
 set splitbelow "新しいウィンドウを下に開く
 set splitright "新しいウィンドウを右に開く
