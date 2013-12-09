@@ -40,79 +40,8 @@ NeoBundleLazy "Shougo/unite.vim", {
       \ "autoload": {
       \   "commands": ["Unite", "UniteWithBufferDir"]
       \ }}
-NeoBundleLazy 'h1mesuke/unite-outline', {
-      \ "autoload": {
-      \   "unite_sources": ["outline"],
-      \ }}
-nnoremap [unite] <Nop>
-nmap U [unite]
-nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-nnoremap <silent> [unite]r :<C-u>Unite register<CR>
-nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
-nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]t :<C-u>Unite tab<CR>
-nnoremap <silent> [unite]w :<C-u>Unite window<CR>
-let s:hooks = neobundle#get_hooks("unite.vim")
-function! s:hooks.on_source(bundle)
-  " start unite in insert mode
-  let g:unite_enable_start_insert = 1
-  " use vimfiler to open directory
-  call unite#custom_default_action("source/bookmark/directory", "vimfiler")
-  call unite#custom_default_action("directory", "vimfiler")
-  call unite#custom_default_action("directory_mru", "vimfiler")
-  autocmd MyAutoCmd FileType unite call s:unite_settings()
-  function! s:unite_settings()
-    imap <buffer> <Esc><Esc> <Plug>(unite_exit)
-    nmap <buffer> <Esc> <Plug>(unite_exit)
-    nmap <buffer> <C-n> <Plug>(unite_select_next_line)
-    nmap <buffer> <C-p> <Plug>(unite_select_previous_line)
-  endfunction
-endfunction
-
-
-" old settings unite-vim {{{
-" key map {{{
-nnoremap <Space>ub :Unite buffer -input=!split<CR>
-nnoremap <Space>ufm :Unite file_mru2<CR>
-nnoremap <Space><Space>ufm :Unite file_mru<CR>
-nnoremap <Space>udm :Unite directory_mru<CR>
-nnoremap <Space>urm :UniteResume<CR>
-nnoremap <Space>uff :Unite file<CR>
-nnoremap <Space>uol :Unite outline<CR>
-nnoremap <Space>unb :Unite neobundle<CR>
-nnoremap <Space>ugr :Unite grep<CR><CR>
-nnoremap <Space>um :Unite menu<CR>
-nnoremap <Space>urrr :Unite rofi<CR>
-nnoremap <Space>url :Unite reanimate -default-action=reanimate_load<CR>
-nnoremap <Space>urs :Unite reanimate -default-action=reanimate_save<CR>
-nnoremap <Space>umes :Unite output:mes<CR>
-nnoremap <Space>uqh :Unite qfixhowm:nocache<CR>
-nnoremap <Space>ubb :Unite boost-online-doc -default-action=ref_lynx_tabnew<CR>
- " nnoremap <Space>ub :Unite bookmark<CR>
- " nnoremap <Space>ucmd :Unite commandsCR>
- " nnoremap <Space>uw :Unite window<CR>
- " nnoremap <Space>ut :Unite tab<CR>
-inoremap <C-y> <esc>:Unite history/yank -direction=belowright -winheight=12<CR>
-" }}}
-
-" settings {{{
-let g:unite_data_directory = $VIMLOCALUSER."~/.vim/.unite"
-let g:unite_source_history_yank_enable=1
-
-" file mru の保存数
-let g:unite_source_file_mru_limit = 5000
-let g:unite_source_file_mru2_limit = 200
-
-" default action
-call unite#custom_default_action('directory' , 'tabvimfiler')
-call unite#custom_default_action("directory_mru", "vimfiler")
-let g:vimfiler_as_default_explorer = 1
-" }}}
-
-" }}}
-
+" 未整備
+" http://d.hatena.ne.jp/osyo-manga/20130625/1372170654
 " }}}
 
 " quickrun {{{
@@ -180,9 +109,11 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 syntax enable
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+" sets for solarized
+"set background=dark
+"let g:solarized_termtrans=1
+"let g:solarized_termcolors=256
+colorscheme molokai
 " }}}
 
 " neocomlcache {{{
@@ -364,9 +295,9 @@ function! g:ref_source_webdict_sites.wiki.filter(output)
   return join(split(a:output, "\n")[5 :], "\n")
 endfunction
 
-nnoremap <space>re :<C-u>Ref webdict ej<Space>
-nnoremap <space>rt :<C-u>Ref webdict th<Space>
-nnoremap <space>rw :<C-u>Ref webdict wiki<Space>
+nnoremap <Leader>re :<C-u>Ref webdict ej<Space>
+nnoremap <Leader>rt :<C-u>Ref webdict th<Space>
+nnoremap <Leader>rw :<C-u>Ref webdict wiki<Space>
 " }}}
 
 " python PEP8 checker {{{
@@ -423,9 +354,13 @@ let g:yankround_max_history = 50
 nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
 "}}}
 
+" vim-surround {{{
 NeoBundle 'tpope/vim-surround'
+" }}}
 
+" auto check
 NeoBundleCheck
+
 " ファイルタイププラグインおよびインデントを有効化
 " これはNeoBundleによる処理が終了したあとに呼ばなければならない
 filetype plugin indent on

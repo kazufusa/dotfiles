@@ -24,7 +24,7 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 " 対応括弧に'<'と'>'のペアを追加
 set matchpairs& matchpairs+=<:>
 " バックスペースでなんでも消せるようにする
-set backspace=indent,eol,start
+"set backspace=indent,eol,start
 set modeline
 set clipboard=unnamed,autoselect
 
