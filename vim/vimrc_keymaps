@@ -15,7 +15,11 @@ map <SPACE>d <C-d>
 map <SPACE>e <C-e>
 map <SPACE>f <C-f>
 map <SPACE>g <C-g>
+map <SPACE>h <C-h>
 map <SPACE>i <C-i>
+map <SPACE>j <C-j>
+map <SPACE>k <C-k>
+map <SPACE>l <C-l>
 map <SPACE>m <C-m>
 map <SPACE>n <C-n>
 map <SPACE>o <C-o>
