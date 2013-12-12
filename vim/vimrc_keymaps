@@ -52,9 +52,9 @@ inoremap jj <Esc>
 vnoremap v $h
 
 " nnoremap
-nnoremap <Space>q :q<CR>
-nnoremap <Space>a :qa<CR>
-nnoremap <Space>o :only<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>a :qa<CR>
+nnoremap <Leader>o :only<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj

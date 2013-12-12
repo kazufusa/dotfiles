@@ -1,4 +1,4 @@
-" About searching word 
+" About searching word
 set ignorecase          " 大文字小文字を区別しない
 set smartcase           " 検索文字に大文字がある場合は大文字小文字を区別
 set incsearch           " インクリメンタルサーチ
@@ -35,7 +35,7 @@ set noswapfile
 set undodir=./.vimundo,~/.vimundo
 set undofile
 
-" About display 
+" About display
 set number              " 行番号の表示
 set wrap                " 長いテキストの折り返し
 set textwidth=0         " 自動的に改行が入るのを無効化

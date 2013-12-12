@@ -113,9 +113,10 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 syntax enable
 " sets for solarized
-"set background=dark
-"let g:solarized_termtrans=1
-"let g:solarized_termcolors=256
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+"colorscheme solarized
 colorscheme molokai
 " }}}
 
@@ -250,9 +251,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 " 自動カラーを無効にする
 let g:indent_guides_auto_colors=0
 " 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=gray
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=0
 " 偶数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
 " ハイライト色の変化の幅
 let g:indent_guides_color_change_percent = 20
 " ガイドの幅
@@ -512,6 +513,13 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
+" }}}
+
+ " coffeescript{{{
+NeoBundleLazy 'kchmck/vim-coffee-script', {
+      \ "autoload": {
+      \   "filetypes": ["coffee", "COFFEE"],
+      \ }}
 " }}}
 
 " auto check
