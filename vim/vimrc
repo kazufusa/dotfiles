@@ -11,8 +11,15 @@ source ~/.vim/vimrc_sets
 source ~/.vim/vimrc_keymaps
 source ~/.vim/vimrc_plugins
 
-"load local vimrc
-if filereadable(expand('./.vimrc.local'))
-  source ./.vimrc.local
-endif
+" Load settings for each location.
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
 
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
