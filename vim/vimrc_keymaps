@@ -54,7 +54,6 @@ vnoremap v $h
 " nnoremap
 nnoremap <SPACE>a ggVG<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>qa :qa<CR>
 nnoremap <Leader>o :only<CR>
 nnoremap j gj
 nnoremap k gk
