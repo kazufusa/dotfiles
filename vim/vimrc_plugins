@@ -92,7 +92,7 @@ function! s:hooks.on_source(bundle)
   autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
   function! s:vimfiler_settings()
     " ^^ to go up
-    nmap <buffer> ^^ <Plug>(vimfiler_switch_to_parent_directory)
+    nmap <buffer> b <Plug>(vimfiler_switch_to_parent_directory)
     " use R to refresh
     nmap <buffer> R <Plug>(vimfiler_redraw_screen)
     " overwrite C-l
@@ -251,13 +251,13 @@ let g:indent_guides_enable_on_vim_startup = 1
 " 自動カラーを無効にする
 let g:indent_guides_auto_colors=0
 " 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=black
 " 偶数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
 " ハイライト色の変化の幅
 let g:indent_guides_color_change_percent = 20
 " ガイドの幅
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = 4
 
 "}}}
 
@@ -302,6 +302,9 @@ endfunction
 nnoremap <Leader>re :<C-u>Ref webdict ej<Space>
 nnoremap <Leader>rt :<C-u>Ref webdict th<Space>
 nnoremap <Leader>rw :<C-u>Ref webdict wiki<Space>
+nnoremap re :Ref webdict ej <C-R><C-W> <CR>
+nnoremap rt :Ref webdict th <C-R><C-W> <CR>
+nnoremap rw :Ref webdict wiki <C-R><C-W> <CR>
 " }}}
 
 " python PEP8 checker {{{
@@ -342,7 +345,7 @@ nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!
 
  " }}}
 
- " wauto.vim {{{
+" wauto.vim {{{
 NeoBundle 'syui/wauto.vim'
 let g:auto_write = 1
 " }}}

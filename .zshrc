@@ -59,7 +59,7 @@ fi
 
 #SimpleHTTPServer
 shttps (){
-    python -m SimpleHTTPServer
+    python -m SimpleHTTPServer $1
 }
 
 nvm use v0.11.4
