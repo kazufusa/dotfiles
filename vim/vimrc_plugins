@@ -514,6 +514,8 @@ endfunction
 " relate to Git {{{
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
 nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 " }}}
