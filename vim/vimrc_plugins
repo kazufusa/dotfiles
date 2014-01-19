@@ -544,6 +544,10 @@ NeoBundleLazy 'digitaltoad/vim-jade', {
     \ }}
 " }}}
 
+" qiita{{{
+NeoBundle 'mattn/qiita-vim'
+" }}}
+
 " auto check
 NeoBundleCheck
 
