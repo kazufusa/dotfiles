@@ -520,6 +520,7 @@ NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
+let g:gist_get_multiplefile = 1
 " }}}
 
  " coffeescript{{{
@@ -537,12 +538,16 @@ NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
     \ }}
 " }}}
 
-" jinja2 syntax {{{
+" jade syntax {{{
 NeoBundleLazy 'digitaltoad/vim-jade', {
     \ 'autoload': {
     \   'filetypes' : ["jade"],
     \   'filename_patterns' : ['.*\.jade'],
     \ }}
+" }}}
+
+" qiita{{{
+NeoBundle 'mattn/qiita-vim'
 " }}}
 
 " auto check
