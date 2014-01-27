@@ -9,11 +9,11 @@
 	# Use patched font symbols.
 	export TMUX_POWERLINE_PATCHED_FONT_IN_USE="true"
 	# The theme to use.
-	export TMUX_POWERLINE_THEME="default"
+	export TMUX_POWERLINE_THEME="theme"
 	# Overlay dirctory to look for themes. There you can put your own themes outside the repo. Fallback will still be the "themes" directory in the repo.
-	export TMUX_POWERLINE_DIR_USER_THEMES=""
+	export TMUX_POWERLINE_DIR_USER_THEMES="~/dotfiles/tmux"
 	# Overlay dirctory to look for segments. There you can put your own segments outside the repo. Fallback will still be the "segments" directory in the repo.
-	export TMUX_POWERLINE_DIR_USER_SEGMENTS=""
+	export TMUX_POWERLINE_DIR_USER_SEGMENTS="~/dotfiles/tmux"
 # }
 
 # battery.sh {
@@ -131,5 +131,5 @@
 	# 1. Go to Yahoo weather http://weather.yahoo.com/
 	# 2. Find the weather for you location
 	# 3. Copy the last numbers in that URL. e.g. "http://weather.yahoo.com/united-states/california/newport-beach-12796587/" has the numbers "12796587"
-	export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1116022"
+    export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1116022"
 # }

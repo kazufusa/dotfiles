@@ -1,7 +1,5 @@
 # include antigen settings
-
 source $HOME/dotfiles/zsh/zshrc.antigen
-
 #export VTE_CJK_WIDTH=1
 
 case "${OSTYPE}" in
@@ -61,5 +59,6 @@ fi
 #nodejs
 if [ -d $HOME/.nvm ] ; then
     source $HOME/.nvm/nvm.sh
-    nvm use v0.11.4
 fi
+
+PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
