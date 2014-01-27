@@ -4,7 +4,6 @@ ZSH_THEME="lpomfrey"
 source ~/.zsh/antigen/antigen.zsh
 antigen-use oh-my-zsh
 antigen-bundle git
-antigen-bundle autojump
 antigen-bundle ruby
 antigen-bundle rbenv
 antigen-bundle bundler

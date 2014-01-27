@@ -1,18 +1,8 @@
 # include antigen settings
-source ~/.zshrc.antigen
 
-function powerline_precmd() {
-  export PS1="$(~/powerline-shell.py $? --shell zsh 2> /dev/null)"
-}
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-#install_powerline_precmd
+source $HOME/dotfiles/zsh/zshrc.antigen
+
+#export VTE_CJK_WIDTH=1
 
 case "${OSTYPE}" in
 # Linux
@@ -41,6 +31,10 @@ darwin*)
     ;;
 esac
 
+#SimpleHTTPServer
+shttps (){
+    python -m SimpleHTTPServer $1
+}
  # multi version python virtualenv
  mkvenv () {
     base_python=`which python$1`
@@ -67,16 +61,5 @@ fi
 #nodejs
 if [ -d $HOME/.nvm ] ; then
     source $HOME/.nvm/nvm.sh
+    nvm use v0.11.4
 fi
-
-#SimpleHTTPServer
-shttps (){
-    python -m SimpleHTTPServer $1
-}
-
-nvm use v0.11.4
-
-export VTE_CJK_WIDTH=1
-
-export TERM=xterm-256color
-~/dotfiles/script/tmuxx
