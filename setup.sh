@@ -1,13 +1,4 @@
 #!/bin/sh
-#link dotfiles
-cd $(dirname $0)
-for dotfile in .?*
-do
-    if [ $dotfile != '..' ]  && [ $dotfile != '.git' ] && [ $dotfile != '.gitignore' ]
-    then
-        ln -fs "$PWD/$dotfile" $HOME/$dotfile
-    fi
-done
 
 #zsh antigen
 mkdir -p $HOME/.zsh
