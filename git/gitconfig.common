@@ -6,4 +6,7 @@
     st = status
 [push]
     default = current
+[github]
+    user = kazufusa
+
 
