@@ -8,5 +8,6 @@
     default = current
 [github]
     user = kazufusa
-
-
+[pager]
+    diff = git diff -p --color | diff-highlight | less
+    show = git show -p --color | diff-highlight | less
