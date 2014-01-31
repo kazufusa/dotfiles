@@ -133,3 +133,11 @@
 	# 3. Copy the last numbers in that URL. e.g. "http://weather.yahoo.com/united-states/california/newport-beach-12796587/" has the numbers "12796587"
     export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1116022"
 # }
+
+# for vcs {
+    #export TMUX_POWERLINE_SEG_VCS_BRANCH_SYMBOL="✈"
+    #export TMUX_POWERLINE_SEG_VCS_FLAT_SYMBOL=""
+    export TMUX_POWERLINE_SEG_VCS_MOD_SYMBOL="➜ "
+    export TMUX_POWERLINE_SEG_VCS_OTHER_SYMBOL="✈ "
+    export TMUX_POWERLINE_SEG_VCS_STAGED_SYMBOL="✚ "
+# }
