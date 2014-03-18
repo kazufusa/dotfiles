@@ -117,7 +117,8 @@ set background=dark
 let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
+colorscheme hybrid
 " }}}
 
 " neocomlcache {{{
@@ -251,11 +252,11 @@ let g:indent_guides_enable_on_vim_startup = 1
 " 自動カラーを無効にする
 let g:indent_guides_auto_colors=0
 " 奇数インデントのカラー
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#262626 ctermbg=black
+hi IndentGuidesOdd ctermbg=237
 " 偶数インデントのカラー
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#3c3c3c ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=3
 " ハイライト色の変化の幅
-let g:indent_guides_color_change_percent = 20
+let g:indent_guides_color_change_percent = 100
 " ガイドの幅
 let g:indent_guides_guide_size = 4
 
@@ -326,14 +327,6 @@ function! s:hooks.on_source(bundle)
 endfunction
 " }}}
 
-" vim-pandoc {{{
-" for syntax indent
-NeoBundleLazy "vim-pandoc/vim-pandoc", {
-      \ "autoload": {
-      \   "filetypes": ["text", "pandoc", "markdown", "rst", "textile"],
-      \ }}
-" }}}
-
 " over.vim {{{
 NeoBundle 'osyo-manga/vim-over'
 "over.vimの起動
@@ -349,19 +342,6 @@ nnoremap subp y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!
 NeoBundle 'syui/wauto.vim'
 let g:auto_write = 1
 " }}}
-
-" yankround.vim {{{
-NeoBundle 'LeafCage/yankround.vim'
-"" キーマップ
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-"" 履歴取得数
-let g:yankround_max_history = 50
-""履歴一覧(kien/ctrlp.vim)
-nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
-"}}}
 
 " vim-surround {{{
 NeoBundle 'tpope/vim-surround'
@@ -385,7 +365,7 @@ let g:lightline = {
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [
-        \     ['mode', 'paste'],
+        \     ['mode'],
         \     ['fugitive', 'gitgutter', 'filename'],
         \   ],
         \   'right': [
@@ -420,12 +400,18 @@ function! MyReadonly()
 endfunction
 
 function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+        \  &ft == 'unite' ? unite#get_status_string() : 
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != FilePathSnippet() ? FilePathSnippet() : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! FilePathSnippet()
+    let path = expand('%:p')
+    let length = strlen(expand('%:p'))
+    return length > 25 ? '..' . path[length - 25: length] : path
 endfunction
 
 function! MyFugitive()

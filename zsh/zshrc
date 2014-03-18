@@ -33,32 +33,27 @@ esac
 shttps (){
     python -m SimpleHTTPServer $1
 }
- # multi version python virtualenv
- mkvenv () {
-    base_python=`which python$1`
-    mkvirtualenv --distribute --python=$base_python $2
- }
+# multi version python virtualenv
+mkvenv () {
+   base_python=`which python$1`
+   mkvirtualenv --distribute --python=$base_python $2
+}
 
 #z.sh settings
-if [ ! -d $HOME/.zsh/z ] ; then
-    cd $HOME/.zsh
+if [ ! -d $HOME/dotfiles/zsh/z ] ; then
+    cd $HOME/dotfiles/zsh
     git clone https://github.com/rupa/z.git
 fi
 _Z_CMD=j
-source ~/.zsh/z/z.sh
+source $HOME/dotfiles/zsh/z/z.sh
 precmd() {
   _z --add "$(pwd -P)"
 }
 
-#ruby rbenv
-if [ -d $HOME/.rbenv ] ; then
-    export PATH=$HOME/.rbenv/bin:$PATH
-    eval "$(rbenv init - zsh)"
-fi
-
 #nodejs
 if [ -d $HOME/.nvm ] ; then
     source $HOME/.nvm/nvm.sh
+    nvm use v0.11.4
 fi
 
-PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+export PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
