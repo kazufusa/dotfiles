@@ -19,6 +19,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smartindent
+set autoindent
 set modeline
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
