@@ -1,4 +1,5 @@
 # include antigen settings
+source $HOME/dotfiles/zsh/zshenv
 source $HOME/dotfiles/zsh/zshrc.antigen
 #export VTE_CJK_WIDTH=1
 
@@ -40,20 +41,21 @@ shttps (){
  }
 
 #z.sh settings
-if [ ! -d $HOME/.zsh/z ] ; then
+if [ ! -d $HOME/dotfiles/zsh/z ] ; then
     cd $HOME/.zsh
     git clone https://github.com/rupa/z.git
 fi
 _Z_CMD=j
-source ~/.zsh/z/z.sh
+source $HOME/dotfiles/zsh/z/z.sh
 precmd() {
   _z --add "$(pwd -P)"
 }
 
 #ruby rbenv
 if [ -d $HOME/.rbenv ] ; then
-    export PATH=$HOME/.rbenv/bin:$PATH
+    export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init - zsh)"
+    alias be='bundle exec'
 fi
 
 #nodejs

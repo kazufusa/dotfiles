@@ -1,7 +1,7 @@
 ZSH_THEME="lpomfrey"
 
 # antigen
-source ~/.zsh/antigen/antigen.zsh
+source ~/dotfiles/zsh/antigen/antigen.zsh
 antigen-use oh-my-zsh
 antigen-bundle git
 antigen-bundle ruby
@@ -12,8 +12,16 @@ antigen-bundle git-flow
 antigen-bundle github
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle python
-#antigen-bundle virtualenv
+antigen-bundle virtualenv
 antigen-bundle virtualenvwrapper
+antigen-bundle nvm
+antigen-bundle node
+
+case "${OSTYPE}" in
+darwin*)
+    antigen-bundle macports
+    ;;
+esac
 
 #antigen-theme yuuki
 antigen-theme muse #gallois
