@@ -2,7 +2,8 @@
 Encoding=UTF-8
 Type=Application
 Name=Guake
-Exec=/bin/zsh -c "VTE_CJK_WIDTH=1 guake"
-Exec=guake
+Name[en_US]=guake
+Exec=/bin/zsh -c "VTE_CJK_WIDTH=2 guake"
+#Exec=guake
 Comment[en_US]=
 StartupNotify=true

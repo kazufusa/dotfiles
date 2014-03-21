@@ -1,4 +1,4 @@
-export TERM=xterm-256color
 export PATH=/usr/share/doc/git/contrib/diff-highlight:$PATH
 export PATH=~/dotfiles/forpath:~/Dropbox/forpath:$PATH
 export PATH=/opt/local/share/git-core/contrib/diff-highlight:$PATH
+alias tmux='TERM=screen-256color tmux'
