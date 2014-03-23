@@ -1,5 +1,4 @@
 # include antigen settings
-source $HOME/dotfiles/zsh/zshenv
 source $HOME/dotfiles/zsh/zshrc.antigen
 #export VTE_CJK_WIDTH=1
 

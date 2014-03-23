@@ -29,7 +29,11 @@ set matchpairs& matchpairs+=<:>
 set backspace=indent,eol,start
 set modeline
 "set clipboard=unnamed,autoselect
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
+set clipboard=autoselect
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 
 " swpを無効化
 set nowritebackup
