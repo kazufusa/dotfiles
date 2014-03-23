@@ -28,12 +28,7 @@ set matchpairs& matchpairs+=<:>
 " バックスペースでなんでも消せるようにする
 set backspace=indent,eol,start
 set modeline
-"set clipboard=unnamed,autoselect
-"set clipboard=unnamedplus
-set clipboard=autoselect
-if $TMUX == ''
-    set clipboard+=unnamed
-endif
+set clipboard=autoselectplus,unnamed
 
 " swpを無効化
 set nowritebackup
