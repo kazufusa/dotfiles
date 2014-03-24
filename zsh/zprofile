@@ -1,0 +1,11 @@
+export PATH=/usr/local/go/bin:$HOME/dotfiles/forpath:$HOME/Dropbox/forpath:$PATH:/usr/share/doc/git/contrib/diff-highlight:$PATH
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/work/mygo
+
+#ruby rbenv
+if [ -d $HOME/.rbenv ] ; then
+    eval "$(rbenv init - zsh)"
+    export PATH=$HOME/.rbenv/bin:$PATH
+    alias be='bundle exec'
+fi
+
