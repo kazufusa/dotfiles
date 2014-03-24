@@ -28,8 +28,13 @@ set matchpairs& matchpairs+=<:>
 " バックスペースでなんでも消せるようにする
 set backspace=indent,eol,start
 set modeline
-"set clipboard=unnamed,autoselect
-set clipboard=unnamedplus
+
+let OSTYPE = system('uname')
+if OSTYPE == "Darwin\n"
+    set clipboard=autoselectplus,unnamed
+elseif OSTYPE == "Linux\n"
+    set clipboard=unnamedplus
+endif
 
 " swpを無効化
 set nowritebackup

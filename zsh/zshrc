@@ -50,7 +50,7 @@ precmd() {
   _z --add "$(pwd -P)"
 }
 
-#nodejs
+#Nodejs
 if [ -d $HOME/.nvm ] ; then
     source $HOME/.nvm/nvm.sh
     nvm use v0.11.4
