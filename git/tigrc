@@ -1,6 +1,6 @@
 # Variables {{{
 
-bind main F6 !@git fetch
-bind main F8 !@git pull
-bind main F9 !@git push
-bind main ! !git revert %(commit)
+bind main F !@git fetch
+bind main L !@git pull
+bind main P !@git push
+bind main R !git revert %(commit)
