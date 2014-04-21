@@ -4,6 +4,8 @@ export GOPATH=$HOME/work/mygo
 
 case "${OSTYPE}" in
 darwin*)
+    export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+    export MANPATH=/opt/local/man:$MANPATH
     export PATH=/opt/local/share/git-core/contrib/diff-highlight:$PATH
     export GOROOT=/opt/local/go/
     ;;
