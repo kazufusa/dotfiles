@@ -42,9 +42,9 @@ NeoBundleLazy "Shougo/unite.vim", {
       \ }}
 " 未整備
 " http://d.hatena.ne.jp/osyo-manga/20130625/1372170654
+let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
-let g:unite_enable_start_insert=0
-let g:unite_source_file_mru_limit = 200
+let g:unite_source_file_mru_limit = 1000
 
 NeoBundleLazy 'zhaocai/unite-outline', {
     \ 'autoload' : {
@@ -425,8 +425,8 @@ function! MyFilename()
 endfunction
 
 function! FilePathSnippet()
-    let path = expand('%:p')
-    let length = strlen(expand('%:p'))
+    let path = expand('%:p:h') . "/"
+    let length = strlen(expand('%:p:h'))
     return length > 25 ? '..' . path[length - 25: length] : path
 endfunction
 
@@ -748,6 +748,30 @@ NeoBundleLazy 'Blackrush/vim-gocode', {
     \ 'autoload': {
     \   'filetypes' : ["go"],
     \ }}
+" }}}
+
+" SCSS&CSS {{{
+NeoBundleLazy 'JulesWang/css.vim', {
+    \ 'autoload': {
+    \   'filetypes' : ["css", "scss"],
+    \ }}
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {
+    \ 'autoload': {
+    \   'filetypes' : ["css", "scss"],
+    \ }}
+" }}}
+
+" IM_control {{{
+NeoBundle 'fuenor/im_control.vim'
+" fcitx
+
+" 「日本語入力固定モード」の動作設定
+let IM_CtrlMode = 6
+" 「日本語入力固定モード」切替キー
+inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
+
+"<ESC>押下後のIM切替開始までの反応が遅い場合はttimeoutlenを短く設定してみてください(ミリ秒)
+set timeout timeoutlen=3000 ttimeoutlen=100
 " }}}
 
 " auto check
