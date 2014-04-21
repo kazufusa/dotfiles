@@ -744,6 +744,13 @@ NeoBundle "mjbrownie/html-textobjects"
 NeoBundle "vimtaku/vim-textobj-keyvalue"
 " }}}
 
+" go{{{
+NeoBundleLazy 'Blackrush/vim-gocode', {
+    \ 'autoload': {
+    \   'filetypes' : ["go"],
+    \ }}
+" }}}
+
 " SCSS&CSS {{{
 NeoBundleLazy 'JulesWang/css.vim', {
     \ 'autoload': {

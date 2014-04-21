@@ -5,10 +5,6 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-set rtp+=$GOROOT/misc/vim
-exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
-set completeopt=menu,preview
-
 set t_Co=256
 
 source ~/.vim/vimrc_sets
