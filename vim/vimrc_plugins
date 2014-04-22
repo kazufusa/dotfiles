@@ -218,8 +218,9 @@ endif
 " }}}
 
 " Shougo/neosnippet {{{
+"NeoBundle "Shougo/neosnippet-snippets"
 NeoBundleLazy "Shougo/neosnippet.vim", {
-      \ "depends": ["honza/vim-snippets"],
+      \ "depends": ["honza/vim-snippets", "Shougo/neosnippet-snippets"],
       \ "autoload": {
       \   "insert": 1,
       \ }}
@@ -741,6 +742,13 @@ NeoBundle "mjbrownie/html-textobjects"
 " ハッシュの key と value
 " dak, dik,  dav, div
 NeoBundle "vimtaku/vim-textobj-keyvalue"
+" }}}
+
+" go{{{
+NeoBundleLazy 'Blackrush/vim-gocode', {
+    \ 'autoload': {
+    \   'filetypes' : ["go"],
+    \ }}
 " }}}
 
 " SCSS&CSS {{{

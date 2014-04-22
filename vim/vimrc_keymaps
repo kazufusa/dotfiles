@@ -84,10 +84,6 @@ nnoremap <silent> [toggle]l :setl list!<CR>:setl list?<CR>
 nnoremap <silent> [toggle]t :setl expandtab!<CR>:setl expandtab?<CR>
 nnoremap <silent> [toggle]w :setl wrap!<CR>:setl wrap?<CR>
 
-" ノーマルモード時だけ ; と : を入れ替える
-"nnoremap ; :
-"nnoremap : ;
-
 " cmap
 " w!! でスーパーユーザーとして保存（sudoが使える環境限定）
 cnoremap w!! w !sudo tee > /dev/null %

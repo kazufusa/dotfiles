@@ -22,7 +22,6 @@ linux*)
 # Mac(Unix)
 darwin*)
     # Customize to your needs...
-    PATH=/opt/local/bin:/opt/local/sbin:$PATH
     PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
     export PATH
     export MANPATH=/opt/local/man:$MANPATH
