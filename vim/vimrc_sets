@@ -40,7 +40,7 @@ endif
 set nowritebackup
 set nobackup
 set noswapfile
-set undodir=./.vimundo,~/.vimundo
+set undodir=~/.vim/vimundo
 set undofile
 
 " About display
