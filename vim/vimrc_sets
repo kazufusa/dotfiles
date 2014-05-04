@@ -64,7 +64,7 @@ highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 set splitbelow "新しいウィンドウを下に開く
 set splitright "新しいウィンドウを右に開く
 set scrolloff=999  " カーソルを常に中央に
-set cursorline "カーソル行の強調
+"set cursorline "カーソル行の強調
 
 " make, grep などのコマンド後に自動的にQuickFixを開く
 autocmd MyAutoCmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
@@ -285,3 +285,16 @@ endif
 
 
 " }}}
+
+"{{{
+augroup BinaryXXD
+    autocmd!
+    autocmd BufReadPre  *.bin let &binary =1
+    autocmd BufReadPost * if &binary | silent %!xxd -g 1
+    autocmd BufReadPost * set ft=xxd | endif
+    autocmd BufWritePre * if &binary | %!xxd -r
+    autocmd BufWritePre * endif
+    autocmd BufWritePost * if &binary | silent %!xxd -g 1
+    autocmd BufWritePost * set nomod | endif
+augroup END
+"}}}

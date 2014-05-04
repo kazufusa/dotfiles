@@ -24,15 +24,17 @@ darwin*)
     # Customize to your needs...
     PATH=$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
     export PATH
-    export MANPATH=/opt/local/man:$MANPATH
-    # python virtualenv
     PYTHON_VER=2.7
     export MACPORTS_PREFIX=/opt/local
-    export VIRTUALENV_BIN=$MACPORTS_PREFIX/Library/Frameworks/Python.framework/Versions/$PYTHON_VER
-    #export VIRTUALENVWRAPPER_VIRTUALENV=$VIRTUALENV_BIN/bin/virtualenv
+    export MANPATH=/opt/local/man:$MANPATH
     export PYTHONPATH=$MACPORTS_PREFIX/lib/python$PYTHON_VER/:$PYTHONPATH
-    export WORKON_HOME=$HOME/.virtualenvs
-    . $VIRTUALENV_BIN/bin/virtualenvwrapper.sh
+    export VIRTUALENV_BIN=$MACPORTS_PREFIX/Library/Frameworks/Python.framework/Versions/$PYTHON_VER
+    # python virtualenv
+    if [ -e $VIRTUALENV_BIN/bin/virtualenvwrapper.sh ] ; then
+        #export VIRTUALENVWRAPPER_VIRTUALENV=$VIRTUALENV_BIN/bin/virtualenv
+        export WORKON_HOME=$HOME/.virtualenvs
+        $VIRTUALENV_BIN/bin/virtualenvwrapper.sh
+    fi
     ;;
 esac
 
@@ -60,7 +62,7 @@ precmd() {
 #Nodejs
 if [ -d $HOME/.nvm ] ; then
     source $HOME/.nvm/nvm.sh
-    nvm use v0.11.4
+    nvm use v0.11.12
 fi
 
 export PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
