@@ -40,7 +40,7 @@ endif
 set nowritebackup
 set nobackup
 set noswapfile
-set undodir=./.vimundo,~/.vimundo
+set undodir=~/.vim/vimundo
 set undofile
 
 " About display
@@ -64,6 +64,7 @@ highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 set splitbelow "新しいウィンドウを下に開く
 set splitright "新しいウィンドウを右に開く
 set scrolloff=999  " カーソルを常に中央に
+"console vim では重い
 "set cursorline "カーソル行の強調
 
 " make, grep などのコマンド後に自動的にQuickFixを開く
@@ -109,19 +110,6 @@ endfunction
 set laststatus=2
 " }}}
 
-" Show title {{{
-set title
-" Title length.
-set titlelen=90
-" Title string
-let &titlestring="
-      \ %{expand('%:p:.:~')}%(%m%r%w%)
-      \ %<\(%{".s:SID_PREFIX()."strwidthpart(
-      \ fnamemodify(&filetype ==# 'vimfiler' ?
-      \ substitute(b:vimfiler.current_dir, '.\\zs/$', '', '') : getcwd(), ':~'),
-      \ &columns-len(expand('%:p:.:~')))}\) - VIM"
-" }}}
-
 " Set tabline {{{
 function! s:my_tabline()  "{{{
   let s = ''
@@ -154,137 +142,15 @@ for n in range(1, 9)
 endfor
 " t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
+nnoremap <silent> [Tag]c :tablast <bar> tabnew<CR>
 " tc 新しいタブを一番右に作る
-map <silent> [Tag]x :tabclose<CR>
+nnoremap <silent> [Tag]x :tabclose<CR>
 " tx タブを閉じる
-map <silent> [Tag]n :tabnext<CR>
+nnoremap <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
-map <silent> [Tag]p :tabprevious<CR>
+nnoremap <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
 "}}}
-
-"" codec settings {{{
-"if &encoding !=# 'utf-8'
-"    set encoding=japan
-"    set fileencoding=japan
-"endif
-"
-"if has('iconv')
-"    let s:enc_euc = 'euc-jp'
-"    let s:enc_jis = 'iso-2022-jp'
-"    " iconvがeucJP-msに対応しているかをチェック
-"    if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-"        let s:enc_euc = 'eucjp-ms'
-"        let s:enc_jis = 'iso-2022-jp-3'
-"    " iconvがJISX0213に対応しているかをチェック
-"    elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-"        let s:enc_euc = 'euc-jisx0213'
-"        let s:enc_jis = 'iso-2022-jp-3'
-"    endif
-"    " fileencodingsを構築
-"    if &encoding ==# 'utf-8'
-"        let s:fileencodings_default = &fileencodings
-"        let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-"        let &fileencodings = &fileencodings .','. s:fileencodings_default
-"        unlet s:fileencodings_default
-"    else
-"        let &fileencodings = &fileencodings .','. s:enc_jis
-"        set fileencodings+=utf-8,ucs-2le,ucs-2
-"        if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-"            set fileencodings+=cp932
-"            set fileencodings-=euc-jp
-"            set fileencodings-=euc-jisx0213
-"            set fileencodings-=eucjp-ms
-"            let &encoding = s:enc_euc
-"            let &fileencoding = s:enc_euc
-"        else
-"            let &fileencodings = &fileencodings .','. s:enc_euc
-"        endif
-"    endif
-"    " 定数を処分
-"    unlet s:enc_euc
-"    unlet s:enc_jis
-"endif
-"" 日本語を含まない場合は fileencoding に encoding を使うようにする
-"if has('autocmd')
-"    function! AU_ReCheck_FENC()
-"        if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-"            let &fileencoding=&encoding
-"        endif
-"    endfunction
-"    autocmd BufReadPost * call AU_ReCheck_FENC()
-"endif
-"" }}}
-
-"------------------------------------------------------------------------------
-" Functions: {{{
-function! s:strwidthpart(str, width)
-  if a:width <= 0
-    return ''
-  endif
-  let ret = a:str
-  let width = s:wcswidth(a:str)
-  while width > a:width
-    let char = matchstr(ret, '.$')
-    let ret = ret[: -1 - len(char)]
-    let width -= s:wcswidth(char)
-  endwhile
-
-  return ret
-endfunction
-
-
-if v:version >= 703
-  " Use builtin function.
-  function! s:wcswidth(str)
-    return strwidth(a:str)
-  endfunction
-else
-  function! s:wcswidth(str)
-    if a:str =~# '^[\x00-\x7f]*$'
-      return strlen(a:str)
-    end
-
-    let mx_first = '^\(.\)'
-    let str = a:str
-    let width = 0
-    while 1
-      let ucs = char2nr(substitute(str, mx_first, '\1', ''))
-      if ucs == 0
-        break
-      endif
-      let width += s:_wcwidth(ucs)
-      let str = substitute(str, mx_first, '', '')
-    endwhile
-    return width
-  endfunction
-
-  " UTF-8 only.
-  function! s:_wcwidth(ucs)
-    let ucs = a:ucs
-    if (ucs >= 0x1100
-          \  && (ucs <= 0x115f
-          \  || ucs == 0x2329
-          \  || ucs == 0x232a
-          \  || (ucs >= 0x2e80 && ucs <= 0xa4cf
-          \      && ucs != 0x303f)
-          \  || (ucs >= 0xac00 && ucs <= 0xd7a3)
-          \  || (ucs >= 0xf900 && ucs <= 0xfaff)
-          \  || (ucs >= 0xfe30 && ucs <= 0xfe6f)
-          \  || (ucs >= 0xff00 && ucs <= 0xff60)
-          \  || (ucs >= 0xffe0 && ucs <= 0xffe6)
-          \  || (ucs >= 0x20000 && ucs <= 0x2fffd)
-          \  || (ucs >= 0x30000 && ucs <= 0x3fffd)
-          \  ))
-      return 2
-    endif
-    return 1
-  endfunction
-endif
-
-
-" }}}
 
 "{{{
 augroup BinaryXXD

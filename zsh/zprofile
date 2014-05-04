@@ -10,3 +10,10 @@ darwin*)
     export GOROOT=/opt/local/go/
     ;;
 esac
+
+#ruby rbenv
+if [ -d $HOME/.rbenv ] ; then
+    export PATH=$HOME/.rbenv/bin:$PATH
+    eval "$(rbenv init - zsh)"
+    alias be='bundle exec'
+fi
