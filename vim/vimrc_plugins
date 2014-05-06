@@ -298,6 +298,9 @@ let g:ref_source_webdict_sites = {
 \ 'th': {
 \ 'url': 'http://ejje.weblio.jp/english-thesaurus/content/%s',
 \ },
+\ 'codic': {
+\ 'url': 'http://codic.jp/search?q=%s',
+\ },
 \ 'wiki': {
 \ 'url': 'http://ja.wikipedia.org/wiki/%s',
 \ },
@@ -316,13 +319,18 @@ endfunction
 function! g:ref_source_webdict_sites.wiki.filter(output)
   return join(split(a:output, "\n")[5 :], "\n")
 endfunction
+function! g:ref_source_webdict_sites.codic.filter(output)
+  return join(split(a:output, "\n")[14 :], "\n")
+endfunction
 
 nnoremap <Leader>re :<C-u>Ref webdict ej<Space>
 nnoremap <Leader>rt :<C-u>Ref webdict th<Space>
 nnoremap <Leader>rw :<C-u>Ref webdict wiki<Space>
+nnoremap <Leader>rr :<C-u>Ref webdict codic<Space>
 nnoremap re :Ref webdict ej <C-R><C-W> <CR>
 nnoremap rt :Ref webdict th <C-R><C-W> <CR>
 nnoremap rw :Ref webdict wiki <C-R><C-W> <CR>
+nnoremap rr :Ref webdict codic <C-R><C-W> <CR>
 " }}}
 
 " python PEP8 checker {{{
@@ -773,6 +781,18 @@ inoremap <silent> <C-j> <C-r>=IMState('FixMode')<CR>
 
 "<ESC>押下後のIM切替開始までの反応が遅い場合はttimeoutlenを短く設定してみてください(ミリ秒)
 set timeout timeoutlen=3000 ttimeoutlen=100
+" }}}
+
+" for html edit{{{
+NeoBundle 'mattn/emmet-vim'
+"NeoBundleLazy 'mattn/emmet-vim', {
+"    \ 'autoload': {
+"    \   'filetypes' : ["html"],
+"    \ }}
+let g:user_emmet_settings = {
+    \   'lang' : 'ja'
+    \ }
+"let g:user_emmet_leader_key='<Space>e'
 " }}}
 
 " auto check
