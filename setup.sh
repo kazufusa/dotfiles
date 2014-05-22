@@ -6,7 +6,7 @@ git submodule foreach 'git pull origin master'
 
 cd $HOME
 
-sudo aptitude install -y curl build-essential libssl-dev
+sudo aptitude install -y curl build-essential libssl-dev libreadline-dev
 sudo aptitude install -y ssh
 sudo aptitude install -y zsh
 sudo aptitude install -y vim vim-gtk vim-athena vim-gnome
