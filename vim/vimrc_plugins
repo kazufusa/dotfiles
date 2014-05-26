@@ -294,7 +294,7 @@ nnoremap <Leader>g :GundoToggle<CR>
 " vim-ref {{{
 "webdict reffering site
 NeoBundle 'thinca/vim-ref'
-let g:ref_open = 'split'
+let g:ref_open = 'vsplit'
 let g:ref_source_webdict_sites = {
 \ 'ej': {
 \ 'url': 'http://ejje.weblio.jp/content/%s',
@@ -330,12 +330,19 @@ endfunction
 nnoremap <Leader>re :<C-u>Ref webdict ej<Space>
 nnoremap <Leader>rt :<C-u>Ref webdict th<Space>
 nnoremap <Leader>rw :<C-u>Ref webdict wiki<Space>
-nnoremap <Leader>rr :<C-u>Ref webdict codic<Space>
+"nnoremap <Leader>rr :<C-u>Ref webdict codic<Space>
 nnoremap re :Ref webdict ej <C-R><C-W> <CR>
 nnoremap rt :Ref webdict th <C-R><C-W> <CR>
 nnoremap rw :Ref webdict wiki <C-R><C-W> <CR>
-nnoremap rr :Ref webdict codic <C-R><C-W> <CR>
+"nnoremap rr :Ref webdict codic <C-R><C-W> <CR>
 " }}}
+
+" vim-ref-ri {{
+NeoBundle 'taka84u9/vim-ref-ri'
+nnoremap <Leader>rr :<C-u>Ref ri<Space>
+nnoremap rr :Ref ri <C-R><C-W> <CR>
+"NeoBundleLazy 'taka84u9/vim-ref-ri', {'autoload': {'filetypes': ['ruby']}}
+"}}}
 
 " python PEP8 checker {{{
 NeoBundleLazy 'Flake8-vim' , {'autoload': {'filetypes': ['python']}}
