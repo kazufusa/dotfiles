@@ -6,3 +6,5 @@ bind main P !@git push origin $(branch)
 bind main R !git revert %(commit)
 
 # }}}
+
+set show-id = true
