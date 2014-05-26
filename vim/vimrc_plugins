@@ -825,6 +825,9 @@ let g:user_emmet_settings = {
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'active',
   \ 'active_filetypes': ['html', 'coffee', 'ruby']}
+if executable('rubocop')
+    let g:syntastic_ruby_checkers = ['rubocop']
+endif
 "}}}
 
 " auto check
