@@ -75,11 +75,11 @@ nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer -default-action=tabopen<CR>
 " grep検索
-nnoremap <silent> <Space>g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> <Space>g  :<C-u>Unite grep:. -buffer-name=search-buffer -default-action=tabopen<CR>
 " カーソル位置の単語をgrep検索
-nnoremap <silent> <Space>cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> <Space>cg :<C-u>Unite grep:. -buffer-name=search-buffer -default-action=tabopen<CR><C-R><C-W><CR>
 " grep検索結果の再呼出
-nnoremap <silent> <Space>r  :<C-u>UniteResume search-buffer<CR>
+nnoremap <silent> <Space>r  :<C-u>UniteResume search-buffer -default-action=tabopen<CR>
 " }}}
 
 " quickrun {{{
