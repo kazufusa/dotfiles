@@ -799,6 +799,12 @@ let g:user_emmet_settings = {
 "let g:user_emmet_leader_key='<Space>e'
 " }}}
 
+"synttastic {{{
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'active',
+  \ 'active_filetypes': ['html', 'coffee', 'ruby']}
+"}}}
+
 " auto check
 NeoBundleCheck
 
