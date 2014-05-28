@@ -6,7 +6,7 @@ git submodule foreach 'git pull origin master'
 
 cd $HOME
 
-sudo aptitude install -y curl build-essential libssl-dev
+sudo aptitude install -y curl build-essential libssl-dev libreadline-dev
 sudo aptitude install -y ssh
 sudo aptitude install -y zsh
 sudo aptitude install -y vim vim-gtk vim-athena vim-gnome
@@ -24,7 +24,7 @@ sudo aptitude install -y clang libclang-dev
 sudo aptitude install -y exuberant-ctags
 sudo aptitude install -y w3m
 sudo aptitude install -y mercurial
-sudo aptitude install -y tig guake tmux
+sudo aptitude install -y tig guake tmux chromium-browser
 
 # change login shell to zsh
 sudo chsh -s `which zsh` $USER
@@ -48,6 +48,7 @@ ln -s $HOME/dotfiles/vim/vimrc .vimrc
 #git config
 cat $HOME/dotfiles/git/git_config >> $HOME/.gitconfig
 ln -s $HOME/dotfiles/git/tigrc .tigrc
+sudo chmod +x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
 
 #tmux
 ln -s $HOME/dotfiles/tmux/tmux.conf .tmux.conf

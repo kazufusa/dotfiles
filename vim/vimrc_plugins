@@ -45,7 +45,20 @@ NeoBundleLazy "Shougo/unite.vim", {
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 1000
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
 
+if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
+NeoBundleLazy 'basyura/unite-rails', {
+    \ 'autoload' : {
+    \   'unite_sources' : 'rails'},
+    \ }
 NeoBundleLazy 'zhaocai/unite-outline', {
     \ 'autoload' : {
     \   'unite_sources' : 'outline'},
@@ -61,6 +74,12 @@ nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file -de
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer -default-action=tabopen<CR>
+" grep検索
+nnoremap <silent> <Space>g  :<C-u>Unite grep:. -buffer-name=search-buffer -default-action=tabopen<CR>
+" カーソル位置の単語をgrep検索
+nnoremap <silent> <Space>cg :<C-u>Unite grep:. -buffer-name=search-buffer -default-action=tabopen<CR><C-R><C-W><CR>
+" grep検索結果の再呼出
+nnoremap <silent> <Space>r  :<C-u>UniteResume search-buffer -default-action=tabopen<CR>
 " }}}
 
 " quickrun {{{
@@ -290,7 +309,7 @@ nnoremap <Leader>g :GundoToggle<CR>
 " vim-ref {{{
 "webdict reffering site
 NeoBundle 'thinca/vim-ref'
-let g:ref_open = 'split'
+let g:ref_open = 'vsplit'
 let g:ref_source_webdict_sites = {
 \ 'ej': {
 \ 'url': 'http://ejje.weblio.jp/content/%s',
@@ -326,12 +345,19 @@ endfunction
 nnoremap <Leader>re :<C-u>Ref webdict ej<Space>
 nnoremap <Leader>rt :<C-u>Ref webdict th<Space>
 nnoremap <Leader>rw :<C-u>Ref webdict wiki<Space>
-nnoremap <Leader>rr :<C-u>Ref webdict codic<Space>
+"nnoremap <Leader>rr :<C-u>Ref webdict codic<Space>
 nnoremap re :Ref webdict ej <C-R><C-W> <CR>
 nnoremap rt :Ref webdict th <C-R><C-W> <CR>
 nnoremap rw :Ref webdict wiki <C-R><C-W> <CR>
-nnoremap rr :Ref webdict codic <C-R><C-W> <CR>
+"nnoremap rr :Ref webdict codic <C-R><C-W> <CR>
 " }}}
+
+" vim-ref-ri {{
+NeoBundle 'taka84u9/vim-ref-ri'
+nnoremap <Leader>rr :<C-u>Ref ri<Space>
+nnoremap rr :Ref ri <C-R><C-W> <CR>
+"NeoBundleLazy 'taka84u9/vim-ref-ri', {'autoload': {'filetypes': ['ruby']}}
+"}}}
 
 " python PEP8 checker {{{
 NeoBundleLazy 'Flake8-vim' , {'autoload': {'filetypes': ['python']}}
@@ -794,6 +820,15 @@ let g:user_emmet_settings = {
     \ }
 "let g:user_emmet_leader_key='<Space>e'
 " }}}
+
+"synttastic {{{
+NeoBundle 'scrooloose/syntastic'
+let g:syntastic_mode_map = { 'mode': 'active',
+  \ 'active_filetypes': ['html', 'coffee', 'ruby']}
+if executable('rubocop')
+    let g:syntastic_ruby_checkers = ['rubocop']
+endif
+"}}}
 
 " auto check
 NeoBundleCheck

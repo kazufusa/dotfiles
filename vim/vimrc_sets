@@ -87,18 +87,6 @@ endfunction
 autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
 " }}}
 
-" vim 起動時のみカレントディレクトリを開いたファイルの親ディレクトリに指定 {{{
-autocmd MyAutoCmd VimEnter * call s:ChangeCurrentDir('', '')
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-    if a:bang == ''
-        pwd
-    endif
-endfunction
 "}}}
 
 " Anywhere SID.
