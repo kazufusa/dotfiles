@@ -62,7 +62,6 @@ precmd() {
 #Nodejs
 if [ -d $HOME/.nvm ] ; then
     source $HOME/.nvm/nvm.sh
-    nvm use v0.11.12
 fi
 
 export PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
