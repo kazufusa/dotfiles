@@ -1,4 +1,5 @@
 alias tmux='TERM=screen-256color tmux'
+[[ -z "$TMUX" ]] && TERM=screen-256color tmux
 
 #ruby rbenv
 if [ -d ${HOME}/.rbenv  ] ; then
