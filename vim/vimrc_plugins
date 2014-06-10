@@ -230,7 +230,7 @@ let g:clang_user_options = '-std=c++11 -stdlib=libc++'
 if OSTYPE == "Darwin\n"
     let g:clang_library_path="/opt/local/libexec/llvm-3.5/lib"
 elseif OSTYPE == "Linux\n"
-    let g:clang_library_path="/usr/lib/"
+    let g:clang_library_path="/usr/lib/llvm-3.5/lib/"
 elseif has('win32') || has('win64')
 endif
 " }}}
@@ -557,6 +557,8 @@ NeoBundle 'mattn/webapi-vim'
 nnoremap <silent> <Leader>gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> <Leader>gh :<C-u>GitGutterLineHighlightsToggle<CR>
 let g:gist_get_multiplefile = 1
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
 " }}}
 
  " coffeescript{{{
@@ -587,8 +589,18 @@ NeoBundle 'mattn/qiita-vim'
 " }}}
 
 " vim-rails{{{
-NeoBundle 'tpope/vim-rails'
+NeoBundleLazy 'tpope/vim-rails', {
+    \ 'autoload': {
+    \   'filetypes' : ["ruby"],
+    \ }}
 " }}}
+
+" Ruby向けにendを自動挿入してくれる {{{
+NeoBundleLazy 'tpope/vim-endwise', {
+    \ 'autoload': {
+    \   'filetypes' : ["ruby"],
+    \ }}
+"}}}
 
 " html5 syntax {{{
 NeoBundleLazy 'othree/html5.vim', {
@@ -820,13 +832,17 @@ let g:user_emmet_settings = {
 "let g:user_emmet_leader_key='<Space>e'
 " }}}
 
-"synttastic {{{
+" コメントON/OFFを手軽に実行 {{{
+NeoBundle 'tomtom/tcomment_vim'
+"}}}
+
+" synttastic {{{
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'active',
   \ 'active_filetypes': ['html', 'coffee', 'ruby']}
-if executable('rubocop')
-    let g:syntastic_ruby_checkers = ['rubocop']
-endif
+" if executable('rubocop')
+"     let g:syntastic_ruby_checkers = ['rubocop']
+" endif
 "}}}
 
 NeoBundle 'skwp/vim-rspec'
