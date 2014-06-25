@@ -66,3 +66,5 @@ if [ -d $HOME/.nvm ] ; then
 fi
 
 export PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+
+[[ -z "$TMUX" ]] && TERM=screen-256color tmux
