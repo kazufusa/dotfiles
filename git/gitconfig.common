@@ -10,6 +10,7 @@
     st = status --branch --short
     gp = grep --line-number --show-function --color --heading --break
     prev = checkout HEAD^1
+    prev2 = checkout HEAD^2
     next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
 [push]
     default = current
