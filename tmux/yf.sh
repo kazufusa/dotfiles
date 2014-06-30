@@ -1,6 +1,6 @@
 # Prints the name of the current day.
 
 run_segment() {
-	/home/ishibashi/Dropbox/forpath/yf
+	http -b get http://mymymy.herokuapp.com/rate/usdjpy
 	return 0
 }
