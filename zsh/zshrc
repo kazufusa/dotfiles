@@ -48,6 +48,10 @@ mkvenv () {
     mkvirtualenv --distribute --python=$base_python $2
 }
 
+curljq () {
+    curl -s $@ | jq '.'
+}
+
 #z.sh settings
 if [ ! -d $HOME/dotfiles/zsh/z ] ; then
     cd $HOME/dotfiles/zsh
