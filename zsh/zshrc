@@ -48,8 +48,8 @@ mkvenv () {
     mkvirtualenv --distribute --python=$base_python $2
 }
 
-curljq () {
-    curl -s $@ | jq '.'
+railsnew () {
+    rails new $1 -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
 }
 
 #z.sh settings
