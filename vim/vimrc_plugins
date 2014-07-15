@@ -864,6 +864,20 @@ endif
 let g:syntastic_cpp_compiler_options = '--std=c++1y'
 "}}}
 
+" previm {{{
+NeoBundle 'kannokanno/previm'
+
+if OSTYPE == "Darwin\n"
+    let g:previm_open_cmd = 'x-www-browser'
+elseif OSTYPE == "Linux\n"
+    let g:previm_open_cmd = 'x-www-browser'
+endif
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+"}}}
+
 NeoBundle 'skwp/vim-rspec'
 
 " auto check
