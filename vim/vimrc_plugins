@@ -370,25 +370,6 @@ nnoremap rr :Ref ri <C-R><C-W> <CR>
 "NeoBundleLazy 'taka84u9/vim-ref-ri', {'autoload': {'filetypes': ['ruby']}}
 "}}}
 
-" python PEP8 checker {{{
-NeoBundleLazy 'Flake8-vim' , {'autoload': {'filetypes': ['python']}}
-NeoBundleLazy 'hynek/vim-python-pep8-indent', {'autoload': {'filetypes': ['python']}}
-let s:hooks = neobundle#get_hooks("Flake8-vim")
-function! s:hooks.on_source(bundle)
-    "保存時に自動でチェック
-    let g:PyFlakeOnWrite = 1
-    ""解析種別を設定
-    let g:PyFlakeCheckers = 'pep8,mccabe,pyflakes'
-    "McCabe複雑度の最大値
-    let g:PyFlakeDefaultComplexity=10
-    ""visualモードでQを押すと自動で修正
-    let g:PyFlakeRangeCommand = 'Q'
-    "nnoremap <Leader>q :PyFlakeAuto<CR>
-    " CWindowsが邪魔いので表示しない
-    let g:PyFlakeCWindow = 0
-endfunction
-" }}}
-
 " over.vim {{{
 NeoBundle 'osyo-manga/vim-over'
 "over.vimの起動
