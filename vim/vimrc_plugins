@@ -36,10 +36,10 @@ endif
 " }}}
 
 " Shougo/unite {{{
-NeoBundleLazy "Shougo/unite.vim", {
-      \ "autoload": {
-      \   "commands": ["Unite", "UniteWithBufferDir"]
-      \ }}
+NeoBundle "Shougo/unite.vim" ", {
+"      \ "autoload": {
+"      \   "commands": ["Unite", "UniteWithBufferDir"]
+"      \ }}
 " 未整備
 " http://d.hatena.ne.jp/osyo-manga/20130625/1372170654
 let g:unite_enable_start_insert=1
@@ -70,7 +70,7 @@ NeoBundleLazy 'Shougo/neomru.vim', {
     \ }
 nnoremap <silent> <Space>uy :<C-u>Unite history/yank<CR>
 nnoremap <silent> <Space>ub :<C-u>Unite buffer -default-action=tabopen<CR>
-nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file -default-action=tabopen<CR>
+nnoremap <silent> <Space>uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Space>ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> <Space>uo :<C-u>Unite outline<CR>
 nnoremap <silent> <Space>uu :<C-u>Unite file_mru buffer -default-action=tabopen<CR>
