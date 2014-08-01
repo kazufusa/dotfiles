@@ -1,6 +1,5 @@
 export PATH=/usr/local/go/bin:$HOME/dotfiles/forpath:$HOME/Dropbox/forpath:/usr/share/doc/git/contrib/diff-highlight:$PATH
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/work/mygo
+export GOPATH=$HOME/mywork/mygo
 
 case "${OSTYPE}" in
 darwin*)
