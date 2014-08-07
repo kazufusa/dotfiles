@@ -1,5 +1,6 @@
 # include antigen settings
 source $HOME/dotfiles/zsh/zshrc.antigen
+source $HOME/dotfiles/zsh/mytheme.zsh-theme
 #export VTE_CJK_WIDTH=1
 
 alias -g G='| grep'
