@@ -1,3 +1,4 @@
+source $ZDOTDIR/zprezto_zshenv
 alias tmux='TERM=screen-256color tmux'
 
 #ruby rbenv

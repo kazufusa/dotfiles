@@ -1,7 +1,11 @@
 # include antigen settings
-source $HOME/dotfiles/zsh/zshrc.antigen
-source $HOME/dotfiles/zsh/mytheme.zsh-theme
+source $ZDOTDIR/zprezto_zshrc
+# source $ZDOTDIR/mytheme.zsh-theme
 #export VTE_CJK_WIDTH=1
+
+alias g='git'
+alias t='tig'
+alias ta='tig --all'
 
 alias -g G='| grep'
 alias -g L='| less'
@@ -9,6 +13,7 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sort'
 alias -g W='| wc'
+alias -g XG='| xargs grep'
 alias -g XG='| xargs grep'
 
 case "${OSTYPE}" in

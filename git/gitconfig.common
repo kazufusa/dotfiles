@@ -18,6 +18,7 @@
     prev = checkout HEAD^1
     prev2 = checkout HEAD^2
     next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
+    n  = now --all --stat
 [push]
     default = current
 [github]
