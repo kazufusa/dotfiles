@@ -80,6 +80,10 @@ nnoremap <silent> <Space>g  :<C-u>Unite grep:. -buffer-name=search-buffer -defau
 nnoremap <silent> <Space>cg :<C-u>Unite grep:. -buffer-name=search-buffer -default-action=tabopen<CR><C-R><C-W><CR>
 " grep検索結果の再呼出
 nnoremap <silent> <Space>r  :<C-u>UniteResume search-buffer -default-action=tabopen<CR>
+
+" change normal value to avoid unite-outline error, temp
+let g:unite_abbr_highlight = 'Function'
+
 " }}}
 
 " quickrun {{{
@@ -363,7 +367,7 @@ nnoremap rw :Ref webdict wiki <C-R><C-W> <CR>
 "nnoremap rr :Ref webdict codic <C-R><C-W> <CR>
 " }}}
 
-" vim-ref-ri {{
+" vim-ref-ri {{{
 NeoBundle 'taka84u9/vim-ref-ri'
 nnoremap <Leader>rr :<C-u>Ref ri<Space>
 nnoremap rr :Ref ri <C-R><C-W> <CR>
