@@ -59,7 +59,7 @@ NeoBundleLazy 'basyura/unite-rails', {
     \ 'autoload' : {
     \   'unite_sources' : 'rails'},
     \ }
-NeoBundleLazy 'zhaocai/unite-outline', {
+NeoBundleLazy 'Shougo/unite-outline', {
     \ 'autoload' : {
     \   'unite_sources' : 'outline'},
     \ }
