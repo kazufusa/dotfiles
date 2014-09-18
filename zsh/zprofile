@@ -1,12 +1,12 @@
-export PATH=/usr/local/go/bin:$HOME/dotfiles/forpath:$HOME/Dropbox/forpath:/usr/share/doc/git/contrib/diff-highlight:$PATH
+export PATH=$HOME/dotfiles/forpath:$HOME/Dropbox/forpath:/usr/share/doc/git/contrib/diff-highlight:$PATH
 export GOPATH=$HOME/mywork/mygo
+export PATH=$PATH:/usr/local/go/bin
 
 case "${OSTYPE}" in
 darwin*)
     export PATH=/opt/local/bin:/opt/local/sbin:$PATH
     export MANPATH=/opt/local/man:$MANPATH
     export PATH=/opt/local/share/git-core/contrib/diff-highlight:$PATH
-    export GOROOT=/opt/local/go/
     ;;
 esac
 
