@@ -800,7 +800,7 @@ NeoBundle "vimtaku/vim-textobj-keyvalue"
 " }}}
 
 " go{{{
-NeoBundleLazy 'Blackrush/vim-gocode', {
+NeoBundleLazy 'fatih/vim-go', {
     \ 'autoload': {
     \   'filetypes' : ["go"],
     \ }}
