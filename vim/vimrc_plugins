@@ -196,8 +196,7 @@ function! s:hooks.on_source(bundle)
     let g:neocomplcache_enable_smart_case=0
     let g:neocomplcache_enable_camel_case_completion=1
     let g:neocomplcache_enable_underbar_completion=1
-
-    inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
     " Plugin key-mappings for snippets.
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -216,9 +215,9 @@ function! s:hooks.on_source(bundle)
     \: "\<TAB>"
 
 "    " For snippet_complete marker.
-"    if has('conceal')
-"      set conceallevel=2 concealcursor=i
-"    endif
+    if has('conceal')
+      set conceallevel=2 concealcursor=i
+    endif
 
 "    "<CR>（ENTER）で候補を閉じ改行
 "    inoremap <expr><CR> neocomplcache#close_popup() . "\<CR>"
@@ -234,17 +233,17 @@ function! s:hooks.on_source(bundle)
 "    let g:neocomplcache_enable_cursor_hold_i=0
 "    let g:neocomplcache_max_list=1000
 
-    " for clang_complete
     let g:neocomplcache_force_overwrite_completefunc=1
     if !exists("g:neocomplcache_force_omni_patterns")
         let g:neocomplcache_force_omni_patterns = {}
     endif
+    " for clang_complete
     let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
-
-    if !exists('g:neocomplcache_omni_patterns')
-        let g:neocomplcache_omni_patterns = {}
-    endif
-    let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+    " for go
+    let g:neocomplcache_force_omni_patterns.go = '\h\w*\.'
+    " for ruby
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    let g:neocomplcache_force_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 endfunction
 " }}}
 
@@ -602,11 +601,9 @@ NeoBundleLazy 'digitaltoad/vim-jade', {
 NeoBundle 'mattn/qiita-vim'
 " }}}
 
-" vim-rails{{{
-NeoBundleLazy 'tpope/vim-rails', {
-    \ 'autoload': {
-    \   'filetypes' : ["ruby"],
-    \ }}
+" ruby {{{
+NeoBundleLazy 'Shougo/neocomplcache-rsense',{ 'autoload': { 'filetypes' : ["ruby"],}}
+NeoBundleLazy 'tpope/vim-rails',{ 'autoload': { 'filetypes' : ["ruby"],}}
 " }}}
 
 " Ruby向けにendを自動挿入してくれる {{{
@@ -804,10 +801,8 @@ NeoBundle "vimtaku/vim-textobj-keyvalue"
 " }}}
 
 " go{{{
-NeoBundleLazy 'fatih/vim-go', {
-    \ 'autoload': {
-    \   'filetypes' : ["go"],
-    \ }}
+NeoBundleLazy 'fatih/vim-go', { 'autoload': {'filetypes' : ["go"],}}
+let g:go_fmt_autosave = 0
 " }}}
 
 " SCSS&CSS {{{
