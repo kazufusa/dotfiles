@@ -340,7 +340,6 @@ nnoremap <Leader>g :GundoToggle<CR>
 " vim-ref {{{
 "webdict reffering site
 NeoBundle 'thinca/vim-ref'
-let g:ref_open = 'vsplit'
 let g:ref_source_webdict_sites = {
 \ 'ej': {
 \ 'url': 'http://ejje.weblio.jp/content/%s',
