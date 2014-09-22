@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Type=Application
-Name=Guake
-Name[en_US]=guake
-Exec=/bin/zsh -c "VTE_CJK_WIDTH=2 guake"
-#Exec=guake
-Comment[en_US]=
-StartupNotify=true
