@@ -1,7 +1,7 @@
 " --------------------------------------------------------------------------------------------------------
 " - * File: .vimrc
 " - * Author: kazufusa 
-" - * Last Change: 2015/07/05 17:22:21.
+" - * Last Change: 2015/07/09 10:08:32.
 " --------------------------------------------------------------------------------------------------------
 
 " Setting options {{{1
@@ -70,7 +70,7 @@ autocmd vimrc GUIEnter * silent! simalt ~x
 autocmd vimrc GUIEnter * silent! set t_vb=
 
 " Move to the directory each buffer
-autocmd vimrc BufEnter * silent! lcd %:p:h
+" autocmd vimrc BufEnter * silent! lcd %:p:h
 
 " Open Quickfix window automatically
 autocmd vimrc QuickfixCmdPost [^l]* leftabove copen | wincmd p | redraw!
@@ -144,8 +144,8 @@ execute 'nnoremap \; :edit' resolve(expand('~/.vimrc.yaml')) '<CR>'
 execute 'nnoremap \, :edit' resolve(expand('~/.zshrc')) '<CR>'
 
 " tab
-nnoremap <silent> <C-t> :<C-u>tabnew<CR>
-inoremap <silent> <C-t> <ESC>:<C-u>tabnew<CR>
+nnoremap <silent> t :<C-u>tabnew<CR>
+"inoremap <silent> t <ESC>:<C-u>tabnew<CR>
 nnoremap <silent> g0 :<C-u>tabfirst<CR>
 nnoremap <silent> g$ :<C-u>tablast<CR>
 

@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: kazufusa 
-# - * Last Change: 2015/07/05 21:00:33.
+# - * Last Change: 2015/07/29 19:50:22.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -117,7 +117,8 @@ export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export PATH=$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/git/bin
-export PATH=$PATH:/opt/local/bin
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/share/man:$MANPATH
 export PATH=$PATH:~/.cabal/bin
 export GHC_DOT_APP=/Applications/ghc-7.8.4.app
 export PATH=$PATH:~/.cabal/bin:$GHC_DOT_APP/Contents/bin
@@ -324,6 +325,29 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
+# https://github.com/sstephenson/rbenv
+if [ ! -e ~/.pyenv  ] ; then
+  git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+  git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+  git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
+  git clone https://github.com/yyuu/pyenv-pip-rehash.git ~/.pyenv/plugins/pyenv-pip-rehash
+  git clone https://github.com/yyuu/pyenv-update.git ~/.pyenv/plugins/pyenv-update
+fi
+export PYENV_ROOT=~/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+
+# https://github.com/sstephenson/rbenv
+if [ ! -e ~/.rbenv  ] ; then
+  git clone https://github.com/sstephenson/rbenv ~/.rbenv
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone https://github.com/sstephenson/rbenv-default-gems.git ~/.rbenv/plugins/rbenv-default-gems
+  git clone https://github.com/tpope/rbenv-readline.git ~/.rbenv/plugins/rbenv-readline
+fi
+export PATH=~/.rbenv/bin:~/.rbenv/shims:${PATH}
+eval "$(rbenv init -)"
+alias be='bundle exec'
+
 # http://mimosa-pudica.net/zsh-incremental.html
 if [ -e $ZSH_PLUGIN_PATH/incr-0.2.zsh ]; then
   source $ZSH_PLUGIN_PATH/incr-0.2.zsh
@@ -362,7 +386,7 @@ if ! command -v download > /dev/null 2>&1; then
   git clone https://github.com/itchyny/bin $ZSH_PLUGIN_PATH/bin
 fi
 
-[ -e ./Dropbox ] && cd ./Dropbox > /dev/null
-
 [ -e ./Documents ] && cd ./Documents > /dev/null
+
+[ -e ./Dropbox ] && cd ./Dropbox > /dev/null
 
