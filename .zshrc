@@ -319,6 +319,12 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
+# https://github.com/moovweb/gvm
+if [ ! -s "$HOME/.gvm/scripts/gvm" ] ; then
+  bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+fi
+source "$HOME/.gvm/scripts/gvm"
+
 # https://github.com/creationix/nvm
 if [ ! -e ~/.nvm ] ; then
   git clone https://github.com/creationix/nvm.git ~/.nvm
@@ -391,3 +397,6 @@ fi
 
 [ -e ./Dropbox ] && cd ./Dropbox > /dev/null
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

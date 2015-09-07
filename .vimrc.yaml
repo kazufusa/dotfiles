@@ -800,6 +800,10 @@ plugin:
     filetype: scala
   fatih/vim-go:
     filetype: go
+  tyru/open-browser.vim:
+    filetypes:
+      - markdown
+      - pandoc
 
 beforeScript: |
   let g:iswin = has('win16') || has('win32') || has('win64')
