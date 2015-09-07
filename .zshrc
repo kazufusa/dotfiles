@@ -1,9 +1,3 @@
-# ------------------------------------------------------------------------------------------------------------
-# - * File: .zshrc
-# - * Author: kazufusa 
-# - * Last Change: 2015/09/07 22:36:36.
-# ------------------------------------------------------------------------------------------------------------
-
 # config path
 if [ -d ~/Dropbox/.files ]; then
   ZSH_CONFIG_PATH=~/Dropbox/.files
@@ -325,6 +319,7 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
+# https://github.com/creationix/nvm
 if [ ! -e ~/.nvm ] ; then
   git clone https://github.com/creationix/nvm.git ~/.nvm
 fi
