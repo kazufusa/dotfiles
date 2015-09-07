@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------------------------------------
 # - * File: .zshrc
 # - * Author: kazufusa 
-# - * Last Change: 2015/07/29 19:50:22.
+# - * Last Change: 2015/09/07 22:36:36.
 # ------------------------------------------------------------------------------------------------------------
 
 # config path
@@ -325,7 +325,13 @@ function extract() {
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
-# https://github.com/sstephenson/rbenv
+if [ ! -e ~/.nvm ] ; then
+  git clone https://github.com/creationix/nvm.git ~/.nvm
+fi
+source ~/.nvm/nvm.sh
+nvm use default
+
+# https://github.com/sstephenson/pyenv
 if [ ! -e ~/.pyenv  ] ; then
   git clone https://github.com/yyuu/pyenv.git ~/.pyenv
   git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
