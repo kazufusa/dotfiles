@@ -331,6 +331,7 @@ if [ ! -e ~/.nvm ] ; then
 fi
 source ~/.nvm/nvm.sh
 nvm use default
+export NODE_PATH=${NVM_PATH}_modules
 
 # https://github.com/sstephenson/pyenv
 if [ ! -e ~/.pyenv  ] ; then
