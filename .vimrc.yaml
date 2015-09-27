@@ -441,11 +441,11 @@ plugin:
     commands:
       - CtrlP
       - CtrlPMRUFiles
-      - CtrlPCurFile
+      - CtrlPCurWD
       - CtrlPLine
     script: |
       nnoremap <silent><C-p> :<C-u>CtrlPMRUFiles<CR>
-      nnoremap <silent><C-o> :<C-u>CtrlPCurFile<CR>
+      nnoremap <silent><C-o> :<C-u>CtrlPCurWD<CR>
       nnoremap <silent><S-l> :<C-u>CtrlPLine<CR>
     beforeScript: |
       let g:ctrlp_cmd = 'CtrlPMRUFiles'
