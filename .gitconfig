@@ -1,7 +1,7 @@
 [core]
 	editor = vim
 	quotepath = false
-	commentchar = !
+	# commentchar = !
 [alias]
 	hist = log --graph --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %Cgreen(%an)%Creset %s  %Cred%d%Creset' --date=iso
 	hh = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
@@ -14,6 +14,11 @@
 	h3  = ! git hh3 | head -n 20
 	h4  = ! git hh4 | head -n 20
 	h  = ! git h1
+	ha1  = ! git hh1 --all | head -n 20
+	ha2  = ! git hh2 --all | head -n 20
+	ha3  = ! git hh3 --all | head -n 20
+	ha4  = ! git hh4 --all | head -n 20
+	ha  = ! git ha1
 	co = checkout
 	br = branch
 	ci = commit

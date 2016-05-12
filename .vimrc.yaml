@@ -744,6 +744,7 @@ plugin:
       - less
       - sass
       - scss
+      - eruby
     dependon:
       - webapi
     beforeScript: |
