@@ -1,0 +1,2 @@
+noremap <C-a> i<C-a>
+inoremap <C-a> <insert><C-a><insert>
