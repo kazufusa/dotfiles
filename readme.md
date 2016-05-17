@@ -2,14 +2,24 @@
 
 - [ ] installer(dotfiles)
   - [ ] ubuntu
+    - build-essential
+    - git
+    - curl
+    - wget
+    - tmux
+    - r-base-dev
+    - libcurl4-openssl-dev
   - [ ] mac
 - [ ] deployer(dotfiles)
   - [ ] ubuntu
   - [ ] mac
 - [ ] vim
-  - [ ] build & install
+  - [x] build & install
   - [ ] vimrc
 - [ ] zsh
   - [ ] zplug
 - [ ] tmux
+  - [x] build & install
+  - [ ] config
 - [ ] anyenv
+- [ ] iBUS and mozc(ubuntu)
