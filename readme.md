@@ -9,6 +9,7 @@
     - tmux
     - r-base-dev
     - libcurl4-openssl-dev
+    - fcitx-mozc
   - [ ] mac
 - [ ] deployer(dotfiles)
   - [ ] ubuntu
@@ -16,6 +17,31 @@
 - [ ] vim
   - [x] build & install
   - [ ] vimrc
+    - [ ] general
+      - [ ] copy & paste
+      - [ ] go to Normal mode (for vim) with IME off 
+      - [ ] tabstep = 2
+      - [ ] double esc hide the search keyword highlighting
+    - [ ] view
+      - [ ] number
+      - [ ] git branch/status
+      - [ ] tab
+      - [ ] col/row
+    - [ ] key mappings
+      - [ ] visual mode
+      - [ ] save with C-s
+      - [ ] delete character with the backspace
+    - [ ] plugins
+      - [ ] syntax highlight
+      - [ ] git
+      - [ ] completion
+      - [ ] snippet
+      - [ ] ctrlp
+      - [ ] color scheme
+      - [ ] dictionary
+      - [ ] quickrun
+      - [ ] comment out
+      - [ ] surround
 - [ ] zsh
   - [ ] zplug
 - [ ] tmux
