@@ -2,9 +2,9 @@
 set -u
 
 mkdir -p $HOME/src
-rm -rf $HOME/src/$1
+[ -d $HOME/src/$1 ] && exit
 
-sudo apt-get install -y $2
+[ "$2" ] && sudo apt-get install -y $2
 
 git clone https://github.com/$1 $HOME/src/$1
 cd $HOME/src/$1

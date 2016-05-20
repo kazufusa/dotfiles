@@ -1,2 +1,32 @@
 [user]
 	useConfigOnly = true
+[core]
+	editor = vim
+	quotepath = false
+[alias]
+	hh = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	hh2 = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(bold white)%an < %ae >%C(reset)%n''%C(white)%s%C(reset)%n''%b' --abbrev-commit
+
+	h  = ! git hh  | head -n 20
+	h2 = ! git hh2 | head -n 20
+	ha = ! git hh --all | head -n 20
+	ha2 = ! git hh2 --all | head -n 20
+
+	co = checkout
+	br = branch
+	ci = commit
+	st = status --branch --short
+	gp = grep --line-number --show-function --color --heading --break
+
+	note = grep --line-number --show-function --color --heading --break NOTE
+	prev = checkout HEAD^1
+	prev2 = checkout HEAD^2
+	next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
+	n  = now --all --stat
+[push]
+	default = current
+[github]
+	user = kazufusa
+	email = kazu.jiyuunosenshi.fusa@gmail.com
+[color]
+	ui = true

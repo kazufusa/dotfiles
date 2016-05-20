@@ -1,0 +1,6 @@
+bind main F !@git fetch
+bind main L !@git pull origin %(branch)
+bind main P !@git push origin $(branch)
+# bind main R !git revert %(commit)
+bind main R !git rebase -i %(commit)
+bind diff R !git rebase -i %(commit)
