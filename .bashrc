@@ -117,3 +117,4 @@ if ! shopt -oq posix; then
 fi
 
 PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH
+stty -ixon -ixoff
