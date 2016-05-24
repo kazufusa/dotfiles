@@ -6,7 +6,7 @@
     - git
     - curl
     - wget
-    - tmux
+    - gawk
     - r-base-dev
     - libcurl4-openssl-dev
     - fcitx-mozc
@@ -42,10 +42,10 @@
       - [ ] quickrun
       - [ ] comment out
       - [ ] surround
-- [ ] zsh
-  - [ ] zplug
-- [ ] tmux
+- [x] zsh
+  - [x] zplug
+- [x] tmux
   - [x] build & install
-  - [ ] config
+  - [x] config
 - [ ] anyenv
 - [ ] iBUS and mozc(ubuntu)
