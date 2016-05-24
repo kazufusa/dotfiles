@@ -12,21 +12,25 @@
     - fcitx-mozc
   - [ ] mac
 - [ ] deployer(dotfiles)
-  - [ ] ubuntu
+  - [x] ubuntu
   - [ ] mac
 - [ ] vim
-  - [x] build & install
+  - [ ] build & install
+    - should use neovim?
   - [ ] vimrc
     - [ ] general
       - [ ] copy & paste
       - [ ] go to Normal mode (for vim) with IME off 
       - [ ] tabstep = 2
       - [ ] double esc hide the search keyword highlighting
+      - [ ] fzf
     - [ ] view
       - [ ] number
       - [ ] git branch/status
       - [ ] tab
       - [ ] col/row
+      - [ ] ambiguouse width
+        - if exists('&ambw') set ambw=double endif
     - [ ] key mappings
       - [ ] visual mode
       - [ ] save with C-s
