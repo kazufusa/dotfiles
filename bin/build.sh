@@ -11,5 +11,5 @@ cd $HOME/src/$1
 git checkout $(git describe --tags --abbrev=0)
 
 [ -e ./autogen.sh ] && sh ./autogen.sh
-./configure --prefix=$HOME $3 && make && make install
+./configure --prefix=$HOME $3 && make -j 4 && make install
 

@@ -7,6 +7,14 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 install:
+	@sudo apt-get update
+	@sudo apt-get install -y build-essential
+	@sudo apt-get install -y curl
+	@sudo apt-get install -y wget
+	@sudo apt-get install -y gawk
+	@sudo apt-get install -y zsh
+	@sudo apt-get install -y gnome-terminal
+	@sudo chsh -s `which zsh` $USER
 	@sh -x -e $(DOTPATH)/bin/build.sh tmux/tmux \
 	"pkg-config libevent-dev libncurses5-dev xsel automake" ""
 	@sh -x -e $(DOTPATH)/bin/build.sh vim/vim \
