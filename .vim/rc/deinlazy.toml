@@ -1,0 +1,77 @@
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_map = {n = '<Plug>'}
+hook_add = 'nmap <silent> <Leader>r <Plug>(quickrun)'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+on_map = {n = '<Plug>'}
+hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+on_cmd = ['FZF','fzf#run']
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+on_cmd = ['Fzf','fzf#run']
+hook_add = '''
+let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_command_prefix = 'Fzf'
+command! FzfGitFiles2 call fzf#run({
+  \  'source' : 'ag --hidden --ignore .git -g .',
+  \  'dir'    : system('git rev-parse --show-toplevel 2>/dev/null|| pwd'),
+  \  'sink'   : 'e',
+  \  'options': '-m -x +s',
+  \  'down'   : '30%'})
+nnoremap <silent><C-f>m :<C-u>FzfHistory<CR>
+nnoremap <silent><C-f>f :<C-u>FzfGitFiles2<CR>
+nnoremap <silent><C-f>b :<C-u>FzfBuffers<CR>
+'''
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+# repo = 'altercation/vim-colors-solarized'
+# repo = 'w0ng/vim-hybrid'
+repo = 'itchyny/landscape.vim'
+on_event = ['VimEnter']
+hook_post_source = '''
+colorscheme landscape
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+if = "has('lua')"
+on_event = 'InsertEnter'
+hook_source = '''
+  let g:neocomplete#enable_at_startup = 1
+  source ~/.vim/rc/plugins/neocomplete.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_source = '''
+source ~/.vim/rc/plugins/neosnippet.rc.vim
+'''
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+on_event = ['VimEnter']
+hook_post_source = '''
+let g:tcommentMapLeader1 = ''
+let g:tcommentMapLeader2 = ''
+nnoremap <silent> __ :TComment<CR>
+vnoremap <silent> __ :TComment<CR>
+nmap <silent> gc <Plug>TComment-gc
+'''

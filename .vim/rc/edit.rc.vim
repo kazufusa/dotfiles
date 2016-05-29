@@ -1,3 +1,7 @@
+"---------------------------------------------------------------------------
+" Edit:
+"
+
 set autoread
 set nopaste
 set expandtab
@@ -8,10 +12,9 @@ set nohidden
 set noautowrite
 set scrolloff=10
 
-" Editing
-" ime
-set iminsert=2
-set imsearch=2
+" IME
+set iminsert=1
+set imsearch=1
 set imactivatefunc=ImActivate
 function! ImActivate(active)
   if a:active
@@ -33,10 +36,6 @@ set matchtime=1
 " Highlight <>.
 set matchpairs+=<:>
 
-"---------------------------------------------------------------------------
-" Edit:
-"
-
 " Smart insert tab setting.
 set smarttab
 " Exchange tab to spaces.
@@ -46,7 +45,7 @@ set expandtab
 " Spaces instead <Tab>.
 " set softtabstop=4
 " Autoindent width.
-" set shiftwidth=4
+set shiftwidth=2
 " Round indent by shiftwidth.
 set shiftround
 
@@ -60,9 +59,9 @@ set modeline
 
 if (!has('nvim') || $DISPLAY != '') && has('clipboard')
   if has('unnamedplus')
-     set clipboard& clipboard+=unnamedplus
+     set clipboard& clipboard^=unnamedplus
   else
-     set clipboard& clipboard+=unnamed
+     set clipboard& clipboard^=unnamed
   endif
 endif
 
@@ -151,7 +150,7 @@ autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 
 " Make directory automatically.
 " --------------------------------------
-" http://vim-users.jp/2011/02/hack202/
+" http://vim-jp.org/vim-users-jp/2011/02/20/Hack-202.html
 
 autocmd MyAutoCmd BufWritePre *
       \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
@@ -172,3 +171,7 @@ if has('cryptv')
   " It seems 15ms overhead.
   "  set cryptmethod=blowfish2
 endif
+
+
+" Restore cursor to file position in previous editing session
+autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif

@@ -19,13 +19,15 @@
     - should use neovim?
   - [ ] vimrc
     - [ ] general
-      - [ ] copy & paste
+      - [x] copy & paste
       - [ ] go to Normal mode (for vim) with IME off 
-      - [ ] tabstep = 2
-      - [ ] double esc hide the search keyword highlighting
-      - [ ] fzf
+      - [x] tabstep = 2
+      - [x] double esc hide the search keyword highlighting
+      - [x] fzf
+      - [x] load last position
+      - [ ] diff
     - [ ] view
-      - [ ] number
+      - [x] number
       - [ ] git branch/status
       - [ ] tab
       - [ ] col/row
@@ -33,17 +35,17 @@
         - if exists('&ambw') set ambw=double endif
     - [ ] key mappings
       - [ ] visual mode
-      - [ ] save with C-s
-      - [ ] delete character with the backspace
+      - [x] save with C-s
+      - [x] delete character with the backspace
     - [ ] plugins
-      - [ ] syntax highlight
+      - [x] syntax highlight
       - [ ] git
       - [ ] completion
       - [ ] snippet
       - [ ] ctrlp
-      - [ ] color scheme
+      - [x] color scheme
       - [ ] dictionary
-      - [ ] quickrun
+      - [x] quickrun
       - [ ] comment out
       - [ ] surround
 - [x] zsh

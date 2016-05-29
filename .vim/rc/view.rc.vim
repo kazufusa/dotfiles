@@ -19,16 +19,16 @@ set cmdheight=2
 " Not show command on statusline.
 set noshowcmd
 " Show title.
-set title
+set notitle
 " Title length.
 set titlelen=95
 " Title string.
-let &g:titlestring="
-      \ %{expand('%:p:~:.')}%(%m%r%w%)
-      \ %<\(%{".s:SID_PREFIX()."strwidthpart(
-      \ fnamemodify(&filetype ==# 'vimfiler' ?
-      \ substitute(b:vimfiler.current_dir, '.\\zs/$', '', '') : getcwd(), ':~'),
-      \ &columns-len(expand('%:p:.:~')))}\) - VIM"
+"let &g:titlestring="
+"      \ %{expand('%:p:~:.')}%(%m%r%w%)
+"      \ %<\(%{".s:SID_PREFIX()."strwidthpart(
+"      \ fnamemodify(&filetype ==# 'vimfiler' ?
+"      \ substitute(b:vimfiler.current_dir, '.\\zs/$', '', '') : getcwd(), ':~'),
+"      \ &columns-len(expand('%:p:.:~')))}\) - VIM"
 " Disable tabline.
 set showtabline=0
 
@@ -106,6 +106,9 @@ set pumheight=20
 
 " Report changes.
 set report=0
+
+" set ambiguous CJK character width=double
+set ambiwidth=double
 
 " Maintain a current line at the time of movement as much as possible.
 set nostartofline
