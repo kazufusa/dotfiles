@@ -1,7 +1,7 @@
 # TODO
 
 - [ ] installer(dotfiles)
-  - [ ] ubuntu
+  - [x] ubuntu
     - build-essential
     - git
     - curl
@@ -29,25 +29,25 @@
     - [ ] view
       - [x] number
       - [ ] git branch/status
-      - [ ] tab
+      - [x] tab
       - [ ] col/row
-      - [ ] ambiguouse width
+      - [x] ambiguouse width
         - if exists('&ambw') set ambw=double endif
-    - [ ] key mappings
-      - [ ] visual mode
+    - [x] key mappings
+      - [x] visual mode
       - [x] save with C-s
       - [x] delete character with the backspace
     - [ ] plugins
       - [x] syntax highlight
       - [ ] git
-      - [ ] completion
-      - [ ] snippet
+      - [x] completion
+      - [x] snippet
       - [ ] ctrlp
       - [x] color scheme
       - [ ] dictionary
       - [x] quickrun
-      - [ ] comment out
-      - [ ] surround
+      - [x] comment out
+      - [x] surround
 - [x] zsh
   - [x] zplug
 - [x] tmux
