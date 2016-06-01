@@ -37,3 +37,8 @@ cnoremap <C-f>          <Right>
 cnoremap <C-n>          <Down>
 " <C-p>: previous history.
 "cnoremap <C-p>          <Up>
+
+" IME
+if executable("fcitx-remote")
+  inoremap <silent> <C-[> <ESC>:call system('fcitx-remote -c')<CR>
+endif

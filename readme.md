@@ -20,7 +20,7 @@
   - [ ] vimrc
     - [ ] general
       - [x] copy & paste
-      - [ ] go to Normal mode (for vim) with IME off 
+      - [x] go to Normal mode (for vim) with IME off
       - [x] tabstep = 2
       - [x] double esc hide the search keyword highlighting
       - [x] fzf
@@ -42,7 +42,7 @@
       - [ ] git
       - [x] completion
       - [x] snippet
-      - [ ] ctrlp
+      - ~~ [ ] ctrlp ~~
       - [x] color scheme
       - [ ] dictionary
       - [x] quickrun
@@ -54,4 +54,4 @@
   - [x] build & install
   - [x] config
 - [ ] anyenv
-- [ ] iBUS and mozc(ubuntu)
+- [x] fcitx and mozc(ubuntu)
