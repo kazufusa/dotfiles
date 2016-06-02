@@ -34,8 +34,20 @@ if [ -d ~/Dropbox/dotfiles ]; then
 else
   ZSH_CONFIG_PATH=~/.zsh
 fi
+
 if ! [ -d $ZSH_CONFIG_PATH ]; then
   mkdir -p $ZSH_CONFIG_PATH
+fi
+
+# you need `$git clone https://github.com/riywo/anyenv $HOME/.anyenv`
+if [ -d $HOME/.anyenv ] ; then
+  export PATH=$HOME/.anyenv/bin:$PATH
+  eval "$(anyenv init -)"
+else
+  echo "anyenv is not installed. Please execute"
+  echo "'git clone https://github.com/riywo/anyenv $HOME/.anyenv'"
+  echo "'git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyegnv-update'"
+  echo ""
 fi
 
 #------------------------------------------------------------------------------
