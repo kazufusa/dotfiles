@@ -26,7 +26,11 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 #------------------------------------------------------------------------------
 # PATH
 #------------------------------------------------------------------------------
-PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH
+if [ -d ~/Dropbox/forpath ]; then
+  PATH=$HOME/bin:$PATH
+else
+  PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH
+fi
 
 ## zsh config for hist file
 if [ -d ~/Dropbox/dotfiles ]; then
