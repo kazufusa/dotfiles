@@ -215,7 +215,7 @@ source $ZPLUG_HOME/zplug
 
 ## plugins
 
-zplug "lib/theme-and-appearance", from:oh-my-zsh
+# zplug "lib/theme-and-appearance", from:oh-my-zsh
 # zplug "themes/steeef", from:oh-my-zsh
 zplug "themes/duellj", from:oh-my-zsh
 
@@ -237,7 +237,17 @@ zplug "b4b4r07/enhancd", use:'init.sh'
 zplug "b4b4r07/emoji-cli"
 
 zplug "seebi/dircolors-solarized"
-eval `dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.ansi-universal`
+if type gls > /dev/null 2>&1; then
+  eval `gdircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.ansi-universal`
+  alias ls='gls --color=auto'
+elif [[ $OSTYPE == *linux* ]]; then
+  eval `dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.ansi-universal`
+  alias ls='ls --color=auto'
+elif [[ $OSTYPE == *darwin* ]]; then
+  export LSCOLORS=gxfxcxdxbxegedabagacad # from itchny
+  alias ls='ls -G'
+fi
+
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 ## Install plugins if there are plugins that have not been installed

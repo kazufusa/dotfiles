@@ -22,3 +22,4 @@ brew install zsh
 [[ `echo $SHELL | grep "zsh"` ]] || sudo chsh -s /usr/local/bin/zsh $USER
 brew install git
 brew install tig
+brew install coreutils
