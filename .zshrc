@@ -26,7 +26,11 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 #------------------------------------------------------------------------------
 # PATH
 #------------------------------------------------------------------------------
-if [ -d ~/Dropbox/forpath ]; then
+if type brew > /dev/null 2>&1; then
+  PATH=/usr/local/bin:$PATH
+fi
+
+if [ -d $HOME/Dropbox/forpath ]; then
   PATH=$HOME/bin:$PATH
 else
   PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH

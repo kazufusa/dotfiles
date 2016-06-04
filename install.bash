@@ -15,4 +15,5 @@ case "$(ostype)" in
 esac
 
 bash ./homebrew.bash
+bash ./homebrew_installs.bash
 sh ./linux.sh

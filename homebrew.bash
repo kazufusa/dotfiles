@@ -5,6 +5,10 @@ if [ "$SHELL_PLATFORM" != 'osx' ]; then
   exit 0
 fi
 
+if type brew >/dev/null 2>&1; then
+  exit
+fi
+
 # install brew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
