@@ -20,7 +20,7 @@ let g:neocomplete#manual_completion_start_length = 0
 " Set minimum keyword length.
 let g:neocomplete#min_keyword_length = 3
 
-let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#enable_cursor_hold_i = 0
 
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -121,7 +121,7 @@ inoremap <expr> <C-l>     neocomplete#mappings#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
-  return neocomplete#smart_close_popup() . "\<CR>"
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
 endfunction
 
 " <TAB>: completion.

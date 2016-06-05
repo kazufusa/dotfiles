@@ -13,7 +13,8 @@ fi
 echo installs
 brew install tmux
 brew install reattach-to-user-namespace
-brew install vim
+brew install lua
+brew install vim --with-lua
 brew install gawk
 brew install wget
 brew install ag

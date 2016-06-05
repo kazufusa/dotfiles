@@ -15,10 +15,17 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 "xmap <silent>o     <Plug>(neosnippet_register_oneshot_snippet)
 
 let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#enable_complete_done = 1
 let g:neosnippet#expand_word_boundary = 1
 
 " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
 "let g:neosnippet#snippets_directory = '~/.vim/snippets'
 
-inoremap <silent> (( <C-r>=neosnippet#anonymous('\left(${1}\right)${0}')<CR>
+"inoremap <silent> (( <C-r>=neosnippet#anonymous('\left(${1}\right)${0}')<CR>
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
