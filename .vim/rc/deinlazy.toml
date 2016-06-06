@@ -5,8 +5,10 @@ hook_add = 'nmap <silent> <Leader>r <Plug>(quickrun)'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
-on_map = {n = '<Plug>'}
-hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
+on_map = '<C-e>'
+hook_source = '''
+source ~/.vim/rc/plugins/ref.rc.vim
+'''
 
 [[plugins]]
 repo = 'junegunn/fzf'

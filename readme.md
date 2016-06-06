@@ -44,7 +44,7 @@
       - [x] snippet
       - ~~ [ ] ctrlp ~~
       - [x] color scheme
-      - [ ] dictionary
+      - [x] dictionary
       - [x] quickrun
       - [x] comment out
       - [x] surround
