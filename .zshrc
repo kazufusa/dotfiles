@@ -251,6 +251,12 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 zplug "github/hub", as:command, from:gh-r
 
+zplug "iwata/git-now", as:command, use:'git-now'
+zplug "iwata/git-now", as:command, use:'git-now-add'
+zplug "iwata/git-now", as:command, use:'git-now-rebase'
+zplug "iwata/git-now", as:command, use:'gitnow-common'
+zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
+
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
