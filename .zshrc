@@ -247,8 +247,9 @@ elif [[ $OSTYPE == *darwin* ]]; then
   export LSCOLORS=gxfxcxdxbxegedabagacad # from itchny
   alias ls='ls -G'
 fi
-
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+zplug "github/hub", as:command, from:gh-r
 
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
