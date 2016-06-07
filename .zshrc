@@ -31,9 +31,9 @@ if type brew > /dev/null 2>&1; then
 fi
 
 if [ -d $HOME/Dropbox/forpath ]; then
-  PATH=$HOME/bin:$PATH
-else
   PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH
+else
+  PATH=$HOME/bin:$PATH
 fi
 
 ## zsh config for hist file
