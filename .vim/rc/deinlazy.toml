@@ -77,3 +77,15 @@ nnoremap <silent> __ :TComment<CR>
 vnoremap <silent> __ :TComment<CR>
 nmap <silent> gc <Plug>TComment-gc
 '''
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown', 'mkd']
+hook_add = '''
+let g:vim_markdown_folding_disabled=1
+'''
+
+[[plugins]]
+repo = 'kannokanno/previm'
+depends = ['vim-markdown', 'open-browser.vim']
+on_ft = ['markdown', 'mkd']

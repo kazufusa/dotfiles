@@ -17,13 +17,6 @@ repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
-on_ft = ['markdown', 'mkd']
-hook_add = '''
-let g:vim_markdown_folding_disabled=1
-'''
-
-[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
@@ -42,3 +35,6 @@ hook_add = '''
   nmap <silent>sr <Plug>(operator-surround-replace)a
   nmap <silent>sc <Plug>(operator-surround-replace)a
 '''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
