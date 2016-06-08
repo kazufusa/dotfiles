@@ -122,32 +122,34 @@ abbreviations=(
     "gd"   "git diff --color"
     "gf"   "git fetch origin"
     "gst"  "git status --branch --short"
-    "gch"  "git checkout"
-    "gco"  "git commit -m \""
-    "gbr"  "git branch"
-    "ga"   "git add \`peco-select-gitadd\`"
-    "gaa"  "git add ."
+    "gco"  "git checkout"
+    "gci"  "git commit -m"
+    "gb"   "git branch"
+    "ga"   "git add \`fzf-gitfiles\`"
+    "ga."  "git add ."
     "gps"  "git push origin"
     "gpl"  "git pull origin"
-    "gcf"  "git commit --fixup \`peco-select-gitcommit\`"
-    "gre"  "git rebase -i \`peco-select-gitcommit\`"
+    "gcf"  "tmp=\`fzf-gitfiles\` && git add \$tmp && git commit --fixup \`fzf-gitcommit\`"
+    "grf"  "git rebase -i \`fzf-gitcommit\`"
+    "gre"  "git rebase -i \`fzf-gitcommit\`"
     "ggp"  "git grep --line-number --show-function --color --heading --break"
     "grh"  "git reset --hard"
     "grs"  "git reset --soft"
     "gn"   "git now --all --stat"
 )
 
-peco-select-gitcommit(){
-  echo `git log --oneline | peco | cut -d' ' -f1`
+fzf-gitcommit(){
+  tmp=`git log --oneline | fzf-tmux` && echo $tmp | cut -d' ' -f1
 }
 
-peco-select-gitadd(){
-  echo `git status --porcelain | peco | awk -F ' ' '{print $NF}'`
+fzf-gitfiles(){
+  git reset HEAD -- >/dev/null 2>&1 \
+    & tmp=`git status --porcelain | fzf-tmux -m` && echo $tmp | awk -F ' ' '{print $NF}'
 }
 
 magic-abbrev-expand() {
     local MATCH
-    LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9]#}
+    LBUFFER=${LBUFFER%%(#m)[.-_a-zA-Z0-9]#}
     LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
     zle self-insert
 }
