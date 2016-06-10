@@ -68,6 +68,13 @@ source ~/.vim/rc/plugins/neosnippet.rc.vim
 '''
 
 [[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_event = ['VimEnter']
+hook_post_source = '''
+vmap a <Plug>(EasyAlign)
+'''
+
+[[plugins]]
 repo = 'tomtom/tcomment_vim'
 on_event = ['VimEnter']
 hook_post_source = '''
