@@ -9,13 +9,6 @@ nnoremap Y y$
 " remove spaces at the end of lines
 nnoremap <silent> ,<Space> :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 
-" C-s to file saving
-" `$ stty -ixon -ixoff` is need
-nnoremap <C-s> :<C-u>w<CR>
-inoremap <C-s> <ESC>:<C-u>w<CR>
-vnoremap <C-s> :<C-u>w<CR>
-cnoremap <C-s> <C-u>w<CR>
-
 " diff
 nnoremap <silent> <expr> ,d ":\<C-u>".(&diff?"diffoff":"diffthis")."\<CR>"
 
@@ -39,6 +32,18 @@ cnoremap <C-n>          <Down>
 "cnoremap <C-p>          <Up>
 
 " IME
+" C-s to file saving
+" `$ stty -ixon -ixoff` is need
 if executable("fcitx-remote")
+  nnoremap <silent> <C-s> :<C-u>w<CR>:call system('fcitx-remote -c')<CR>
+  inoremap <silent> <C-s> <ESC>:<C-u>w<CR>:call system('fcitx-remote -c')<CR>
+  vnoremap <silent> <C-s> :<C-u>w<CR>:call system('fcitx-remote -c')<CR>
+  cnoremap <silent> <C-s> <C-u>w<CR>:call system('fcitx-remote -c')<CR>
+
   inoremap <silent> <C-[> <ESC>:call system('fcitx-remote -c')<CR>
+else
+  nnoremap <silent> <C-s> :<C-u>w<CR>
+  inoremap <silent> <C-s> <ESC>:<C-u>w<CR>
+  vnoremap <silent> <C-s> :<C-u>w<CR>
+  cnoremap <silent> <C-s> <C-u>w<CR>
 endif
