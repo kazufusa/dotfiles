@@ -265,6 +265,9 @@ zplug "iwata/git-now", as:command, use:'git-now-rebase'
 zplug "iwata/git-now", as:command, use:'gitnow-common'
 zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
 
+zplug "awslabs/git-secrets", as:command, use:'git-secrets'
+[ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
+
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
