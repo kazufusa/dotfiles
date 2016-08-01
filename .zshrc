@@ -268,6 +268,8 @@ zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
 zplug "awslabs/git-secrets", as:command, use:'git-secrets'
 [ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
 
+zplug "stedolan/jq", as:command, from:gh-r
+
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
