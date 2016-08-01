@@ -106,6 +106,14 @@ endif
 " Disable diff mode.
 "command! -nargs=0 Undiff setlocal nodiff noscrollbind wrap
 
+"---------------------------------------------------------------------------
+" Encoding:
+"
+if &encoding !=? 'utf-8' | let &termencoding = &encoding | endif
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix,mac,dos
+set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp
 
 "---------------------------------------------------------------------------
 " Others:
