@@ -24,3 +24,4 @@ brew install zsh
 brew install git
 brew install tig
 brew install coreutils
+brew install jq

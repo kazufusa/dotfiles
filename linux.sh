@@ -15,6 +15,7 @@ sudo apt-get install -y zsh
 sudo apt-get install -y gnome-terminal
 sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y fcitx-mozc
+sudo apt-get install -y jq
 sudo chsh -s `which zsh` $USER
 sh -eux $DOTPATH/bin/build.sh tmux/tmux \
 "pkg-config libevent-dev libncurses5-dev xsel automake" ""
