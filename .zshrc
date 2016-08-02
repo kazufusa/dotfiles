@@ -268,8 +268,6 @@ zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
 zplug "awslabs/git-secrets", as:command, use:'git-secrets'
 [ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
 
-zplug "stedolan/jq", as:command, from:gh-r
-
 zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', nice:10
 
 ## Install plugins if there are plugins that have not been installed
