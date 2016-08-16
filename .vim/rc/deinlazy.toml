@@ -44,6 +44,10 @@ repo = 'fatih/vim-go'
 on_ft = 'go'
 
 [[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
 # repo = 'altercation/vim-colors-solarized'
 # repo = 'w0ng/vim-hybrid'
 repo = 'itchyny/landscape.vim'
