@@ -54,7 +54,7 @@ if [ -d $HOME/.anyenv ] ; then
 else
   echo "anyenv is not installed. Please execute"
   echo "'git clone https://github.com/riywo/anyenv $HOME/.anyenv'"
-  echo "'git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyegnv-update'"
+  echo "'git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update'"
   echo ""
 fi
 
