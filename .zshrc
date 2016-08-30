@@ -270,6 +270,9 @@ zplug "awslabs/git-secrets", as:command, use:'git-secrets'
 
 zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', nice:10
 
+local os=`[ $OSTYPE = "linux-gnu" ] && echo linux || echo darwin`
+zplug direnv/direnv, as:command, from:gh-r, hook-build:"chmod 755 *", use:"*$os*", rename-to:direnv, hook-load:'eval "$(direnv hook zsh)"'
+
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
