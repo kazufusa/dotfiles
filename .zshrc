@@ -219,7 +219,7 @@ export ZPLUG_HOME=$HOME/.cache/zplug
 if [ ! -d $ZPLUG_HOME ]; then
   curl -sL get.zplug.sh | zsh
 fi
-source $ZPLUG_HOME/zplug
+source $ZPLUG_HOME/init.zsh
 
 ## plugins
 
