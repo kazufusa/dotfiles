@@ -273,6 +273,8 @@ zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', nice:10
 local os=`[ $OSTYPE = "linux-gnu" ] && echo linux || echo darwin`
 zplug direnv/direnv, as:command, from:gh-r, hook-build:"chmod 755 *", use:"*$os*", rename-to:direnv, hook-load:'eval "$(direnv hook zsh)"'
 
+zplug "harelba/q", as:command, use:'bin/q'
+
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "

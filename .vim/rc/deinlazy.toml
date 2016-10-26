@@ -104,7 +104,7 @@ let g:vim_markdown_folding_disabled=1
 '''
 
 [[plugins]]
-repo = 'kannokanno/previm'
+repo = 'minerva1129/previm'
 depends = ['vim-markdown', 'open-browser.vim']
 on_ft = ['markdown', 'mkd']
 
