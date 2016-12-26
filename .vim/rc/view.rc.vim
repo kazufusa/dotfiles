@@ -138,6 +138,8 @@ set display=lastline
 " Display an invisible letter with hex format.
 "set display+=uhex
 
+set cursorline
+
 " View setting.
 set viewdir=$CACHE/vim_view viewoptions-=options viewoptions+=slash,unix
 
