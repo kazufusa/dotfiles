@@ -58,6 +58,7 @@ else
   echo ""
 fi
 
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME
 
 #------------------------------------------------------------------------------
@@ -109,17 +110,6 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 #------------------------------------------------------------------------------
 typeset -A abbreviations
 abbreviations=(
-    "H"    "| head"
-    "G"    "| grep"
-    "X"    "| xargs"
-    "T"    "| tail"
-    "C"    "| cat"
-    "W"    "| wc"
-    "A"    "| awk"
-    "S"    "| sed"
-    "E"    "2>&1 > /dev/null"
-    "N"    "> /dev/null"
-
     "g"    "git"
     "gd"   "git diff --color"
     "gf"   "git fetch origin"
