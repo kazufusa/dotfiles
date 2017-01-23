@@ -92,7 +92,7 @@ source ~/.vim/rc/plugins/neosnippet.rc.vim
 repo = 'junegunn/vim-easy-align'
 on_event = ['VimEnter']
 hook_post_source = '''
-vmap A <Plug>(EasyAlign)
+vmap E <Plug>(EasyAlign)
 '''
 
 [[plugins]]
