@@ -10,9 +10,6 @@ build = 'make'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
