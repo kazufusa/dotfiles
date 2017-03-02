@@ -26,6 +26,8 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 #------------------------------------------------------------------------------
 # PATH
 #------------------------------------------------------------------------------
+fpath+=~/dotfiles/.zfunc
+
 if type brew > /dev/null 2>&1; then
   PATH=/usr/local/bin:$PATH
 fi
@@ -60,6 +62,12 @@ fi
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME
+
+export PATH="$HOME/.cargo/bin:$PATH"
+# $ rustup component add rust-src
+if cargo >/dev/null 2>&1; then
+  export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
+fi
 
 #------------------------------------------------------------------------------
 # color (check: where color)

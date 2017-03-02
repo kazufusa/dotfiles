@@ -120,7 +120,7 @@ on_ft = ['markdown', 'mkd']
 
 [[plugins]]
 repo = 'scrooloose/syntastic'
-on_ft = ['javascript', 'ruby', 'c']
+on_ft = ['javascript', 'ruby', 'c', 'rust']
 hook_add = '''
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -134,4 +134,26 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_rust_rustc_exe = 'cargo check'
+let g:syntastic_rust_rustc_fname = ''
+let g:syntastic_rust_checkers = ['rustc']
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = ['rust']
+hook_add = '''
+set hidden
+'''
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = ['rust']
+hook_add = '''
+let g:rustfmt_autosave = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
