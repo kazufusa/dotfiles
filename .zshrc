@@ -275,6 +275,8 @@ zplug direnv/direnv, as:command, from:gh-r, hook-build:"chmod 755 *", use:"*$os*
 
 zplug "harelba/q", as:command, use:'bin/q'
 
+zplug "zsh-users/zsh-completions"
+
 ## Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
