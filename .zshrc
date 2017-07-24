@@ -88,7 +88,7 @@ export TERM=screen-256color
 # history
 #------------------------------------------------------------------------------
 HISTFILE=$ZSH_CONFIG_PATH/.histfile
-HISTSIZE=10000000
+HISTSIZE=50000
 SAVEHIST=10000000
 setopt append_history
 setopt extended_history
