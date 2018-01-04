@@ -241,6 +241,8 @@ zplug "junegunn/fzf", as:plugin, use:'shell/completion.zsh'
 zplug "peco/peco", as:command, from:gh-r
 
 zplug "b4b4r07/enhancd", use:'init.sh'
+export ENHANCD_DOT_ARG=a
+export ENHANCD_HYPHEN_ARG=a
 
 zplug "b4b4r07/emoji-cli"
 
