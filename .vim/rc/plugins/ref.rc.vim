@@ -38,4 +38,5 @@ endfunction
 " nnoremap [ref] <Nop>
 " nmap     <Leader>r [ref]
 nnoremap <expr> <C-e> ':Ref webdict weblio ' . expand('<cword>') . '<CR>'
+vnoremap <C-e> "zy:Ref webdict weblio <C-r>"<CR>
 autocmd FileType ref-* nnoremap <buffer> <silent> q :<C-u>close<CR>
