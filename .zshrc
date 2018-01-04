@@ -217,7 +217,7 @@ stty -ixon -ixoff
 ## setup
 export ZPLUG_HOME=$HOME/.cache/zplug
 if [ ! -d $ZPLUG_HOME ]; then
-  curl -sL get.zplug.sh | zsh
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 source $ZPLUG_HOME/init.zsh
 
