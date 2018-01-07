@@ -159,3 +159,7 @@ endif
 
 " Restore cursor to file position in previous editing session
 autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Re-select visual block after indenting
+vnoremap > >gv
+vnoremap < <gv
