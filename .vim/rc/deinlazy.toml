@@ -22,13 +22,13 @@ hook_add = '''
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_command_prefix = 'Fzf'
 command! FzfFiles2 call fzf#run({
-  \  'source' : 'ag --hidden --ignore .git --ignore node_modules -g .',
+  \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
   \  'dir'    : '.',
   \  'sink'   : 'e',
   \  'options': '-m -x +s',
   \  'down'   : '30%'})
 command! FzfGitFiles2 call fzf#run({
-  \  'source' : 'ag --hidden --ignore .git --ignore node_modules -g .',
+  \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
   \  'dir'    : system('git rev-parse --show-toplevel 2>/dev/null|| pwd'),
   \  'sink'   : 'e',
   \  'options': '-m -x +s',
