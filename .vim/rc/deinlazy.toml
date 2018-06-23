@@ -148,6 +148,10 @@ set hidden
 '''
 
 [[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kt', 'kotlin']
+
+[[plugins]]
 repo = 'racer-rust/vim-racer'
 on_ft = ['rust']
 hook_add = '''
