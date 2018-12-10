@@ -29,7 +29,7 @@ command! FzfFiles2 call fzf#run({
   \  'down'   : '30%'})
 command! FzfGitFiles2 call fzf#run({
   \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
-  \  'dir'    : system('git rev-parse --show-toplevel 2>/dev/null|| pwd'),
+  \  'dir'    : systemlist('git rev-parse --show-toplevel 2>/dev/null|| pwd')[0],
   \  'sink'   : 'e',
   \  'options': '-m -x +s',
   \  'down'   : '30%'})
