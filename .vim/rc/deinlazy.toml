@@ -29,7 +29,7 @@ command! FzfFiles2 call fzf#run({
   \  'down'   : '30%'})
 command! FzfGitFiles2 call fzf#run({
   \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
-  \  'dir'    : system('git rev-parse --show-toplevel 2>/dev/null|| pwd'),
+  \  'dir'    : systemlist('git rev-parse --show-toplevel 2>/dev/null|| pwd')[0],
   \  'sink'   : 'e',
   \  'options': '-m -x +s',
   \  'down'   : '30%'})
@@ -40,9 +40,14 @@ nnoremap <silent><C-f>b :<C-u>FzfBuffers<CR>
 '''
 
 [[plugins]]
+repo = 'zchee/deoplete-go'
+on_ft = 'go'
+
+[[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_add = '''
+let g:go_gocode_propose_source = 0
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -57,6 +62,15 @@ nmap <silent> <Leader>t <Plug>(go-test)
 repo = 'elzr/vim-json'
 on_ft = 'json'
 
+
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = 'javascript'
+
 [[plugins]]
 # repo = 'altercation/vim-colors-solarized'
 # repo = 'w0ng/vim-hybrid'
@@ -68,16 +82,6 @@ colorscheme landscape
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-depends = 'context_filetype.vim'
-if = "has('lua')"
-on_event = 'InsertEnter'
-hook_source = '''
-  let g:neocomplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/neocomplete.rc.vim
-'''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -146,6 +150,10 @@ on_ft = ['rust']
 hook_add = '''
 set hidden
 '''
+
+[[plugins]]
+repo = 'udalov/kotlin-vim'
+on_ft = ['kt', 'kotlin']
 
 [[plugins]]
 repo = 'racer-rust/vim-racer'
