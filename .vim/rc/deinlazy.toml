@@ -111,14 +111,23 @@ nmap <silent> gc <Plug>TComment-gc
 '''
 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
+repo = 'iamcco/mathjax-support-for-mkdp'
+on_ft = ['markdown', 'mkd']
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.vim'
+depends = ['mathjax-support-for-mkdp']
+on_ft = ['markdown', 'mkd']
+
+[[plugins]]
+repo = 'gabrielelana/vim-markdown'
 on_ft = ['markdown', 'mkd']
 hook_add = '''
-let g:vim_markdown_folding_disabled=1
+let g:markdown_enable_folding=1
 '''
 
 [[plugins]]
-repo = 'minerva1129/previm'
+repo = 'previm/previm'
 depends = ['vim-markdown', 'open-browser.vim']
 on_ft = ['markdown', 'mkd']
 
