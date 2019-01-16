@@ -131,13 +131,14 @@ abbreviations=(
     "gpl"  "git pull origin"
     "gcf"  "git commit --fixup"
     "gr"   "git rebase"
-    "gri"  "git rebase -i HEAD~20"
+    "gri"  "git rebase -i HEAD~5"
     "ggp"  "git grep --line-number --show-function --color --heading --break"
     "grh"  "git reset --hard"
     "grs"  "git reset --soft"
     "gn"   "git now --all --stat"
     "dk"   "docker"
     "dkcm" "docker-compose"
+    "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
 )
 
 fzf-gitcommit(){
@@ -262,6 +263,7 @@ fi
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 zplug "github/hub", as:command, from:gh-r
+zplug "zaquestion/lab", as:command, from:gh-r
 
 zplug "iwata/git-now", as:command, use:'git-now'
 zplug "iwata/git-now", as:command, use:'git-now-add'
