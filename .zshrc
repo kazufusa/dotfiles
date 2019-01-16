@@ -136,6 +136,8 @@ abbreviations=(
     "grh"  "git reset --hard"
     "grs"  "git reset --soft"
     "gn"   "git now --all --stat"
+    "dk"   "docker"
+    "dkcm" "docker-compose"
 )
 
 fzf-gitcommit(){
