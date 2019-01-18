@@ -120,6 +120,7 @@ typeset -A abbreviations
 abbreviations=(
     "g"    "git"
     "gd"   "git diff --color"
+    "gda"  "git diff --color -w --ignore-all-space --ignore-blank-lines"
     "gf"   "git fetch origin"
     "gst"  "git status --branch --short"
     "gco"  "git checkout"
