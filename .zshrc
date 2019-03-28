@@ -140,6 +140,7 @@ abbreviations=(
     "dk"   "docker"
     "dkcm" "docker-compose"
     "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
+    "jne"  "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
 )
 
 fzf-gitcommit(){
@@ -272,10 +273,9 @@ zplug "iwata/git-now", as:command, use:'git-now-rebase'
 zplug "iwata/git-now", as:command, use:'gitnow-common'
 zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
 
-zplug "awslabs/git-secrets", as:command, use:'git-secrets'
-[ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
-
-zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', defer:3
+# zplug "awslabs/git-secrets", as:command, use:'git-secrets'
+# [ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
+# zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', defer:3
 
 local os=`[ $OSTYPE = "linux-gnu" ] && echo linux || echo darwin`
 zplug direnv/direnv, as:command, from:gh-r, hook-build:"chmod 755 *", use:"*$os*", rename-to:direnv, hook-load:'eval "$(direnv hook zsh)"'
