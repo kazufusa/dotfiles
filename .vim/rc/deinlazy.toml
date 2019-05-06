@@ -111,20 +111,8 @@ nmap <silent> gc <Plug>TComment-gc
 '''
 
 [[plugins]]
-repo = 'iamcco/mathjax-support-for-mkdp'
+repo = 'plasticboy/vim-markdown'
 on_ft = ['markdown', 'mkd']
-
-[[plugins]]
-repo = 'iamcco/markdown-preview.vim'
-depends = ['mathjax-support-for-mkdp']
-on_ft = ['markdown', 'mkd']
-
-[[plugins]]
-repo = 'gabrielelana/vim-markdown'
-on_ft = ['markdown', 'mkd']
-hook_add = '''
-let g:markdown_enable_folding=1
-'''
 
 [[plugins]]
 repo = 'previm/previm'
@@ -159,6 +147,10 @@ on_ft = ['rust']
 hook_add = '''
 set hidden
 '''
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript', 'ts', 'tsx']
+
 
 [[plugins]]
 repo = 'udalov/kotlin-vim'
