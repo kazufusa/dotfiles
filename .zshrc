@@ -120,6 +120,7 @@ typeset -A abbreviations
 abbreviations=(
     "g"    "git"
     "gd"   "git diff --color"
+    "gdc"  "git diff --color --cached"
     "gf"   "git fetch origin"
     "gst"  "git status --branch --short"
     "gco"  "git checkout"
@@ -136,6 +137,7 @@ abbreviations=(
     "grh"  "git reset --hard"
     "grs"  "git reset --soft"
     "gn"   "git now --all --stat"
+    "gcz"  "git cz"
     "dk"   "docker"
     "dkcm" "docker-compose"
     "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
@@ -200,6 +202,14 @@ function extract() {
     *.tar) tar xvf "$1";;
     *.arj) unarj "$1";;
   esac
+}
+
+function pvtgz() {
+  if [[ $OSTYPE == *linux* ]]; then
+    tar cf - $1 -P | pv -s $(du -sb $1 | awk '{print $1}') | gzip > $1.tar.gz
+  elif [[ $OSTYPE == *darwin* ]]; then
+    tar cf - $1 -P | pv -s $(($(du -sk $1 | awk '{print $1}') * 1024)) | gzip > $1.tar.gz
+  fi
 }
 
 function gituser()
@@ -271,8 +281,8 @@ zplug "iwata/git-now", as:command, use:'git-now-rebase'
 zplug "iwata/git-now", as:command, use:'gitnow-common'
 zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
 
-zplug "awslabs/git-secrets", as:command, use:'git-secrets'
-[ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
+# zplug "awslabs/git-secrets", as:command, use:'git-secrets'
+# [ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
 
 zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', defer:3
 
