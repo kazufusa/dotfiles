@@ -40,14 +40,9 @@ nnoremap <silent><C-f>b :<C-u>FzfBuffers<CR>
 '''
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
-on_ft = 'go'
-
-[[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_add = '''
-let g:go_gocode_propose_source = 0
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -56,6 +51,8 @@ let g:go_highlight_operators = 1
 let g:go_term_enabled = 1
 let g:go_highlight_build_constraints = 1
 nmap <silent> <Leader>t <Plug>(go-test)
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 '''
 
 [[plugins]]

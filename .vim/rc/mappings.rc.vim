@@ -41,6 +41,13 @@ if executable("fcitx-remote")
   cnoremap <silent> <C-s> <C-u>w<CR>:call system('fcitx-remote -c')<CR>
 
   inoremap <silent> <C-[> <ESC>:call system('fcitx-remote -c')<CR>
+elseif executable("ibus")
+  nnoremap <silent> <C-s> :<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
+  inoremap <silent> <C-s> <ESC>:<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
+  vnoremap <silent> <C-s> :<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
+  cnoremap <silent> <C-s> <C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
+
+  inoremap <silent> <C-[> <ESC>:call system('ibus engine xkb:us::eng')<CR>
 else
   nnoremap <silent> <C-s> :<C-u>w<CR>
   inoremap <silent> <C-s> <ESC>:<C-u>w<CR>

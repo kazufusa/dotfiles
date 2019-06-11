@@ -46,3 +46,45 @@ repo = 'roxma/nvim-yarp'
 repo = 'Shougo/deoplete.nvim'
 hook_add = 'let g:deoplete#enable_at_startup = 1'
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# vim8用
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if = "!has('nvim')"
+
+# vim8用
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = "!has('nvim')"
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+depends = ['deoplete.nvim']
+build = 'bash install.sh'
+hook_add = '''
+set hidden
+let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['clangd-7'],
+      \ 'go': ['gopls'],
+      \ 'python': ['pyls'],
+      \ }
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_hasSnippetSupport = 1
+
+set completefunc=LanguageClient#complete
+
+nnoremap K  :call LanguageClient#textDocument_hover()<CR>
+nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
+'''

@@ -60,8 +60,10 @@ else
   echo ""
 fi
 
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export GOCACHE=$(go env GOCACHE)
 
 export PATH="$HOME/.cargo/bin:$PATH"
 # $ rustup component add rust-src
@@ -263,10 +265,10 @@ zplug "b4b4r07/emoji-cli"
 
 zplug "seebi/dircolors-solarized"
 if type gls > /dev/null 2>&1; then
-  eval `gdircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.ansi-universal`
+  eval `gdircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.256dark`
   alias ls='gls --color=auto'
 elif [[ $OSTYPE == *linux* ]]; then
-  eval `dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.ansi-universal`
+  eval `dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.256dark`
   alias ls='ls --color=auto'
 elif [[ $OSTYPE == *darwin* ]]; then
   export LSCOLORS=gxfxcxdxbxegedabagacad # from itchny
