@@ -110,7 +110,7 @@ nmap <silent> gc <Plug>TComment-gc
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_ft = ['markdown', 'mkd']
-hook_add = '''
+hook_add='''
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_math = 1

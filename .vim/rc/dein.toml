@@ -86,5 +86,11 @@ set completefunc=LanguageClient#complete
 nnoremap K  :call LanguageClient#textDocument_hover()<CR>
 nnoremap gd :call LanguageClient#textDocument_definition()<CR>
 
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap F :call LanguageClient#textDocument_formatting()<CR>
+
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
 '''
