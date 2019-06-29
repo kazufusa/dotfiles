@@ -60,9 +60,9 @@ else
   echo ""
 fi
 
-export GOROOT=/usr/local/go
+export _GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=$GOPATH/bin:$_GOROOT/bin:$PATH
 export GOCACHE=$(go env GOCACHE)
 
 export PATH="$HOME/.cargo/bin:$PATH"
