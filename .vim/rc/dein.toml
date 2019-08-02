@@ -77,6 +77,8 @@ let g:LanguageClient_serverCommands = {
       \ 'cpp': ['clangd-7'],
       \ 'go': ['gopls'],
       \ 'python': ['pyls'],
+      \ 'typescript': ['typescript-language-server', '--stdio'],
+      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_hasSnippetSupport = 1
@@ -93,4 +95,7 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap F :call LanguageClient#textDocument_formatting()<CR>
 
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.ts :call LanguageClient#textDocument_formatting()
+autocmd BufWritePre *.tsx :call LanguageClient#textDocument_formatting()
 '''
