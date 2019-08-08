@@ -76,7 +76,10 @@ set hidden
 let g:LanguageClient_serverCommands = {
       \ 'cpp': ['clangd-7'],
       \ 'go': ['gopls'],
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'javascript.jsx': ['javascript-typescript-stdio'],
       \ 'typescript': ['javascript-typescript-stdio'],
+      \ 'typescript.tsx': ['javascript-typescript-stdio'],
       \ 'python': ['pyls'],
       \ }
 let g:LanguageClient_loadSettings = 1
@@ -88,6 +91,4 @@ nnoremap K  :call LanguageClient#textDocument_hover()<CR>
 nnoremap gd :call LanguageClient#textDocument_definition()<CR>
 
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
-autocmd BufWritePre *.tsx :call LanguageClient#textDocument_formatting()
-autocmd BufWritePre *.ts :call LanguageClient#textDocument_formatting()
 '''
