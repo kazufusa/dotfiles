@@ -74,11 +74,12 @@ build = 'bash install.sh'
 hook_add = '''
 set hidden
 let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['clangd-7'],
       \ 'go': ['gopls'],
       \ 'python': ['pyls'],
       \ 'typescript': ['typescript-language-server', '--stdio'],
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+      \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
+      \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
       \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_hasSnippetSupport = 1
@@ -96,6 +97,7 @@ nnoremap F :call LanguageClient#textDocument_formatting()<CR>
 
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
 autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
-autocmd BufWritePre *.ts :call LanguageClient#textDocument_formatting()
-autocmd BufWritePre *.tsx :call LanguageClient#textDocument_formatting()
 '''
+
+[[plugins]]
+repo = 'vim-scripts/AnsiEsc.vim'
