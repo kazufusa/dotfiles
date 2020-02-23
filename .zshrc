@@ -64,6 +64,7 @@ export _GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$_GOROOT/bin:$PATH
 export GOCACHE=$(go env GOCACHE)
+export GO111MODULE=on
 
 export PATH="$HOME/.cargo/bin:$PATH"
 # $ rustup component add rust-src
