@@ -75,9 +75,13 @@ hook_add = '''
 set hidden
 let g:LanguageClient_serverCommands = {
       \ 'go': ['gopls'],
+      \ 'javascript': ['javascript-typescript-stdio'],
+      \ 'javascript.jsx': ['javascript-typescript-stdio'],
+      \ 'javascriptreact': ['javascript-typescript-stdio'],
+      \ 'typescript': ['javascript-typescript-stdio'],
+      \ 'typescript.tsx': ['javascript-typescript-stdio'],
+      \ 'typescriptreact': ['javascript-typescript-stdio'],
       \ 'python': ['pyls'],
-      \ 'typescript': ['typescript-language-server', '--stdio'],
-      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
       \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
       \ }
