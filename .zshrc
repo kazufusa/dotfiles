@@ -307,3 +307,8 @@ fi
 
 ## Then, source plugins and add commands to $PATH
 zplug load
+
+if ! [ -x "$(command -v starship)" ]; then
+  brew install starship
+fi
+eval "$(starship init zsh)"
