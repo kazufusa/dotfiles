@@ -175,13 +175,13 @@ autoload -Uz _zinit
 zinit light "zsh-users/zsh-syntax-highlighting"
 zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zsh-users/zsh-docker"
-zinit ice atload"zicompinit; zicdreplay"; zinit light "zsh-users/zsh-completions"
+zinit ice lucid atload"zicompinit; zicdreplay"; zinit light "zsh-users/zsh-completions"
 zinit light "zsh-users/zsh-history-substring-search"
 bindkey "^P" history-substring-search-up
 bindkey "^N" history-substring-search-down
 
 # anyenv
-zinit ice wait"!0" as"program" pick"bin/anyenv" \
+zinit ice lucid wait"!0" as"program" pick"bin/anyenv" \
         atload"eval \"\$(anyenv init -)\"; \
         [[ -d ${HOME}/.config/anyenv/anyenv-install ]] || anyenv install --force-init"
 zinit light anyenv/anyenv
@@ -195,15 +195,15 @@ zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
 zinit load junegunn/fzf
 
 # git-now
-zinit ice wait"!0" lucid as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
+zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
 zinit light "iwata/git-now"
 
 # enhancd; TODO useful but command
-zinit ice wait"!0"; zinit light "b4b4r07/enhancd"
+zinit ice lucid wait"!0"; zinit light "b4b4r07/enhancd"
 export ENHANCD_DOT_ARG=a
 export ENHANCD_HYPHEN_ARG=a
 
-zinit ice wait"0c" lucid reset \
+zinit ice lucid wait"0c" lucid reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
             \${P}sed -i '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
             \${P}dircolors -b LS_COLORS > c.zsh" \
