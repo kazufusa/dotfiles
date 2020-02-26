@@ -73,7 +73,11 @@ setopt share_history
 #------------------------------------------------------------------------------
 # Aliases
 #------------------------------------------------------------------------------
-(type gls >/dev/null 2>&1 && alias ls='gls --color=auto') || alias ls='ls --color=auto'
+if [ -x "$(command -v gls)" ]; then
+  alias ls='gls --color=auto'
+else
+  alias ls='ls --color=auto'
+fi
 alias ..="cd ../"
 alias l='ls -al'
 alias rm='rm -i'
