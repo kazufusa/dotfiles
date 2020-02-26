@@ -219,6 +219,13 @@ zinit load github/hub
 zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"
 zinit load stedolan/jq
 
+zinit ice lucid wait"!0a" as"null"\
+  atclone" \
+    mkdir -p $HOME/.tmux/plugins; \
+    ln -s $HOME/.zinit/plugins/tmux-plugins---tpm $HOME/.tmux/plugins/tpm; \
+    setup_my_tmux_plugin tpm;"
+zinit light tmux-plugins/tpm
+
 #------------------------------------------------------------------------------
 # starship
 #------------------------------------------------------------------------------
