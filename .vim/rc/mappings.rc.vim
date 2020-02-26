@@ -34,14 +34,7 @@ cnoremap <C-n>          <Down>
 " IME
 " C-s to file saving
 " `$ stty -ixon -ixoff` is need
-if executable("fcitx-remote")
-  nnoremap <silent> <C-s> :<C-u>w<CR>:call system('fcitx-remote -c')<CR>
-  inoremap <silent> <C-s> <ESC>:<C-u>w<CR>:call system('fcitx-remote -c')<CR>
-  vnoremap <silent> <C-s> :<C-u>w<CR>:call system('fcitx-remote -c')<CR>
-  cnoremap <silent> <C-s> <C-u>w<CR>:call system('fcitx-remote -c')<CR>
-
-  inoremap <silent> <C-[> <ESC>:call system('fcitx-remote -c')<CR>
-elseif executable("ibus")
+if executable("ibus")
   nnoremap <silent> <C-s> :<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
   inoremap <silent> <C-s> <ESC>:<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
   vnoremap <silent> <C-s> :<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>

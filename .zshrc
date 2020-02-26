@@ -1,9 +1,6 @@
 #------------------------------------------------------------------------------
 # general
 #------------------------------------------------------------------------------
-## emucs binding
-bindkey -e
-
 # beep
 setopt no_beep
 setopt nolistbeep
@@ -13,11 +10,11 @@ setopt no_check_jobs
 setopt print_eight_bit
 setopt list_packed
 setopt correct
+setopt correct_all
 
 # operation
 setopt auto_cd
 setopt no_flow_control
-setopt extended_glob
 
 ## completions
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -26,8 +23,6 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 #------------------------------------------------------------------------------
 # PATH
 #------------------------------------------------------------------------------
-fpath+=~/dotfiles/.zfunc
-
 if type brew > /dev/null 2>&1; then
   PATH=/usr/local/bin:$PATH
 fi
@@ -38,7 +33,10 @@ else
   PATH=$HOME/bin:$PATH
 fi
 
-## zsh config for hist file
+#------------------------------------------------------------------------------
+# variables
+#------------------------------------------------------------------------------
+# zsh config for hist file
 if [ -d ~/Dropbox/dotfiles ]; then
   ZSH_CONFIG_PATH=~/Dropbox/dotfiles
 else
@@ -49,43 +47,13 @@ if ! [ -d $ZSH_CONFIG_PATH ]; then
   mkdir -p $ZSH_CONFIG_PATH
 fi
 
-# you need `$git clone https://github.com/riywo/anyenv $HOME/.anyenv`
-if [ -d $HOME/.anyenv ] ; then
-  export PATH=$HOME/.anyenv/bin:$PATH
-  eval "$(anyenv init -)"
-else
-  echo "anyenv is not installed. Please execute"
-  echo "'git clone https://github.com/riywo/anyenv $HOME/.anyenv'"
-  echo "'git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update'"
-  echo ""
-fi
+export TERM=screen-256color
 
+# Go
 export _GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$_GOROOT/bin:$PATH
-export GOCACHE=$(go env GOCACHE)
 export GO111MODULE=on
-
-export PATH="$HOME/.cargo/bin:$PATH"
-# $ rustup component add rust-src
-if cargo >/dev/null 2>&1; then
-  export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust/src
-fi
-
-#------------------------------------------------------------------------------
-# color (check: where color)
-#------------------------------------------------------------------------------
-export TERM=screen-256color
-#autoload -Uz colors; colors
-#LS_COLORS='di=01;36:ln=01;35:ex=01;31:'
-#LS_COLORS+='*.c=01;35:*.cpp=01;35:*.js=01;35:*.json=01;35:*.hs=01;35:*.py=01;35:*.pl=01;35:'
-#LS_COLORS+='*.tex=01;35:*.csv=01;35:*.r=01;35:*.R=01;35:*.txt=01;35:*.sty=01;35:*.coffee=01;35:*.class=01;35:*.java=01;35:*.less=01;35:*.css=01;35:'
-#LS_COLORS+='*.jpg=01;33:*.png=01;33:*.bmp=01;33:*.JPG=01;33:*.PNG=01;33:*.BMP=01;33:'
-#LS_COLORS+='*.gz=01;34:*.tar=01;34:*.zip=01;34:'
-#LS_COLORS+='*.pdf=01;32:*makefile=01;32:*.html=01;32:'
-#export LS_COLORS # doesn't work in Mac
-#export LSCOLORS=gxfxcxdxbxegedabagacad
-#zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 #------------------------------------------------------------------------------
 # history
@@ -105,6 +73,7 @@ setopt share_history
 #------------------------------------------------------------------------------
 # Aliases
 #------------------------------------------------------------------------------
+(type gls >/dev/null 2>&1 && alias ls='gls --color=auto') || alias ls='ls --color=auto'
 alias ..="cd ../"
 alias l='ls -al'
 alias rm='rm -i'
@@ -115,83 +84,6 @@ alias r='sudo shutdown -r'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
-
-#------------------------------------------------------------------------------
-# ABBREVIATIONS
-#------------------------------------------------------------------------------
-typeset -A abbreviations
-abbreviations=(
-    "g"    "git"
-    "gd"   "git diff --color"
-    "gdc"  "git diff --color --cached"
-    "gda"  "git diff --color -w --ignore-all-space --ignore-blank-lines"
-    "gf"   "git fetch origin"
-    "gst"  "git status --branch --short"
-    "gco"  "git checkout"
-    "gci"  "git commit -m"
-    "gb"   "git branch"
-    "ga"   "git add"
-    "ga."  "git add ."
-    "gps"  "git push origin"
-    "gpl"  "git pull origin"
-    "gcf"  "git commit --fixup"
-    "gr"   "git rebase"
-    "gri"  "git rebase -i HEAD~5"
-    "ggp"  "git grep --line-number --show-function --color --heading --break"
-    "grh"  "git reset --hard"
-    "grs"  "git reset --soft"
-    "gn"   "git now --all --stat"
-    "gcz"  "git cz"
-    "dk"   "docker"
-    "dkcm" "docker-compose"
-    "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
-    "jne"  "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
-)
-
-fzf-gitcommit(){
-  tmp=`git log --oneline | fzf-tmux` && echo $tmp | cut -d' ' -f1
-}
-
-fzf-gitfiles(){
-  git reset HEAD -- >/dev/null 2>&1 \
-    & tmp=`git status --porcelain | fzf-tmux -m` && echo $tmp | awk -F ' ' '{print $NF}'
-}
-
-magic-abbrev-expand() {
-    local MATCH
-    LBUFFER=${LBUFFER%%(#m)[.-_a-zA-Z0-9]#}
-    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
-    zle self-insert
-}
-
-no-magic-abbrev-expand() {
-    LBUFFER+=' '
-
-}
-
-zle -N magic-abbrev-expand
-zle -N no-magic-abbrev-expand
-bindkey " " magic-abbrev-expand
-bindkey "^x " no-magic-abbrev-expand
-
-#------------------------------------------------------------------------------
-# functions
-#------------------------------------------------------------------------------
-
-if (type fzf 2>&1 > /dev/null) ; then
-  fshow() {
-    local out sha q
-    while out=$(
-        git log --graph --color=always \
-            --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-        fzf --ansi --multi --no-sort --reverse --query="$q" --print-query); do
-      q=$(head -1 <<< "$out")
-      while read sha; do
-        git show --color=always $sha | less -R
-      done < <(sed '1d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-    done
-  }
-fi
 
 function extract() {
   case $1 in
@@ -209,101 +101,128 @@ function extract() {
   esac
 }
 
-function pvtgz() {
-  if [[ $OSTYPE == *linux* ]]; then
-    tar cf - $1 -P | pv -s $(du -sb $1 | awk '{print $1}') | gzip > $1.tar.gz
-  elif [[ $OSTYPE == *darwin* ]]; then
-    tar cf - $1 -P | pv -s $(($(du -sk $1 | awk '{print $1}') * 1024)) | gzip > $1.tar.gz
-  fi
+#------------------------------------------------------------------------------
+# Abbreviations
+#------------------------------------------------------------------------------
+setopt extended_glob
+typeset -A abbreviations
+abbreviations=(
+    "g"    "git"
+    "gd"   "git diff --color"
+    "gdc"  "git diff --color --cached"
+    "gda"  "git diff --color -w --ignore-all-space --ignore-blank-lines"
+    "gf"   "git fetch origin"
+    "gst"  "git status --branch --short"
+    "gco"  "git checkout"
+    "gci"  "git commit -m"
+    "gcf"  "git commit --fixup"
+    "gca"  "git commit -m 'initial commit' --allow-empty"
+    "gb"   "git branch"
+    "ga"   "git add"
+    "ga."  "git add ."
+    "gps"  "git push origin"
+    "gpl"  "git pull origin"
+    "gr"   "git rebase"
+    "gri"  "git rebase -i HEAD~5"
+    "ggp"  "git grep --line-number --show-function --color --heading --break"
+    "grh"  "git reset --hard"
+    "grs"  "git reset --soft"
+    "gn"   "git now --all --stat"
+    "gcz"  "git cz"
+    "dk"   "docker"
+    "dkcm" "docker-compose"
+    "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
+    "jne"  "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
+    "iconv" "iconv -f cp932 -t utf8"
+)
+magic-abbrev-expand() {
+    local MATCH
+    LBUFFER=${LBUFFER%%(#m)[.-_a-zA-Z0-9]#}
+    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+    zle self-insert
 }
+no-magic-abbrev-expand() {
+    LBUFFER+=' '
 
-function gituser()
-{
-  git config --local user.name $1
-  git config --local user.email $2
 }
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+bindkey " " magic-abbrev-expand
+bindkey "^x " no-magic-abbrev-expand
 
 #------------------------------------------------------------------------------
 # etc
 #------------------------------------------------------------------------------
-## in vim, enable to map Ctrl-S to file saving
+# in vim, enable to map Ctrl-S to file saving
 stty -ixon -ixoff
 
 #------------------------------------------------------------------------------
-# zplug
+# zinit
 #------------------------------------------------------------------------------
-## setup
-export ZPLUG_HOME=$HOME/.cache/zplug
-if [ ! -d $ZPLUG_HOME ]; then
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
 fi
-source $ZPLUG_HOME/init.zsh
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
 
-## plugins
+zinit light "zsh-users/zsh-syntax-highlighting"
+zinit light "zsh-users/zsh-autosuggestions"
+zinit light "zsh-users/zsh-docker"
+zinit ice atload"zicompinit; zicdreplay"; zinit light "zsh-users/zsh-completions"
+zinit light "zsh-users/zsh-history-substring-search"
+bindkey "^P" history-substring-search-up
+bindkey "^N" history-substring-search-down
 
-# zplug "lib/theme-and-appearance", from:oh-my-zsh
-# zplug "themes/steeef", from:oh-my-zsh
-zplug "themes/duellj", from:oh-my-zsh
+# anyenv
+zinit ice wait"!0" as"program" pick"bin/anyenv" \
+        atload"eval \"\$(anyenv init -)\"; \
+        [[ -d ${HOME}/.config/anyenv/anyenv-install ]] || anyenv install --force-init"
+zinit light anyenv/anyenv
 
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+# fzf
+zinit ice lucid wait"!0" from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+zinit ice lucid wait"!0" as"command" pick"bin/fzf-tmux"
+zinit load junegunn/fzf
+zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
+zinit load junegunn/fzf
 
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
+# git-now
+zinit ice wait"!0" lucid as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
+zinit light "iwata/git-now"
 
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:"fzf"
-zplug "junegunn/fzf", as:command, use:'bin/fzf-tmux'
-zplug "junegunn/fzf", as:plugin, use:'shell/completion.zsh'
-
-zplug "peco/peco", as:command, from:gh-r
-
-zplug "b4b4r07/enhancd", use:'init.sh'
+# enhancd; TODO useful but command
+zinit ice wait"!0"; zinit light "b4b4r07/enhancd"
 export ENHANCD_DOT_ARG=a
 export ENHANCD_HYPHEN_ARG=a
 
-zplug "b4b4r07/emoji-cli"
+zinit ice wait"0c" lucid reset \
+    atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
+            \${P}sed -i '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+            \${P}dircolors -b LS_COLORS > c.zsh" \
+    atpull"%atclone" pick"c.zsh" nocompile"!" \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}'
+zinit light trapd00r/LS_COLORS
 
-zplug "seebi/dircolors-solarized"
-if type gls > /dev/null 2>&1; then
-  eval `gdircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.256dark`
-  alias ls='gls --color=auto'
-elif [[ $OSTYPE == *linux* ]]; then
-  eval `dircolors $ZPLUG_HOME/repos/seebi/dircolors-solarized/dircolors.256dark`
-  alias ls='ls --color=auto'
-elif [[ $OSTYPE == *darwin* ]]; then
-  export LSCOLORS=gxfxcxdxbxegedabagacad # from itchny
-  alias ls='ls -G'
+zinit ice wait"!0"; zinit light "b4b4r07/emoji-cli"
+
+zinit ice lucid wait"!0" from"gh-r" as"program" pick"hub-*/bin/hub"
+zinit load github/hub
+
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"
+zinit load stedolan/jq
+
+#------------------------------------------------------------------------------
+# starship
+#------------------------------------------------------------------------------
+if ! [ -x "$(command -v starship)" ]; then
+  curl -fsSL https://starship.rs/install.sh | bash
 fi
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
-zplug "github/hub", as:command, from:gh-r
-zplug "zaquestion/lab", as:command, from:gh-r
-
-zplug "iwata/git-now", as:command, use:'git-now'
-zplug "iwata/git-now", as:command, use:'git-now-add'
-zplug "iwata/git-now", as:command, use:'git-now-rebase'
-zplug "iwata/git-now", as:command, use:'gitnow-common'
-zplug "iwata/git-now", as:command, use:'gitnow-shFlags'
-
-# zplug "awslabs/git-secrets", as:command, use:'git-secrets'
-# [ ! -d $HOME/.git-templates/git-secrets ] && git secrets --install $HOME/.git-templates/git-secrets
-# zplug 'aws/aws-cli', use:'bin/aws_zsh_completer.sh', defer:3
-
-local os=`[ $OSTYPE = "linux-gnu" ] && echo linux || echo darwin`
-zplug direnv/direnv, as:command, from:gh-r, hook-build:"chmod 755 *", use:"*$os*", rename-to:direnv, hook-load:'eval "$(direnv hook zsh)"'
-
-zplug "harelba/q", as:command, use:'bin/q'
-
-zplug "zsh-users/zsh-completions"
-
-## Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  fi
-fi
-
-## Then, source plugins and add commands to $PATH
-zplug load
+eval "$(starship init zsh)"
