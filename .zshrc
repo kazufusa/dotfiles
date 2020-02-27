@@ -236,10 +236,5 @@ zinit light tmux/tmux
 zinit ice as"program" atclone"./configure" atpull"%atclone" make pick"src/tig"
 zinit light jonas/tig
 
-#------------------------------------------------------------------------------
-# starship
-#------------------------------------------------------------------------------
-if ! [ -x "$(command -v starship)" ]; then
-  curl -fsSL https://starship.rs/install.sh | bash
-fi
-eval "$(starship init zsh)"
+zinit ice lucid from"gh-r" as"program" mv"starship* -> starship" atload"eval \"\$(starship init zsh)\""
+zinit light starship/starship
