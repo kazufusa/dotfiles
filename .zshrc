@@ -73,7 +73,11 @@ setopt share_history
 #------------------------------------------------------------------------------
 # Aliases
 #------------------------------------------------------------------------------
-(type gls >/dev/null 2>&1 && alias ls='gls --color=auto') || alias ls='ls --color=auto'
+if [ -x "$(command -v gls)" ]; then
+  alias ls='gls --color=auto'
+else
+  alias ls='ls --color=auto'
+fi
 alias ..="cd ../"
 alias l='ls -al'
 alias rm='rm -i'
@@ -225,6 +229,12 @@ zinit ice lucid wait"!0a" as"null"\
     ln -s $HOME/.zinit/plugins/tmux-plugins---tpm $HOME/.tmux/plugins/tpm; \
     setup_my_tmux_plugin tpm;"
 zinit light tmux-plugins/tpm
+
+zinit ice as"program" atclone"./autogen.sh; ./configure" atpull"%atclone" make
+zinit light tmux/tmux
+
+zinit ice as"program" atclone"./configure" atpull"%atclone" make pick"src/tig"
+zinit light jonas/tig
 
 #------------------------------------------------------------------------------
 # starship
