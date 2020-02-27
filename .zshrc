@@ -10,7 +10,6 @@ setopt no_check_jobs
 setopt print_eight_bit
 setopt list_packed
 setopt correct
-setopt correct_all
 
 # operation
 setopt auto_cd
