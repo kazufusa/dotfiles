@@ -229,7 +229,8 @@ zinit ice lucid wait"!0a" as"null"\
     setup_my_tmux_plugin tpm;"
 zinit light tmux-plugins/tpm
 
-zinit ice as"program" atclone"./autogen.sh; ./configure" atpull"%atclone" make
+zinit ice as"program" atpull"%atclone" make \
+  atclone"ln -fs $HOME/.zinit/plugins/tmux---tmux/tmux $HOME/bin/tmux;./autogen.sh; ./configure"
 zinit light tmux/tmux
 
 zinit ice as"program" atclone"./configure" atpull"%atclone" make pick"src/tig"
