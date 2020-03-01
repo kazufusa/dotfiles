@@ -26,6 +26,7 @@ if type brew > /dev/null 2>&1; then
   PATH=/usr/local/bin:$PATH
 fi
 
+mkdir -p $HOME/bin
 if [ -d $HOME/Dropbox/forpath ]; then
   PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH
 else
@@ -216,7 +217,7 @@ zinit light trapd00r/LS_COLORS
 
 zinit ice wait"!0"; zinit light "b4b4r07/emoji-cli"
 
-zinit ice lucid wait"!0" from"gh-r" as"program" pick"hub-*/bin/hub"
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"hub-*/bin/hub -> hub"
 zinit load github/hub
 
 zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"
@@ -236,5 +237,5 @@ zinit light tmux/tmux
 zinit ice as"program" atclone"./configure" atpull"%atclone" make pick"src/tig"
 zinit light jonas/tig
 
-zinit ice lucid from"gh-r" as"program" mv"starship* -> starship" atload"eval \"\$(starship init zsh)\""
+zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
 zinit light starship/starship
