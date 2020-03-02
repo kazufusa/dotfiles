@@ -234,7 +234,8 @@ zinit ice as"program" atpull"%atclone" make \
   atclone"ln -fs $HOME/.zinit/plugins/tmux---tmux/tmux $HOME/bin/tmux;./autogen.sh; ./configure"
 zinit light tmux/tmux
 
-zinit ice as"program" atclone"./configure" atpull"%atclone" make pick"src/tig"
+zinit ice as"program" atpull"%atclone" make pick"src/tig" \
+  atclone"make configure; ./configure --enable-widec --with-ncursesw"
 zinit light jonas/tig
 
 zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
