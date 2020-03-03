@@ -178,11 +178,17 @@ autoload -Uz _zinit
 
 zinit light "zsh-users/zsh-syntax-highlighting"
 zinit light "zsh-users/zsh-autosuggestions"
-zinit light "zsh-users/zsh-docker"
 zinit ice lucid atload"zicompinit; zicdreplay"; zinit light "zsh-users/zsh-completions"
 zinit light "zsh-users/zsh-history-substring-search"
 bindkey "^P" history-substring-search-up
 bindkey "^N" history-substring-search-down
+
+# docker and docker-compose
+zinit ice as"completion"
+zinit snippet https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
+# zinit ice as"completion"
+# zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit light "zsh-users/zsh-docker"
 
 # anyenv
 zinit ice lucid wait"!0" as"program" pick"bin/anyenv" \
