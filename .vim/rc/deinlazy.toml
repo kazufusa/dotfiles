@@ -64,10 +64,13 @@ on_ft = 'javascript'
 [[plugins]]
 # repo = 'altercation/vim-colors-solarized'
 # repo = 'w0ng/vim-hybrid'
-repo = 'itchyny/landscape.vim'
+# repo = 'itchyny/landscape.vim'
+repo = 'cocopon/iceberg.vim'
 on_event = ['VimEnter']
 hook_post_source = '''
-colorscheme landscape
+" set background=dark
+" let g:solarized_termcolors=256
+colorscheme iceberg
 '''
 
 [[plugins]]
@@ -116,28 +119,6 @@ on_ft = ['markdown', 'mkd']
 build = 'cd app & yarn install'
 hook_add = '''
 let g:mkdp_auto_close = 0
-'''
-
-[[plugins]]
-repo = 'scrooloose/syntastic'
-on_ft = ['javascript', 'ruby', 'c', 'rust']
-hook_add = '''
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-let g:syntastic_javascript_checkers=['eslint']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_rust_rustc_exe = 'cargo check'
-let g:syntastic_rust_rustc_fname = ''
-let g:syntastic_rust_checkers = ['rustc']
 '''
 
 [[plugins]]
