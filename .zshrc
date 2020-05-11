@@ -204,6 +204,10 @@ zinit load junegunn/fzf
 zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
 zinit load junegunn/fzf
 
+# hub
+zinit ice lucid wait"!0" from"gh-r" as"program" pick"hub-*/bin/hub"
+zinit load github/hub
+
 # git-now
 zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
 zinit light "iwata/git-now"
@@ -222,9 +226,6 @@ zinit ice lucid wait"0c" lucid reset \
 zinit light trapd00r/LS_COLORS
 
 zinit ice wait"!0"; zinit light "b4b4r07/emoji-cli"
-
-zinit ice lucid wait"!0" from"gh-r" as"program" mv"hub-*/bin/hub -> hub"
-zinit load github/hub
 
 zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"
 zinit load stedolan/jq

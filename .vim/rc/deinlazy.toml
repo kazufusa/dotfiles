@@ -120,6 +120,13 @@ build = 'cd app & yarn install'
 hook_add = '''
 let g:mkdp_auto_close = 0
 '''
+# let g:mkdp_open_to_the_world = 1
+# let g:mkdp_open_ip = '192.168.11.13'
+# let g:mkdp_port = 8080
+# function! g:EchoUrl(url)
+#   :echo a:url
+# endfunction
+# let g:mkdp_browserfunc = 'g:EchoUrl'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
