@@ -1,0 +1,8 @@
+~/.zinit/plugins//tmux---tmux/tmux
+~/.zinit/plugins//stedolan---jq/jq
+~/.zinit/plugins//github---hub/hub
+~/.zinit/plugins//jonas---tig/tools/doc-gen
+~/.zinit/plugins//jonas---tig/test/tools/test-graph
+~/.zinit/plugins//jonas---tig/src/tig
+~/.zinit/plugins//junegunn---fzf-bin/fzf
+~/.zinit/plugins//starship---starship/starship

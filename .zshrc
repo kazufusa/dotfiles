@@ -26,6 +26,7 @@ if type brew > /dev/null 2>&1; then
   PATH=/usr/local/bin:$PATH
 fi
 
+mkdir -p $HOME/bin
 if [ -d $HOME/Dropbox/forpath ]; then
   PATH=$HOME/bin:$HOME/Dropbox/forpath:$PATH
 else
@@ -177,11 +178,17 @@ autoload -Uz _zinit
 
 zinit light "zsh-users/zsh-syntax-highlighting"
 zinit light "zsh-users/zsh-autosuggestions"
-zinit light "zsh-users/zsh-docker"
 zinit ice lucid atload"zicompinit; zicdreplay"; zinit light "zsh-users/zsh-completions"
 zinit light "zsh-users/zsh-history-substring-search"
 bindkey "^P" history-substring-search-up
 bindkey "^N" history-substring-search-down
+
+# docker and docker-compose
+zinit ice as"completion"
+zinit snippet https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
+# zinit ice as"completion"
+# zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit light "zsh-users/zsh-docker"
 
 # anyenv
 zinit ice lucid wait"!0" as"program" pick"bin/anyenv" \
@@ -196,6 +203,10 @@ zinit ice lucid wait"!0" as"command" pick"bin/fzf-tmux"
 zinit load junegunn/fzf
 zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
 zinit load junegunn/fzf
+
+# hub
+zinit ice lucid wait"!0" from"gh-r" as"program" pick"hub-*/bin/hub"
+zinit load github/hub
 
 # git-now
 zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
@@ -216,9 +227,6 @@ zinit light trapd00r/LS_COLORS
 
 zinit ice wait"!0"; zinit light "b4b4r07/emoji-cli"
 
-zinit ice lucid wait"!0" from"gh-r" as"program" pick"hub-*/bin/hub"
-zinit load github/hub
-
 zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"
 zinit load stedolan/jq
 
@@ -233,8 +241,9 @@ zinit ice as"program" atpull"%atclone" make \
   atclone"ln -fs $HOME/.zinit/plugins/tmux---tmux/tmux $HOME/bin/tmux;./autogen.sh; ./configure"
 zinit light tmux/tmux
 
-zinit ice as"program" atclone"./configure" atpull"%atclone" make pick"src/tig"
+zinit ice as"program" atpull"%atclone" make pick"src/tig" \
+  atclone"make configure; ./configure --enable-widec --with-ncursesw"
 zinit light jonas/tig
 
-zinit ice lucid from"gh-r" as"program" mv"starship* -> starship" atload"eval \"\$(starship init zsh)\""
+zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
 zinit light starship/starship

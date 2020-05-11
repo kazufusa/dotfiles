@@ -8,3 +8,9 @@ deploy:
 
 install:
 	@DOTPATH=$(DOTPATH) bash ./install.bash
+
+test:
+	@zsh -c "source .zshrc"
+	find ./tests -name "test.sh" | xargs sh
+
+.PHONY: test
