@@ -79,6 +79,7 @@ let g:LanguageClient_serverCommands = {
       \ 'python': ['pyls'],
       \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
       \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
+      \ 'ruby': ['~/.anyenv/envs/rbenv/shims/solargraph', 'stdio'],
       \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_hasSnippetSupport = 1

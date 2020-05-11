@@ -117,28 +117,13 @@ build = 'cd app & yarn install'
 hook_add = '''
 let g:mkdp_auto_close = 0
 '''
-
-[[plugins]]
-repo = 'scrooloose/syntastic'
-on_ft = ['javascript', 'ruby', 'c', 'rust']
-hook_add = '''
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-let g:syntastic_javascript_checkers=['eslint']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_rust_rustc_exe = 'cargo check'
-let g:syntastic_rust_rustc_fname = ''
-let g:syntastic_rust_checkers = ['rustc']
-'''
+# let g:mkdp_open_to_the_world = 1
+# let g:mkdp_open_ip = '192.168.11.13'
+# let g:mkdp_port = 8080
+# function! g:EchoUrl(url)
+#   :echo a:url
+# endfunction
+# let g:mkdp_browserfunc = 'g:EchoUrl'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
