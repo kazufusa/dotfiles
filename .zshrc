@@ -205,7 +205,7 @@ zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
 zinit load junegunn/fzf
 
 # hub
-zinit ice lucid wait"!0" from"gh-r" as"program" pick"hub-*/bin/hub"
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"hub-*/bin/hub -> hub"
 zinit load github/hub
 
 # git-now
