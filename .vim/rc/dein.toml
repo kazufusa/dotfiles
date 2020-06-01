@@ -47,7 +47,7 @@ repo = 'roxma/nvim-yarp'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-rev = "e61b8faee0"
+# rev = "e61b8faee0"
 hook_add = 'let g:deoplete#enable_at_startup = 1'
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 
@@ -73,13 +73,14 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript': ['javascript-typescript-stdio'],
       \ 'javascript.jsx': ['javascript-typescript-stdio'],
       \ 'javascriptreact': ['javascript-typescript-stdio'],
-      \ 'typescript': ['javascript-typescript-stdio'],
-      \ 'typescript.tsx': ['javascript-typescript-stdio'],
-      \ 'typescriptreact': ['javascript-typescript-stdio'],
+      \ 'typescript': ['typescript-language-server', '--stdio'],
+      \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
+      \ 'typescriptreact': ['typescript-language-server', '--stdio'],
       \ 'python': ['pyls'],
       \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
       \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
       \ 'ruby': ['~/.anyenv/envs/rbenv/shims/solargraph', 'stdio'],
+      "\ 'sh': ['bash-language-server', 'start'],
       \ }
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_hasSnippetSupport = 1
