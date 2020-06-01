@@ -37,10 +37,10 @@ fi
 # variables
 #------------------------------------------------------------------------------
 # zsh config for hist file
-if [ -d ~/Dropbox/dotfiles ]; then
-  ZSH_CONFIG_PATH=~/Dropbox/dotfiles
+if [ -d $HOME/Dropbox/dotfiles ]; then
+  ZSH_CONFIG_PATH=$HOME/Dropbox/dotfiles
 else
-  ZSH_CONFIG_PATH=~/.zsh
+  ZSH_CONFIG_PATH=$HOME/.zsh
 fi
 
 if ! [ -d $ZSH_CONFIG_PATH ]; then
@@ -193,7 +193,8 @@ zinit light "zsh-users/zsh-docker"
 # anyenv
 zinit ice lucid wait"!0" as"program" pick"bin/anyenv" \
         atload"eval \"\$(anyenv init -)\"; \
-        [[ -d ${HOME}/.config/anyenv/anyenv-install ]] || anyenv install --force-init"
+        [[ -d ${HOME}/.config/anyenv/anyenv-install ]] || anyenv install --force-init" \
+        atclone"git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update"
 zinit light anyenv/anyenv
 
 # fzf

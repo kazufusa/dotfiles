@@ -11,7 +11,8 @@ t() {
 }
 
 while read p; do
-  t [ -d $HOME/.zinit/plugins/"$p" ] || echo $HOME/.zinit/plugins/$p not found
+  eval p=$p
+  t [ -d $p ] || echo $p if not found
 done <./directories.txt
 
 while read p; do
