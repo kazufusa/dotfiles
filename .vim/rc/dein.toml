@@ -97,6 +97,7 @@ nnoremap <C-l>R :call LanguageClient#textDocument_rename()<CR>
 nnoremap <C-l>f :call LanguageClient#textDocument_formatting()<CR>
 nnoremap <C-l>s :call LanguageClient#textDocument_documentSymbol()<CR>
 
+autocmd BufWritePre *.tsx :call LanguageClient#textDocument_formatting()
 "autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting()
 "autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
 '''

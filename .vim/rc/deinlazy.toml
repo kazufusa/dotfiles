@@ -133,9 +133,13 @@ on_ft = ['rust']
 hook_add = '''
 set hidden
 '''
+
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript', 'ts', 'tsx']
+hook_add = '''
+autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+'''
 
 
 [[plugins]]
