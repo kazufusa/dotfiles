@@ -62,15 +62,14 @@ repo = 'maxmellon/vim-jsx-pretty'
 on_ft = 'javascript'
 
 [[plugins]]
-# repo = 'altercation/vim-colors-solarized'
-# repo = 'w0ng/vim-hybrid'
-# repo = 'itchyny/landscape.vim'
-repo = 'cocopon/iceberg.vim'
+repo = 'rafi/awesome-vim-colorschemes'
 on_event = ['VimEnter']
 hook_post_source = '''
-" set background=dark
+set background=dark
 " let g:solarized_termcolors=256
-colorscheme iceberg
+" colorscheme iceberg
+" colorscheme onedark
+colorscheme challenger_deep
 '''
 
 [[plugins]]
