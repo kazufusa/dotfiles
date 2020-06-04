@@ -33,13 +33,14 @@ set titlelen=95
 set showtabline=0
 
 " Set statusline.
-let &g:statusline="%{winnr('$')>1?'['.winnr().'/'.winnr('$')"
-      \ . ".(winnr('#')==winnr()?'#':'').']':''}\ "
-      \ . "%{(&previewwindow?'[preview] ':'').expand('%:t')}"
-      \ . "\ %=%{(winnr('$')==1 || winnr('#')!=winnr()) ?
-      \ '['.(&filetype!=''?&filetype.',':'')"
-      \ . ".(&fenc!=''?&fenc:&enc).','.&ff.']' : ''}"
-      \ . "%m%{printf('%'.(len(line('$'))+2).'d/%d',line('.'),line('$'))}"
+set statusline=
+set statusline=%F"
+set statusline+=%=
+set statusline+=\ %Y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ %{&fileformat}
+set statusline+=\ %l/%L(%p%%)\ %c
+set statusline+=\
 
 " Turn down a long line appointed in 'breakat'
 set linebreak
