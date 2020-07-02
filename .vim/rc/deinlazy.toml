@@ -55,11 +55,16 @@ on_ft = 'json'
 
 [[plugins]]
 repo = 'othree/yajs.vim'
-on_ft = 'javascript'
+on_ft = ['javascript.jsx', 'typescript.tsx']
 
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
-on_ft = 'javascript'
+on_ft = ['javascript.jsx', 'typescript.tsx']
+
+# styled-components
+[[plugins]]
+repo = 'styled-components/vim-styled-components'
+on_ft = ['javascript.jsx', 'typescript.tsx']
 
 [[plugins]]
 repo = 'rafi/awesome-vim-colorschemes'
@@ -136,7 +141,7 @@ set hidden
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript', 'ts', 'tsx']
+on_ft = ['typescript', 'ts', 'tsx', 'typescript.tsx']
 hook_add = '''
 autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 '''

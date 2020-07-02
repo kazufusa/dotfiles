@@ -40,7 +40,6 @@ set statusline+=\ %Y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ %{&fileformat}
 set statusline+=\ %l/%L(%p%%)\ %c
-set statusline+=\
 
 " Turn down a long line appointed in 'breakat'
 set linebreak
