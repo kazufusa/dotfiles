@@ -35,15 +35,15 @@ cnoremap <C-n>          <Down>
 " C-s to file saving
 " `$ stty -ixon -ixoff` is need
 if executable("ibus")
-  nnoremap <silent> <C-s> :<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
-  inoremap <silent> <C-s> <ESC>:<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
-  vnoremap <silent> <C-s> :<C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
-  cnoremap <silent> <C-s> <C-u>w<CR>:call system('ibus engine xkb:us::eng')<CR>
+  nnoremap <silent> <C-s> :<C-u>wa<CR>:call system('ibus engine xkb:us::eng')<CR>
+  inoremap <silent> <C-s> <ESC>:<C-u>wa<CR>:call system('ibus engine xkb:us::eng')<CR>
+  vnoremap <silent> <C-s> :<C-u>wa<CR>:call system('ibus engine xkb:us::eng')<CR>
+  cnoremap <silent> <C-s> <C-u>wa<CR>:call system('ibus engine xkb:us::eng')<CR>
 
   inoremap <silent> <C-[> <ESC>:call system('ibus engine xkb:us::eng')<CR>
 else
-  nnoremap <silent> <C-s> :<C-u>w<CR>
-  inoremap <silent> <C-s> <ESC>:<C-u>w<CR>
-  vnoremap <silent> <C-s> :<C-u>w<CR>
-  cnoremap <silent> <C-s> <C-u>w<CR>
+  nnoremap <silent> <C-s> :<C-u>wa<CR>
+  inoremap <silent> <C-s> <ESC>:<C-u>wa<CR>
+  vnoremap <silent> <C-s> :<C-u>wa<CR>
+  cnoremap <silent> <C-s> <C-u>wa<CR>
 endif
