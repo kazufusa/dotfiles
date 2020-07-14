@@ -37,7 +37,7 @@ set statusline=
 set statusline=%F"
 set statusline+=%=
 set statusline+=\ %Y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ %{&fileencoding!=''?&fileencoding:&encoding}
 set statusline+=\ %{&fileformat}
 set statusline+=\ %l/%L(%p%%)\ %c
 
