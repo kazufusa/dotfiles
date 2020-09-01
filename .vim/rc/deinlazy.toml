@@ -38,6 +38,10 @@ command! FzfGitFiles2 call fzf#run({
   \  'sink'   : 'e',
   \  'options': '-m -x +s',
   \  'down'   : '30%'})
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 nnoremap <silent><C-f>a :<C-u>FzfFiles2<CR>
 nnoremap <silent><C-f>m :<C-u>FzfHistory<CR>
 nnoremap <silent><C-f>f :<C-u>FzfGitFiles2<CR>
