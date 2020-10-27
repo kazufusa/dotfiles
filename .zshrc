@@ -112,10 +112,11 @@ setopt extended_glob
 typeset -A abbreviations
 abbreviations=(
     "g"    "git"
-    "gd"   "git diff --color"
-    "gdc"  "git diff --color --cached"
-    "gda"  "git diff --color -w --ignore-all-space --ignore-blank-lines"
+    "gd"   "git diff --color -w"
+    "gdc"  "git diff --color -w --cached"
+    "gl"   "git checkout master && git fetch --prune && git pull"
     "gf"   "git fetch origin"
+    "gff"  "git fetch --prune"
     "gst"  "git status --branch --short"
     "gco"  "git checkout"
     "gci"  "git commit -m"

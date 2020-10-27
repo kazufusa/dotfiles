@@ -4,3 +4,5 @@ bind main P !@git push origin $(branch)
 # bind main R !git revert %(commit)
 bind main R !git rebase -i %(commit)
 bind diff R !git rebase -i %(commit)
+
+set ignore-space   = all

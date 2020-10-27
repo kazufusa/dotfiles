@@ -152,6 +152,11 @@ hook_add = '''
 autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 '''
 
+[[plugins]]
+repo = 'styled-components/vim-styled-components'
+on_ft = ['typescript', 'ts', 'tsx', 'typescript.tsx']
+hook_add = '''
+'''
 
 [[plugins]]
 repo = 'udalov/kotlin-vim'
