@@ -55,6 +55,9 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$_GOROOT/bin:$PATH
 export GO111MODULE=on
 
+# SHELL
+export SHELL=$(which zsh)
+
 #------------------------------------------------------------------------------
 # history
 #------------------------------------------------------------------------------
@@ -105,40 +108,49 @@ function extract() {
   esac
 }
 
+function ce() {
+  if [ "$1" = "-" ]; then
+    cd - >/dev/null
+  else
+    local repo="$(ghq list >/dev/null | fzf-tmux --reverse +m)"
+    [[ -n "${repo}" ]] && cd "$(ghq root)/${repo}"
+  fi
+}
+
 #------------------------------------------------------------------------------
 # Abbreviations
 #------------------------------------------------------------------------------
 setopt extended_glob
 typeset -A abbreviations
 abbreviations=(
-    "g"    "git"
-    "gd"   "git diff --color -w"
-    "gdc"  "git diff --color -w --cached"
-    "gl"   "git checkout master && git fetch --prune && git pull"
-    "gf"   "git fetch origin"
-    "gff"  "git fetch --prune"
-    "gst"  "git status --branch --short"
-    "gco"  "git checkout"
-    "gci"  "git commit -m"
-    "gcf"  "git commit --fixup"
-    "gca"  "git commit -m 'initial commit' --allow-empty"
-    "gb"   "git branch"
-    "ga"   "git add"
-    "ga."  "git add ."
-    "gps"  "git push origin"
-    "gpl"  "git pull origin"
-    "gr"   "git rebase"
-    "gri"  "git rebase -i HEAD~5"
-    "ggp"  "git grep --line-number --show-function --color --heading --break"
-    "grh"  "git reset --hard"
-    "grs"  "git reset --soft"
-    "gn"   "git now --all --stat"
-    "gcz"  "git cz"
-    "dk"   "docker"
-    "dkcm" "docker-compose"
+    "g"      "git"
+    "gd"     "git diff --color -w"
+    "gdc"    "git diff --color -w --cached"
+    "gl"     "git checkout master && git fetch --prune && git pull"
+    "gf"     "git fetch origin"
+    "gff"    "git fetch --prune"
+    "gst"    "git status --branch --short"
+    "gco"    "git checkout"
+    "gci"    "git commit -m"
+    "gcf"    "git commit --fixup"
+    "gca"    "git commit -m 'initial commit' --allow-empty"
+    "gb"     "git branch"
+    "ga"     "git add"
+    "ga."    "git add ."
+    "gps"    "git push origin"
+    "gpl"    "git pull origin"
+    "gr"     "git rebase"
+    "gri"    "git rebase -i HEAD~5"
+    "ggp"    "git grep --line-number --show-function --color --heading --break"
+    "grh"    "git reset --hard"
+    "grs"    "git reset --soft"
+    "gn"     "git now --all --stat"
+    "gcz"    "git cz"
+    "dk"     "docker"
+    "dkcm"   "docker-compose"
     "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
-    "jne"  "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
-    "iconv" "iconv -f cp932 -t utf8"
+    "jne"    "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
+    "iconv"  "iconv -f cp932 -t utf8"
 )
 magic-abbrev-expand() {
     local MATCH
@@ -229,7 +241,8 @@ zinit light trapd00r/LS_COLORS
 
 zinit ice wait"!0"; zinit light "b4b4r07/emoji-cli"
 
-zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"  atpull"%atclone" \
+  atclone"ln -fs $HOME/.zinit/plugins/stedolan---jq/jq $HOME/bin/jq"
 zinit load stedolan/jq
 
 zinit ice lucid wait"!0a" as"null"\
@@ -244,8 +257,16 @@ zinit ice as"program" atpull"%atclone" make \
 zinit light tmux/tmux
 
 zinit ice as"program" atpull"%atclone" make pick"src/tig" \
-  atclone"make configure; ./configure --enable-widec --with-ncursesw"
+  atclone"make configure; ./configure --enable-widec --with-ncursesw; \
+    ln -fs $HOME/.zinit/plugins/jonas---tig/src/tig $HOME/bin/tig"
 zinit light jonas/tig
+
+# git-open
+zinit light paulirish/git-open
+
+zinit ice lucid from"gh-r" as"program" pick"ghq_linux_amd64/ghq" \
+  atclone"ln -sf $HOME/.zinit/plugins/x-motemen---ghq/ghq_linux_amd64/ghq $HOME/bin/ghq"
+zinit light x-motemen/ghq
 
 zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
 zinit light starship/starship
