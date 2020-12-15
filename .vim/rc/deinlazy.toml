@@ -65,20 +65,19 @@ on_ft = ['javascript.jsx', 'typescript.tsx']
 repo = 'maxmellon/vim-jsx-pretty'
 on_ft = ['javascript.jsx', 'typescript.tsx']
 
-# styled-components
-[[plugins]]
-repo = 'styled-components/vim-styled-components'
-on_ft = ['javascript.jsx', 'typescript.tsx']
-
+# colorschemes
 [[plugins]]
 repo = 'rafi/awesome-vim-colorschemes'
 on_event = ['VimEnter']
 hook_post_source = '''
 set background=dark
 " let g:solarized_termcolors=256
+" colorscheme solarized8_flat
 " colorscheme iceberg
 " colorscheme onedark
 colorscheme challenger_deep
+" colorscheme deus
+" colorscheme seoul256
 '''
 
 [[plugins]]
@@ -172,7 +171,3 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 '''
-
-[[plugins]]
-repo = 'udalov/kotlin-vim'
-on_ft = ['kotlin', 'kt']

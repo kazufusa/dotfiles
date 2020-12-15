@@ -1,6 +1,8 @@
 "---------------------------------------------------------------------------
 " View:
 "
+scriptencoding utf-8
+set encoding=utf-8
 
 " Anywhere SID.
 function! s:SID_PREFIX() abort
@@ -108,7 +110,7 @@ set pumheight=20
 set report=0
 
 " set ambiguous CJK character width=double
-set ambiwidth=double
+" set ambiwidth=double
 
 " Maintain a current line at the time of movement as much as possible.
 set nostartofline
