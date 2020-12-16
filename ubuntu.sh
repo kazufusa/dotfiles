@@ -17,7 +17,8 @@ sudo apt-get install -y \
     byacc \
     file \
     tree \
-    neofetch
+    neofetch \
+    silversearcher-ag
 
 neofetch
 

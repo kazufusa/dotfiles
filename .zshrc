@@ -108,12 +108,18 @@ function extract() {
   esac
 }
 
+function repo(){
+  ghq list | fzf-tmux --reverse +m -q "$1" \
+    --preview "find $(ghq root)/{} -iname 'readme.*' \
+      | xargs bat --color=always --style=header,grid --line-range :80"
+}
+
 function ce() {
   if [ "$1" = "-" ]; then
     cd - >/dev/null
   else
-    local repo="$(ghq list >/dev/null | fzf-tmux --reverse +m)"
-    [[ -n "${repo}" ]] && cd "$(ghq root)/${repo}"
+    local _repo="$(repo $1)"
+    [[ -n "${_repo}" ]] && cd "$(ghq root)/${_repo}"
   fi
 }
 
@@ -267,6 +273,9 @@ zinit light paulirish/git-open
 zinit ice lucid from"gh-r" as"program" pick"ghq_linux_amd64/ghq" \
   atclone"ln -sf $HOME/.zinit/plugins/x-motemen---ghq/ghq_linux_amd64/ghq $HOME/bin/ghq"
 zinit light x-motemen/ghq
+
+zinit ice lucid from"gh-r" as"program" pick"bat-*/bat"
+zinit light sharkdp/bat
 
 zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
 zinit light starship/starship

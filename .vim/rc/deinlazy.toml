@@ -32,6 +32,8 @@ command! FzfFiles2 call fzf#run({
   \  'sink'   : 'e',
   \  'options': '-m -x +s',
   \  'down'   : '30%'})
+command! -bang -nargs=? -complete=dir FzfFiles3 call
+  \ fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'ag --hidden --ignore .git -g ""'}), <bang>0)
 command! FzfGitFiles2 call fzf#run({
   \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
   \  'dir'    : systemlist('git rev-parse --show-toplevel 2>/dev/null|| pwd')[0],
@@ -42,9 +44,10 @@ command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number -- '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-nnoremap <silent><C-f>a :<C-u>FzfFiles2<CR>
+nnoremap <silent><C-f>a :<C-u>FzfFiles3<CR>
 nnoremap <silent><C-f>m :<C-u>FzfHistory<CR>
-nnoremap <silent><C-f>f :<C-u>FzfGitFiles2<CR>
+nnoremap <silent><C-f>f :<C-u>FzfGFiles<CR>
+nnoremap <silent><C-f>d :<C-u>FzfGFiles?<CR>
 nnoremap <silent><C-f>b :<C-u>FzfBuffers<CR>
 '''
 
