@@ -233,7 +233,7 @@ zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gi
 zinit light "iwata/git-now"
 
 # enhancd; TODO useful but command
-zinit ice lucid wait"!0"; zinit light "b4b4r07/enhancd"
+zinit ice proto'git' pick'init.sh'; zinit light "b4b4r07/enhancd"
 export ENHANCD_DOT_ARG=a
 export ENHANCD_HYPHEN_ARG=a
 
