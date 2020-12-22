@@ -123,6 +123,15 @@ function ce() {
   fi
 }
 
+function installgo() {
+  if [ -d /usr/local/go$1 ]; then
+    echo /usr/local/go$1 exists
+  else
+    sudo wget https://golang.org/dl/go$1.$2-$3.tar.gz -O - | tar -C /tmp -xzf -
+    sudo mv /tmp/go /usr/local/go$1
+  fi
+}
+
 #------------------------------------------------------------------------------
 # Abbreviations
 #------------------------------------------------------------------------------
