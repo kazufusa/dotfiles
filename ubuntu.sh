@@ -31,6 +31,7 @@ done
 for s in ".vim" ".zshrc" ".tigrc" ".tmux.conf" ".gitconfig"; do
   ln -sfnv $PWD/$s       $HOME/$s
 done
+ln -sfnv $PWD/starship.toml $HOME/.config/starship.toml
 
 if cat $HOME/.bashrc | grep 'export PATH=\$HOME/bin:\$PATH' >/dev/null 2>&1; then
   :
