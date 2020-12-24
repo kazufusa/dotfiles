@@ -69,6 +69,22 @@ repo = 'maxmellon/vim-jsx-pretty'
 on_ft = ['javascript.jsx', 'typescript.tsx']
 
 # colorschemes
+# [[plugins]]
+# repo = 'flazz/vim-colorschemes'
+# on_event = ['VimEnter']
+# hook_post_source = '''
+# set background=dark
+# " let g:solarized_termcolors=256
+# " colorscheme solarized8_flat
+# " colorscheme iceberg
+# " colorscheme onedark
+# " colorscheme deus
+# " colorscheme seoul256
+# " colorscheme hybrid
+# " colorscheme nightsky
+# " colorscheme nightshade_print
+# " colorscheme PaperColor
+# '''
 [[plugins]]
 repo = 'rafi/awesome-vim-colorschemes'
 on_event = ['VimEnter']
@@ -81,6 +97,16 @@ set background=dark
 colorscheme challenger_deep
 " colorscheme deus
 " colorscheme seoul256
+'''
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+on_event = ['VimEnter']
+hook_add='''
+let g:rainbow_active = 1
+'''
+hook_post_source = '''
+au MyAutoCmd VimEnter * nested RainbowToggleOn
 '''
 
 [[plugins]]
