@@ -110,7 +110,7 @@ function extract() {
 
 function repo(){
   ghq list | fzf-tmux --reverse +m -q "$1" \
-    --preview "find $(ghq root)/{} -iname 'readme.*' \
+    --preview "find $(ghq root)/{} -maxdepth 1 -iname 'readme.*' \
       | xargs bat --color=always --style=header,grid --line-range :80"
 }
 
