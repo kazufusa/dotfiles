@@ -157,6 +157,7 @@ on_ft = ['markdown', 'mkd']
 build = 'cd app & yarn install'
 hook_add = '''
 let g:mkdp_auto_close = 0
+let g:mkdp_open_to_the_world = 1
 '''
 # let g:mkdp_open_to_the_world = 1
 # let g:mkdp_open_ip = '192.168.11.13'
