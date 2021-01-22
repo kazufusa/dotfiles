@@ -28,7 +28,7 @@ for s in `ls ./ubuntu/*.sh`; do
   sh $s
 done
 
-for s in ".vim" ".zshrc" ".tigrc" ".tmux.conf" ".gitconfig" ".czrc"; do
+for s in ".vim" ".zshrc" ".tigrc" ".tmux.conf" ".gitconfig" ".czrc" ".ideavimrc"; do
   ln -sfnv $PWD/$s       $HOME/$s
 done
 ln -sfnv $PWD/starship.toml $HOME/.config/starship.toml

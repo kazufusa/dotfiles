@@ -1,0 +1,14 @@
+noremap V v
+noremap v V
+nnoremap Y y$
+set clipboard& clipboard^=unnamedplus
+"nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+"nnoremap K :call LanguageClient#textDocument_hover()<CR>
+"nnoremap gd :call LanguageClient#textDocument_definition()<CR>
+"nnoremap <C-l>r :call LanguageClient#textDocument_references()<CR>
+"nnoremap <C-l>R :call LanguageClient#textDocument_rename()<CR>
+nnoremap <C-l>f :action ReformatCode<CR>
+"nnoremap <C-l>s :call LanguageClient#textDocument_documentSymbol()<CR>
+
+nnoremap <silent> __ :action CommentByLineComment<CR>
+vnoremap <silent> __ :action CommentByLineComment<CR>
