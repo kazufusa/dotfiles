@@ -20,7 +20,6 @@ git checkout -f $(git describe --tags --abbrev=0)
   --with-features=huge \
   --enable-gui=gtk2 \
   --enable-perlinterp \
-  --enable-pythoninterp \
   --enable-python3interp \
   --enable-rubyinterp \
   --enable-luainterp \
