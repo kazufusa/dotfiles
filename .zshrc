@@ -33,6 +33,10 @@ else
   PATH=$HOME/bin:$PATH
 fi
 
+if [ -d /opt/android-studio/jre ]; then
+  export JAVA_HOME=/opt/android-studio/jre
+fi
+
 #------------------------------------------------------------------------------
 # variables
 #------------------------------------------------------------------------------
@@ -285,6 +289,9 @@ zinit light x-motemen/ghq
 
 zinit ice lucid from"gh-r" as"program" pick"bat-*/bat"
 zinit light sharkdp/bat
+
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"**/lab -> lab"
+zinit light lighttiger2505/lab
 
 zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
 zinit light starship/starship
