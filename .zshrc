@@ -295,3 +295,10 @@ zinit light lighttiger2505/lab
 
 zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
 zinit light starship/starship
+
+#------------------------------------------------------------------------------
+# for wsl2
+#------------------------------------------------------------------------------
+if uname -a | grep -q microsoft; then
+  (sh -c "dropbox status 2>/dev/null | grep -q \"isn't\" && dropbox start" >/dev/null 2>&1 &)
+fi
