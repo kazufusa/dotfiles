@@ -163,3 +163,15 @@ autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
 " Re-select visual block after indenting
 vnoremap > >gv
 vnoremap < <gv
+
+" clipboard settings for WSL2
+let output = system("iswsl")
+if v:shell_error == 0
+  " https://qiita.com/tMinamiii/items/0c6589806090c7fc3f8a
+  augroup Yank
+    au!
+    autocmd TextYankPost * :call system('win32yank.exe -i', @")
+  augroup END
+  noremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
+  noremap <silent> <S-p> :call setreg('"',system('win32yank.exe -o --lf'))<CR>""P
+endif

@@ -136,6 +136,8 @@ function installgo() {
   fi
 }
 
+function open() { cmd.exe /c start $(wslpath -w $1) }
+
 #------------------------------------------------------------------------------
 # Abbreviations
 #------------------------------------------------------------------------------
@@ -170,6 +172,7 @@ abbreviations=(
     "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
     "jne"    "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
     "iconv"  "iconv -f cp932 -t utf8"
+    "winbash" "\"/mnt/c/Program Files/Git/bin/bash.exe\""
 )
 magic-abbrev-expand() {
     local MATCH
