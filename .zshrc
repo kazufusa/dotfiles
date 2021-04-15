@@ -59,6 +59,9 @@ export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$_GOROOT/bin:$PATH
 export GO111MODULE=on
 
+# Rust
+source "$HOME/.cargo/env"
+
 # SHELL
 export SHELL=$(which zsh)
 
