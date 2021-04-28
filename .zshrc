@@ -60,7 +60,9 @@ export PATH=$GOPATH/bin:$_GOROOT/bin:$PATH
 export GO111MODULE=on
 
 # Rust
-source "$HOME/.cargo/env"
+if [ -f $HOME/.cargo/env ]; then
+  source "$HOME/.cargo/env"
+fi
 
 # SHELL
 export SHELL=$(which zsh)
