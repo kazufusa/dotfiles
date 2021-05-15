@@ -100,6 +100,9 @@ alias r='sudo shutdown -r'
 alias ungzip='gzip -d'
 alias untar='tar xvf'
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+if [ -x "$(command -v bat)" ]; then
+  alias cat='bat'
+fi
 
 function extract() {
   case $1 in
