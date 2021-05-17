@@ -64,6 +64,13 @@ if [ -f $HOME/.cargo/env ]; then
   source "$HOME/.cargo/env"
 fi
 
+# Python with pyenv on anyenv
+export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+if [ -d $PYENV_ROOT ]; then
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi
+
 # SHELL
 export SHELL=$(which zsh)
 
