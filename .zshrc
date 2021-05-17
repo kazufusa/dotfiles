@@ -267,6 +267,11 @@ zinit load github/hub
 zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
 zinit light "iwata/git-now"
 
+# # enhancd; TODO useful but command
+# zinit ice proto'git' pick'init.sh'; zinit light "b4b4r07/enhancd"
+# export ENHANCD_DOT_ARG=a
+# export ENHANCD_HYPHEN_ARG=a
+
 zinit ice lucid wait"0c" lucid reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
             \${P}sed -i '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
