@@ -101,3 +101,6 @@ nnoremap <C-l>s :call LanguageClient#textDocument_documentSymbol()<CR>
 
 [[plugins]]
 repo = 'vim-scripts/AnsiEsc.vim'
+
+[[plugins]]
+repo = 'chr4/nginx.vim'
