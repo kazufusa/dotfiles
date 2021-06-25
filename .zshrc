@@ -134,11 +134,12 @@ function repo(){
 }
 
 function ce() {
+  local _cd=`type z >/dev/null 2>&1 && echo z || echo cd`
   if [ "$1" = "-" ]; then
-    cd - >/dev/null
+    $_cd - >/dev/null
   else
     local _repo="$(repo $1)"
-    [[ -n "${_repo}" ]] && cd "$(ghq root)/${_repo}"
+    [[ -n "${_repo}" ]] && $_cd "$(ghq root)/${_repo}"
   fi
 }
 
