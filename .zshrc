@@ -22,6 +22,8 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 #------------------------------------------------------------------------------
 # PATH
 #------------------------------------------------------------------------------
+PATH=$HOME/dotfiles/bin:$PATH
+
 if type brew > /dev/null 2>&1; then
   PATH=/usr/local/bin:$PATH
 fi
