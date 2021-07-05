@@ -4,7 +4,7 @@
 	editor = vim
 	quotepath = false
 	autoCRLF=false
-	pager = git-split-diffs --color | less -RFX
+	pager = `git-pager` | less -RFX
 [alias]
 	hh = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=short
 	hh2 = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(bold white)%an < %ae >%C(reset)%n''%C(white)%s%C(reset)%n''%b' --abbrev-commit --date=iso

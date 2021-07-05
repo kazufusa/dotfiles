@@ -1,0 +1,2 @@
+#!/bin/sh
+type git-split-diffs >/dev/null 2>&1 && echo "git-split-diffs --color" || echo cat
