@@ -36,3 +36,5 @@
 	tool = vimdiff
 [ghq]
 	root = ~/src
+[split-diffs]
+	theme-name = monochrome-dark
