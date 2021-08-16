@@ -4,7 +4,6 @@
 
 set autoread
 set nopaste
-set expandtab
 set tabstop=2
 set softtabstop=2
 set backspace=indent,eol,start
@@ -23,11 +22,7 @@ set matchpairs+=<:>
 " Smart insert tab setting.
 set smarttab
 " Exchange tab to spaces.
-set expandtab
-" Substitute <Tab> with blanks.
-" set tabstop=8
-" Spaces instead <Tab>.
-" set softtabstop=4
+" set expandtab
 " Autoindent width.
 set shiftwidth=2
 " Round indent by shiftwidth.
