@@ -165,7 +165,7 @@ abbreviations=(
     "g"      "git"
     "gd"     "git diff --color -w"
     "gdc"    "git diff --color -w --cached"
-    "gl"     "git checkout master && git fetch --prune && git pull"
+    "gl"     "git checkout \`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'\` && git fetch --prune && git pull"
     "gf"     "git fetch origin"
     "gff"    "git fetch --prune"
     "gst"    "git status --branch --short"
