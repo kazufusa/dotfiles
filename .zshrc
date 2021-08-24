@@ -156,6 +156,12 @@ function installgo() {
 
 function open() { cmd.exe /c start $(wslpath -w $1) }
 
+function gitdefault() {
+	((git branch --no-color | grep "\smaster$") > /dev/null && echo master) || \
+	((git branch --no-color | grep "\strunk$")  > /dev/null && echo trunk) || \
+	((git branch --no-color | grep "\smain$")   > /dev/null && echo main)
+}
+
 #------------------------------------------------------------------------------
 # Abbreviations
 #------------------------------------------------------------------------------
@@ -165,7 +171,7 @@ abbreviations=(
     "g"      "git"
     "gd"     "git diff --color -w"
     "gdc"    "git diff --color -w --cached"
-    "gl"     "git checkout \`git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'\` && git fetch --prune && git pull"
+    "gl"     "git checkout \`git default\` && git fetch --prune && git pull"
     "gf"     "git fetch origin"
     "gff"    "git fetch --prune"
     "gst"    "git status --branch --short"

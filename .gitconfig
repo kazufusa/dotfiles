@@ -13,6 +13,11 @@
 	h2 = ! git hh2 | head -n 20
 	ha = ! git hh --all | head -n 20
 	ha2 = ! git hh2 --all | head -n 20
+	default = !"f(){\
+		(git branch --no-color | grep \"\\smaster\" > /dev/null && echo master) || \
+		(git branch --no-color | grep \"\\smain\"   > /dev/null && echo main)   || \
+		(git branch --no-color | grep \"\\strunk\"  > /dev/null && echo trunk);\
+		};f"
 
 [push]
 	default = current
@@ -38,3 +43,5 @@
 	root = ~/src
 [split-diffs]
 	theme-name = monochrome-dark
+[init]
+	defaultBranch = main
