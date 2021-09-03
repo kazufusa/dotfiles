@@ -22,7 +22,7 @@ set matchpairs+=<:>
 " Smart insert tab setting.
 set smarttab
 " Exchange tab to spaces.
-" set expandtab
+set expandtab
 " Autoindent width.
 set shiftwidth=2
 " Round indent by shiftwidth.
