@@ -31,6 +31,11 @@ set shiftround
 " Enable smart indent.
 set autoindent smartindent
 
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab
+augroup END
+
 " Enable modeline.
 set modeline
 
