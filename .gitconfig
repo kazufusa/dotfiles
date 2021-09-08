@@ -15,9 +15,9 @@
 	ha = ! git hh --all | head -n 20
 	ha2 = ! git hh2 --all | head -n 20
 	default = !"f(){\
-		(git branch --no-color | grep \"\\smaster$\" > /dev/null && echo master) || \
-		(git branch --no-color | grep \"\\smain$\"   > /dev/null && echo main)   || \
-		(git branch --no-color | grep \"\\strunk$\"  > /dev/null && echo trunk);\
+		(git branch -a --no-color | grep \"\\Wmaster$\" > /dev/null && echo master) || \
+		(git branch -a --no-color | grep \"\\Wmain$\"   > /dev/null && echo main)   || \
+		(git branch -a --no-color | grep \"\\Wtrunk$\"  > /dev/null && echo trunk);\
 		};f"
 
 [push]
