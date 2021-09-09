@@ -170,7 +170,7 @@ if v:shell_error == 0
   " https://qiita.com/tMinamiii/items/0c6589806090c7fc3f8a
   augroup Yank
     au!
-    autocmd TextYankPost * :call system('win32yank.exe -i', @")
+    autocmd TextYankPost * :call system('win32yank.exe -i &', @")
   augroup END
   " https://github.com/miyase256/chikuwansible/blob/64da4b46695cbc21d744255f5c994713523cee82/src_files/nvim/init/windows.vim
   " nnoremap <silent>p :r !win32yank.exe -o<CR>
