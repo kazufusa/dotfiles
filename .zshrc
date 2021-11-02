@@ -272,6 +272,10 @@ fi
 zinit ice lucid wait"!0" from"gh-r" as"program" mv"hub-*/bin/hub -> hub"
 zinit load github/hub
 
+# gh
+zinit ice from"gh-r" as"program" bpick"*.tar.gz" pick"**/gh"
+zinit light "cli/cli"
+
 # git-now
 zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
 zinit light "iwata/git-now"
