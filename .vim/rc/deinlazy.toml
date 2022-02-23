@@ -33,7 +33,7 @@ command! FzfFiles2 call fzf#run({
   \  'options': '-m -x +s',
   \  'down'   : '30%'})
 command! -bang -nargs=? -complete=dir FzfFiles3 call
-  \ fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'ag --hidden --ignore .git -g ""'}), <bang>0)
+  \ fzf#vim#files(<q-args>, fzf#vim#with_preview({'source': 'ag --hidden --ignore .git -g "" | sort -r'}), <bang>0)
 command! FzfGitFiles2 call fzf#run({
   \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
   \  'dir'    : systemlist('git rev-parse --show-toplevel 2>/dev/null|| pwd')[0],
@@ -200,4 +200,10 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+'''
+
+[[plugins]]
+repo = 'sebdah/vim-delve'
+on_ft = ['go']
+hook_add = '''
 '''

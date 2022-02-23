@@ -177,8 +177,8 @@ if v:shell_error == 0
   " vnoremap <silent>p :r !win32yank.exe -o<CR>
   " nnoremap <silent><S-p> :.-1read !win32yank.exe -o<CR>
   " vnoremap <silent><S-p> :.-1read !win32yank.exe -o<CR>
-  nnoremap <silent>p "=system('win32yank.exe -o')<CR>p
-  vnoremap <silent>p "=system('win32yank.exe -o')<CR>p
-  nnoremap <silent><S-p> "=system('win32yank.exe -o')<CR><S-p>
-  vnoremap <silent><S-p> "=system('win32yank.exe -o')<CR><S-p>
+  nnoremap <silent>p "=system('win32yank.exe -o --lf')<CR>p
+  vnoremap <silent>p "=system('win32yank.exe -o --lf')<CR>p
+  nnoremap <silent><S-p> "=system('win32yank.exe -o --lf')<CR><S-p>
+  vnoremap <silent><S-p> "=system('win32yank.exe -o --lf')<CR><S-p>
 endif

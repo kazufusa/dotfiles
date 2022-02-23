@@ -72,8 +72,8 @@ let g:LanguageClient_serverCommands = {
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ 'typescriptreact': ['typescript-language-server', '--stdio'],
       \ 'python': ['pyls'],
-      \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
-      \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
+      \ 'c': ['clangd'],
+      \ 'cpp': ['clangd'],
       \ 'ruby': ['~/.anyenv/envs/rbenv/shims/solargraph', 'stdio'],
       \ 'rust': ['rls'],
       \ }
