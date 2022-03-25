@@ -195,7 +195,7 @@ abbreviations=(
     "gn"     "git now --all --stat"
     "gcz"    "git cz"
     "dk"     "docker"
-    "dkcm"   "docker-compose"
+    "dkcm"   "docker compose"
     "rmansi" "sed 's/\x1b\[[0-9;]*m//g'"
     "jne"    "jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute"
     "iconv"  "iconv -f cp932 -t utf8"
