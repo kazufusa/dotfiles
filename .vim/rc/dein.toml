@@ -74,7 +74,7 @@ let g:LanguageClient_serverCommands = {
       \ 'python': ['pyls'],
       \ 'c': ['clangd'],
       \ 'cpp': ['clangd'],
-      \ 'ruby': ['~/.anyenv/envs/rbenv/shims/solargraph', 'stdio'],
+      \ 'ruby': ['solargraph', 'stdio'],
       \ 'rust': ['rls'],
       \ }
 
