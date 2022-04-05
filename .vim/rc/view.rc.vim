@@ -74,12 +74,6 @@ if has('patch-7.4.1570')
   set shortmess+=F
 endif
 
-" Don't create backup.
-set nowritebackup
-set nobackup
-set noswapfile
-set backupdir-=.
-
 " Disable bell.
 set t_vb=
 set novisualbell

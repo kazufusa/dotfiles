@@ -10,6 +10,10 @@ set backspace=indent,eol,start
 set nohidden
 set noautowrite
 set scrolloff=10
+set nobackup
+set backupcopy=yes
+set nowritebackup
+set noswapfile
 
 " Highlight parenthesis.
 set showmatch
