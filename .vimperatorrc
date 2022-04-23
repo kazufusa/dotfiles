@@ -1,5 +1,0 @@
-noremap <C-a> i<C-a>
-inoremap <C-a> <insert><C-a><insert>
-
-set hintchars=ifjklasdhguonmerwc
-hi Hint font-family: monospace; font-size: 14px; font-weight: bold; color: #dddddd; background-color: #1c1c1c; border: none; padding: 0px 5px;

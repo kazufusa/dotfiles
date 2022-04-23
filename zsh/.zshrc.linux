@@ -1,0 +1,118 @@
+#------------------------------------------------------------------------------
+# zinit
+#------------------------------------------------------------------------------
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f"
+fi
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit installer's chunk
+
+zinit light "zsh-users/zsh-syntax-highlighting"
+zinit light "zsh-users/zsh-autosuggestions"
+zinit ice lucid atload"zicompinit; zicdreplay"; zinit light "zsh-users/zsh-completions"
+zinit light "zsh-users/zsh-history-substring-search"
+bindkey "^P" history-substring-search-up
+bindkey "^N" history-substring-search-down
+
+# docker and docker-compose
+zinit ice as"completion"
+zinit snippet https://raw.githubusercontent.com/docker/compose/master/contrib/completion/zsh/_docker-compose
+# zinit ice as"completion"
+# zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
+zinit light "zsh-users/zsh-docker"
+
+# anyenv
+zinit ice lucid wait"!0" as"program" pick"bin/anyenv" \
+        atload"eval \"\$(anyenv init -)\"; \
+        [[ -d ${HOME}/.config/anyenv/anyenv-install ]] || anyenv install --force-init" \
+        atclone"git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update"
+zinit light anyenv/anyenv
+
+# fzf
+zinit ice lucid wait"!0" from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+zinit ice lucid wait"!0" as"command" pick"bin/fzf-tmux"
+zinit load junegunn/fzf
+zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
+zinit load junegunn/fzf
+if [ -x "$(command -v zoxide)" ]; then
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi
+
+# hub
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"hub-*/bin/hub -> hub"
+zinit load github/hub
+
+# gh
+zinit ice from"gh-r" as"program" bpick"*.tar.gz" pick"**/gh"
+zinit light "cli/cli"
+
+# git-now
+zinit ice lucid wait"!0" as"program" pick"{git-now,git-now-add,git-now-rebase,gitnow-common,gitnow-shFlags}"
+zinit light "iwata/git-now"
+
+# # enhancd; TODO useful but command
+# zinit ice proto'git' pick'init.sh'; zinit light "b4b4r07/enhancd"
+# export ENHANCD_DOT_ARG=a
+# export ENHANCD_HYPHEN_ARG=a
+
+zinit ice lucid wait"0c" lucid reset \
+    atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
+            \${P}sed -i '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+            \${P}dircolors -b LS_COLORS > c.zsh" \
+    atpull"%atclone" pick"c.zsh" nocompile"!" \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}'
+zinit light trapd00r/LS_COLORS
+
+zinit ice wait"!0"; zinit light "b4b4r07/emoji-cli"
+
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"jq-* -> jq"  atpull"%atclone" \
+  atclone"ln -fs $HOME/.zinit/plugins/stedolan---jq/jq $HOME/bin/jq"
+zinit load stedolan/jq
+
+zinit ice lucid wait"!0a" as"null"\
+  atclone" \
+    mkdir -p $HOME/.tmux/plugins; \
+    ln -s $HOME/.zinit/plugins/tmux-plugins---tpm $HOME/.tmux/plugins/tpm; \
+    setup_my_tmux_plugin tpm;"
+zinit light tmux-plugins/tpm
+
+zinit ice as"program" atpull"%atclone" make \
+  atclone"ln -fs $HOME/.zinit/plugins/tmux---tmux/tmux $HOME/bin/tmux;./autogen.sh; ./configure"
+zinit light tmux/tmux
+
+zinit ice as"program" atpull"%atclone" make pick"src/tig" \
+  atclone"make configure; ./configure --enable-widec --with-ncursesw; \
+    ln -fs $HOME/.zinit/plugins/jonas---tig/src/tig $HOME/bin/tig"
+zinit light jonas/tig
+
+# git-open
+zinit light paulirish/git-open
+
+zinit ice lucid from"gh-r" as"program" pick"ghq_linux_amd64/ghq" \
+  atclone"ln -sf $HOME/.zinit/plugins/x-motemen---ghq/ghq_linux_amd64/ghq $HOME/bin/ghq"
+zinit light x-motemen/ghq
+
+zinit ice lucid from"gh-r" as"program" pick"bat-*/bat"
+zinit light sharkdp/bat
+
+zinit ice lucid wait"!0" from"gh-r" as"program" mv"**/lab -> lab"
+zinit light lighttiger2505/lab
+
+zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
+zinit light starship/starship
+
+#------------------------------------------------------------------------------
+# for wsl2
+#------------------------------------------------------------------------------
+if uname -a | grep -q microsoft; then
+  (sh -c "dropbox status 2>/dev/null | grep -q \"isn't\" && dropbox start" >/dev/null 2>&1 &)
+fi

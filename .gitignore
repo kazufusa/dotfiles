@@ -1,1 +1,6 @@
 tmp/*
+zsh/*
+!zsh/.zshrc
+!zsh/.zshrc.linux
+!zsh/.zimrc
+!zsh/abbreviations
