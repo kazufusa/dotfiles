@@ -257,7 +257,13 @@ if [[ $(uname -a) =~ Linux ]]; then
 fi
 # }}}
 
+# homebrew@M1 Mac {{{
+if [[ -d '/opt/homebrew' ]]; then
+ HOMEBREW_HOME='/opt/homebrew'
+ eval "$($HOMEBREW_HOME/bin/brew shellenv)"
+fi
 # }}}
 
+# }}}
 
 autoload -Uz compinit && compinit
