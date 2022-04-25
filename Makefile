@@ -13,7 +13,7 @@ brew:
 	uname -a | grep Darwin
 	command -v brew >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew tap homebrew/cask-fonts
-	brew install --cask google-chrome iterm2
+	brew install --cask google-chrome
 	brew install zsh fzf tmux tig vim neofetch tree htop bat ag bottom ghq git font-hackgen-nerd coreutils exa zoxide wget w3m iproute2mac gh
 	[ -e ~/.fzf.zsh ] || $(brew --prefix)/opt/fzf/install --all
 
