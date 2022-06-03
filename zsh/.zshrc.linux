@@ -28,13 +28,6 @@ zinit snippet https://raw.githubusercontent.com/docker/compose/master/contrib/co
 # zinit snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
 zinit light "zsh-users/zsh-docker"
 
-# anyenv
-zinit ice lucid wait"!0" as"program" pick"bin/anyenv" \
-        atload"eval \"\$(anyenv init -)\"; \
-        [[ -d ${HOME}/.config/anyenv/anyenv-install ]] || anyenv install --force-init" \
-        atclone"git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update"
-zinit light anyenv/anyenv
-
 # fzf
 zinit ice lucid wait"!0" from"gh-r" as"program"
 zinit load junegunn/fzf-bin
