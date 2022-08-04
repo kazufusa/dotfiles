@@ -24,7 +24,7 @@ repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 on_cmd = ['Fzf','fzf#run']
 hook_add = '''
-let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_layout = { 'down': '~50%' }
 let g:fzf_command_prefix = 'Fzf'
 command! FzfFiles2 call fzf#run({
   \  'source' : 'ag --hidden --ignore .git --ignore node_modules --ignore vendor/bundle -g .',
@@ -152,33 +152,17 @@ let g:vim_markdown_fenced_languages = ['tsx=typescriptreact']
 '''
 
 [[plugins]]
-repo = 'iamcco/markdown-preview.nvim'
-on_ft = ['markdown', 'mkd']
-build = 'cd app & yarn install'
+repo = 'previm/previm'
+on_ft = ['markdown', 'mkd', 'md']
 hook_add = '''
-let g:mkdp_auto_close = 0
-let g:mkdp_open_to_the_world = 1
+"let g:previm_open_cmd = ''
 '''
-# let g:mkdp_open_to_the_world = 1
-# let g:mkdp_open_ip = '192.168.11.13'
-# let g:mkdp_port = 8080
-# function! g:EchoUrl(url)
-#   :echo a:url
-# endfunction
-# let g:mkdp_browserfunc = 'g:EchoUrl'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = ['rust']
 hook_add = '''
 set hidden
-'''
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript', 'ts', 'tsx', 'typescript.tsx']
-hook_add = '''
-autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 '''
 
 [[plugins]]

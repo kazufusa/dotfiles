@@ -54,12 +54,16 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
 
-zmodule olets/zsh-abbr
 zmodule fzf
 zmodule completion
+zmodule environment
+zmodule input
 zmodule archive
 zmodule asdf
-zmodule exa
 zmodule utility
+zmodule exa
+zmodule olets/zsh-abbr
+
+zmodule zsh-users/zsh-completions --fpath $ZDOTDIR/zsh-completions
 
 # vim:set ft=bash :

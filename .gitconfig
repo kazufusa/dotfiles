@@ -4,6 +4,7 @@
 	editor = vim
 	quotepath = false
 	autoCRLF=false
+	hooksPath = /Users/k_ishibashi/.config/git/hooks
 	# pager = `git-pager` | less -RFX
 	# pager = git-split-diffs --color | less -RFX
 [alias]
@@ -14,17 +15,11 @@
 	h2 = ! git hh2 | head -n 20
 	ha = ! git hh --all | head -n 20
 	ha2 = ! git hh2 --all | head -n 20
-	default = !"f(){\
-		(git branch -a --no-color | grep \"\\Wmaster$\" > /dev/null && echo master) || \
-		(git branch -a --no-color | grep \"\\Wmain$\"   > /dev/null && echo main)   || \
-		(git branch -a --no-color | grep \"\\Wtrunk$\"  > /dev/null && echo trunk);\
-		};f"
+  default = !"for i in master trunk main; do git branch -a --no-color | grep \"[ \\/]$i$\" > /dev/null && echo $i && exit; done"
+  root = !cd `git rev-parse --show-superproject-working-tree --show-toplevel | head -n 1`
 
 [push]
-	default = current
-[github]
-	user = kazufusa
-	email = kazu.jiyuunosenshi.fusa@gmail.com
+	default = nothing
 [color]
 	ui = always
 [rebase]

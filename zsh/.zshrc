@@ -224,7 +224,7 @@ function installgo() {
   fi
 }
 
-function open() { cmd.exe /c start $(wslpath -w $1) }
+# function open() { cmd.exe /c start $(wslpath -w $1) }
 # }}}
 
 # Etc {{{
@@ -264,6 +264,11 @@ if [[ -d '/opt/homebrew' ]]; then
 fi
 # }}}
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!! {{{
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 # }}}
 
-autoload -Uz compinit && compinit
+# }}}
+
+eval $(orp asdf /go/ \.sdkman \.cargo homebrew)

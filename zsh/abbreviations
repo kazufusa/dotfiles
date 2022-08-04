@@ -1,5 +1,6 @@
 abbr g="git"
 abbr gd="git diff --color -w"
+abbr gdw="git diff --color -w  --word-diff-regex=\$'[^\\x80-\\xbf][\\x80-\\xbf]*'"
 abbr gdc="git diff --color -w --cached"
 abbr gl="git checkout \`git default\` && git fetch --prune && git pull"
 abbr gf="git fetch origin"

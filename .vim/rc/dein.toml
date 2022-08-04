@@ -71,7 +71,7 @@ let g:LanguageClient_serverCommands = {
       \ 'typescript': ['typescript-language-server', '--stdio'],
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-      \ 'python': ['pyls'],
+      \ 'python': ['pylsp'],
       \ 'c': ['clangd'],
       \ 'cpp': ['clangd'],
       \ 'ruby': ['solargraph', 'stdio'],
@@ -103,3 +103,10 @@ repo = 'vim-scripts/AnsiEsc.vim'
 
 [[plugins]]
 repo = 'chr4/nginx.vim'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript', 'ts', 'tsx', 'typescript.tsx']
+hook_add = '''
+autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+'''
