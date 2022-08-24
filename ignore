@@ -1,3 +1,5 @@
-*/tmp/*
+**/tmp/*
 *.tfvars
 .env
+*/.terraform/*
+*pyc
