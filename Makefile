@@ -6,8 +6,7 @@ DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 install:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	ln -sfnv $(abspath zsh) $(HOME)/.config/zsh
-	mkdir -p $(HOME)/.config/git
-	ln -sfnv $(abspath ./ignore) $(HOME)/.config/git/ignore
+	ln -sfnv $(abspath ./.config/git) $(HOME)/.config/git
 	mkdir -p $(HOME)/bin
 	cp ./bin/* $(HOME)/bin/
 

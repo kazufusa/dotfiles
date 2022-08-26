@@ -4,7 +4,7 @@
 	editor = vim
 	quotepath = false
 	autoCRLF=false
-	hooksPath = /home/kazufusa/.config/git/hooks
+	hooksPath = ~/.config/git/hooks
 	# pager = `git-pager` | less -RFX
 	# pager = git-split-diffs --color | less -RFX
 [alias]
