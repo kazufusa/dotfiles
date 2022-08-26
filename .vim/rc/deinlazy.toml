@@ -191,3 +191,18 @@ repo = 'sebdah/vim-delve'
 on_ft = ['go']
 hook_add = '''
 '''
+
+[[plugins]]
+repo = 'vim-python/python-syntax'
+on_ft = ['py', 'python']
+hook_add = '''
+let g:python_highlight_all=1
+" let g:python_highlight_string_format = 1
+" let g:python_highlight_builtin_objs  = 1
+'''
+
+[[plugins]]
+repo = 'jparise/vim-graphql'
+on_ft = ['graphql']
+hook_add = '''
+'''
