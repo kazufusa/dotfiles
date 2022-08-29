@@ -224,7 +224,9 @@ function installgo() {
   fi
 }
 
-function open() { cmd.exe /c start $(wslpath -w $1) }
+if [[ $(uname -a) =~ Linux ]]; then
+  function open() { cmd.exe /c start $(wslpath -w $1) }
+fi
 # }}}
 
 # Etc {{{

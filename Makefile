@@ -26,4 +26,7 @@ tmux:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 2>/dev/null|| :
 	@echo "Press prefix + I (capital i, as in Install) to fetch the plugin."
 
+python:
+	pip install -U python-lsp-server pylsp-mypy neovim pip
+
 .PHONY: install brew

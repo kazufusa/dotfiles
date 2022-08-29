@@ -71,7 +71,7 @@ let g:LanguageClient_serverCommands = {
       \ 'typescript': ['typescript-language-server', '--stdio'],
       \ 'typescript.tsx': ['typescript-language-server', '--stdio'],
       \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-      \ 'python': ['pyls'],
+      \ 'python': ['pylsp'],
       \ 'c': ['clangd'],
       \ 'cpp': ['clangd'],
       \ 'ruby': ['solargraph', 'stdio'],
