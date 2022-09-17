@@ -7,6 +7,7 @@ install:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 	ln -sfnv $(abspath zsh) $(HOME)/.config/zsh
 	ln -sfnv $(abspath ./.config/git) $(HOME)/.config/git
+	ln -sfnv $(abspath ./.config/pycodestyle) $(HOME)/.config/pycodestyle
 	mkdir -p $(HOME)/bin
 	cp ./bin/* $(HOME)/bin/
 
@@ -27,6 +28,6 @@ tmux:
 	@echo "Press prefix + I (capital i, as in Install) to fetch the plugin."
 
 python:
-	pip install -U python-lsp-server pylsp-mypy neovim pip
+	pip install -U python-lsp-server pylsp-mypy pyls-isort python-lsp-black neovim pip
 
 .PHONY: install brew
