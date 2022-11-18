@@ -8,36 +8,7 @@ mkdir -p $1/src/main/scala
 cd $1
 git init
 
-cat <<EOF > .gitignore
-*.class
-*.jar
-*.png.bak
-*.asta.bak
-*~
-.DS_Store
-*.log
-
-### honkit ###
-/honkit
-
-### npm ###
-node_modules
-npm-debug.log
-
-### sbt ###
-target/
-lib_managed/
-src_managed/
-project/boot/
-.history
-.cache
-.bsp
-
-### IntelliJ ###
-*.iml
-.idea/
-EOF
-
+curl https://raw.githubusercontent.com/scala-text/scala_text/master/.gitignore > .gitignore
 
 cat <<EOF > build.sbt
 ThisBuild / version := "0.1.0-SNAPSHOT"
