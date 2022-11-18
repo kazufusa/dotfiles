@@ -6,6 +6,8 @@ mkdir -p $1/project
 mkdir -p $1/src/main/scala
 
 cd $1
+git init
+
 cat <<EOF > .gitignore
 *.class
 *.jar
