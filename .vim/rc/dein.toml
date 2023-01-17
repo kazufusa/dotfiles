@@ -76,6 +76,7 @@ let g:LanguageClient_serverCommands = {
       \ 'cpp': ['clangd'],
       \ 'ruby': ['solargraph', 'stdio'],
       \ 'rust': ['rls'],
+      \ 'scala': ['metals'],
       \ 'tf': ['terraform-ls', 'serve'],
       \ 'terraform': ['terraform-ls', 'serve'],
       \ }

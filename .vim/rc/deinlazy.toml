@@ -222,3 +222,7 @@ repo = 'jparise/vim-graphql'
 on_ft = ['graphql']
 hook_add = '''
 '''
+
+[[plugins]]
+repo = 'shmup/vim-sql-syntax'
+on_ft = ['sql']
