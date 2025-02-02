@@ -1,0 +1,44 @@
+[user]
+	useConfigOnly = true
+[core]
+	editor = vim
+	quotepath = false
+	autoCRLF=false
+	hooksPath = ~/.config/git/hooks
+	ignorecase = false
+[alias]
+	hh = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ad)%C(reset) %C(white)%s%C(reset) %C(bold white)― %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=short --date-order
+	hh2 = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(bold white)%an < %ae >%C(reset)%n''%C(white)%s%C(reset)%n''%b' --abbrev-commit --date=iso --date-order
+
+	h  = ! git hh  | head -n 20
+	h2 = ! git hh2 | head -n 20
+	ha = ! git hh --all | head -n 20
+	ha2 = ! git hh2 --all | head -n 20
+  default = !"for i in master trunk main; do git branch -a --no-color | grep \"[ \\/]$i$\" > /dev/null && echo $i && exit; done"
+  root = !cd `git rev-parse --show-superproject-working-tree --show-toplevel | head -n 1`
+
+[push]
+	default = nothing
+[color]
+	ui = always
+[rebase]
+	autosquash = true
+[merge]
+	ff = false
+[pull]
+	ff = only
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff]
+	tool = vimdiff
+[ghq]
+	root = ~/src
+# [split-diffs]
+# 	theme-name = monochrome-dark
+[init]
+	defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = https://github.com/
