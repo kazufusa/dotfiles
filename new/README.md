@@ -1,3 +1,4 @@
+## TODO
 
 ```
 zmodule olets/zsh-abbr
@@ -8,3 +9,8 @@ zmodule asdf
 zmodule exa
 zmodule utility
 ```
+
+- vim
+- nvim
+- misc zsh plugins
+- brewfile
