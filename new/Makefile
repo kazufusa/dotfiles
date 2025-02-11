@@ -1,11 +1,7 @@
-init:
-	bash ./scripts/init.sh
-
 brew:
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew bundle --file ./Brewfile
+	bash ./scripts/brew.sh
 
 install:
-	stow git tmux zsh nvim vim
+	stow -d . -t ~ zsh tmux vim nvim git sheldon
 
-.PHONY: brew install
+.PHONY: init install

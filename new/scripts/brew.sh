@@ -15,5 +15,3 @@ fi
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$($HOMEBREW_HOME/bin/brew shellenv)"
 brew bundle --file ./Brewfile
-
-stow -d . -t ~ config others

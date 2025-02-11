@@ -1,0 +1,58 @@
+shell = "zsh"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
+[plugins.zimfw-environment]
+github = "zimfw/environment"
+
+[plugins.zimfw-input]
+github = "zimfw/input"
+
+[plugins.zimfw-duration-info]
+github = "zimfw/duration-info"
+
+[plugins.zimfw-git-info]
+github = "zimfw/git-info"
+
+[plugins.zimfw-asciiship]
+github = "zimfw/asciiship"
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+apply = ["defer"]
+
+[plugins.zimfw-completion]
+github = "zimfw/completion"
+apply = ["defer"]
+
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+apply = ["defer"]
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
+
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
+apply = ["defer"]
+
+[plugins.zimfw-fzf]
+github = "zimfw/fzf"
+apply = ["defer"]
+
+[plugins.zimfw-archive]
+github = "zimfw/archive"
+apply = ["defer"]
+
+[plugins.zimfw-exa]
+github = "zimfw/exa"
+apply = ["defer"]
