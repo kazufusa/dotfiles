@@ -32,6 +32,7 @@ export HISTSIZE=50000
 export SAVEHIST=10000000
 export GPG_TTY=$(tty)
 export TERM=screen-256color
+export FZF_DEFAULT_OPTS='--layout=reverse --border --exit-0'
 
 ##############################################################################
 # PATH
@@ -55,10 +56,42 @@ cdpath=(~ ..)
 ##############################################################################
 # options
 ##############################################################################
-setopt no_beep
 setopt nolistbeep
 setopt correct
 setopt list_packed
+
+# 日本語ファイル名を表示可能にする
+setopt print_eight_bit
+
+# beep を無効にする
+setopt no_beep
+
+# フローコントロールを無効にする
+setopt no_flow_control
+
+# Ctrl+Dでzshを終了しない
+setopt ignore_eof
+
+# '#' 以降をコメントとして扱う
+setopt interactive_comments
+
+# ディレクトリ名だけでcdする
+setopt auto_cd
+
+# cd したら自動的にpushdする
+setopt auto_pushd
+
+# 重複したディレクトリを追加しない
+setopt pushd_ignore_dups
+
+# 高機能なワイルドカード展開を使用する
+setopt extended_glob
+setopt share_history           # 履歴を他のシェルとリアルタイム共有する
+setopt hist_ignore_all_dups    # 同じコマンドをhistoryに残さない
+setopt hist_ignore_space       # historyに保存するときに余分なスペースを削除する
+setopt hist_reduce_blanks      # historyに保存するときに余分なスペースを削除する
+setopt hist_save_no_dups       # 重複するコマンドが保存されるとき、古い方を削除する
+setopt inc_append_history      # 実行時に履歴をファイルにに追加していく
 
 # ZIM CONFIGURATION {{{
 
@@ -170,9 +203,6 @@ unset key
 
 # }}}
 
-# zoxide
-eval "$(zoxide init zsh)"
-
 ##############################################################################
 # Aliases
 ##############################################################################
@@ -184,6 +214,11 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
+
+if type "zoxide" > /dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi
 
 function repo(){
   ghq list | fzf --reverse +m -q "$1" \
@@ -205,9 +240,7 @@ if [[ $(uname -a) =~ Linux ]]; then
   function open() { cmd.exe /c start $(wslpath -w $1) }
 fi
 
-
 ##############################################################################
 # finalize
 ##############################################################################
-# bindkey " " abbr-expand-and-insert
 autoload -Uz compinit && compinit

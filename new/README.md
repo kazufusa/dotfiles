@@ -1,3 +1,9 @@
+# dotfiles
+
+```sh
+./make.sh brew tow
+```
+
 ## TODO
 
 ```
