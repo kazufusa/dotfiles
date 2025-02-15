@@ -14,6 +14,6 @@ brew:
 	bash ./scripts/brew.sh
 
 install:
-	bash -c 'eval "$$($(HOMEBREW_HOME)/bin/brew shellenv)" && stow -d . -t ~ zsh tmux vim nvim git sheldon'
+	bash -c 'eval "$$($(HOMEBREW_HOME)/bin/brew shellenv)" && stow -d . -t ~ zsh tmux vim nvim git sheldon bin'
 
 .PHONY: all preparation brew install
