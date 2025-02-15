@@ -37,7 +37,14 @@ export FZF_DEFAULT_OPTS='--layout=reverse --border --exit-0'
 ##############################################################################
 # PATH
 ##############################################################################
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export PATH="$HOME/bin:$PATH"
+if type "zoxide" > /dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+if type "mise" > /dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
 ##############################################################################
 # cdr
@@ -214,11 +221,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
-
-if type "zoxide" > /dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
-  alias cd="z"
-fi
+alias cd="z"
 
 function repo(){
   ghq list | fzf --reverse +m -q "$1" \
