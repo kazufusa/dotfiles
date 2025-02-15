@@ -8,7 +8,7 @@ if [ "$(uname)" == 'Linux' ]; then
   apt-get install -y make git
 fi
 
-git clone https://github.com/kazufusa/dotfiles.git ~/src/github.com/kazufusa/
+git clone https://github.com/kazufusa/dotfiles.git ~/src/github.com/kazufusa/dotfiles
 
 cd ~/src/github.com/kazufusa/dotfiles/new
 
