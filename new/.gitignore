@@ -1,2 +1,4 @@
 zsh/.config/zsh/*
+vim/.config/vim/*
+tmux/.config/tmux/*
 bin/*
