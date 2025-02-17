@@ -15,7 +15,8 @@
 	ha = ! git hh --all | head -n 20
 	ha2 = ! git hh2 --all | head -n 20
   default = !"for i in master trunk main; do git branch -a --no-color | grep \"[ \\/]$i$\" > /dev/null && echo $i && exit; done"
-  root = !cd `git rev-parse --show-superproject-working-tree --show-toplevel | head -n 1`
+  root = !git rev-parse --show-superproject-working-tree --show-toplevel | head -n 1
+  copyhash = !git rev-parse --short "$1" | tr -d '\n' | pbcopy
 
 [push]
 	default = nothing
@@ -36,9 +37,10 @@
 	tool = vimdiff
 [ghq]
 	root = ~/src
-# [split-diffs]
-# 	theme-name = monochrome-dark
 [init]
 	defaultBranch = main
 # [url "git@github.com:"]
 # 	insteadOf = https://github.com/
+
+[tig "bind"]
+  main = C !@git copyhash %(commit)
