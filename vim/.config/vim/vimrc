@@ -1,0 +1,109 @@
+"---------------------------------------------------------------------------
+" Initialize:
+"
+
+if &compatible
+  set nocompatible
+endif
+
+set runtimepath^=~/.config/vim
+
+let s:config_dir = expand('<sfile>:p:h')
+
+" Set augroup.
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+function! s:source_rc(path, ...) abort
+  let use_global = get(a:000, 0, !has('vim_starting'))
+  let abspath = resolve(expand(s:config_dir. a:path))
+  if !use_global
+    execute 'source' fnameescape(abspath)
+    return
+  endif
+
+  " substitute all 'set' to 'setglobal'
+  let content = map(readfile(abspath),
+        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+  " create tempfile and source the tempfile
+  let tempfile = tempname()
+  try
+    call writefile(content, tempfile)
+    execute printf('source %s', fnameescape(tempfile))
+  finally
+    if filereadable(tempfile)
+      call delete(tempfile)
+    endif
+  endtry
+endfunction
+
+call s:source_rc('/settings.vim')
+call s:source_rc('/edit.vim')
+call s:source_rc('/mappings.vim')
+call s:source_rc('/plugins.vim')
+call s:source_rc('/view.vim')
+
+"---------------------------------------------------------------------------
+" Search:
+"
+
+" Ignore the case of normal letters.
+set ignorecase
+" If the search pattern contains upper case characters, override ignorecase
+" option.
+set smartcase
+
+" Enable incremental search.
+set incsearch
+" Don't highlight search result.
+set hlsearch
+" Clear highlight search result and set nopaste.
+nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:nohlsearch<CR>
+
+" Searches wrap around the end of the file.
+set wrapscan
+
+"---------------------------------------------------------------------------
+" FileType:
+"
+
+filetype off
+filetype plugin indent on
+silent! syntax enable
+if !has('vim_starting')
+  doautocmd FileType
+endif
+
+"---------------------------------------------------------------------------
+" Commands:
+"
+
+" Display diff with the file.
+"command! -nargs=1 -complete=file Diff vertical diffsplit <args>
+" Disable diff mode.
+"command! -nargs=0 Undiff setlocal nodiff noscrollbind wrap
+
+"---------------------------------------------------------------------------
+" Encoding:
+"
+if &encoding !=? 'utf-8' | let &termencoding = &encoding | endif
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix,mac,dos
+set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,iso-2022-jp
+
+"---------------------------------------------------------------------------
+" Others:
+"
+set viminfofile=~/.config/vim/viminfo
+
+" If true Vim master, use English help file.
+set helplang& helplang=en,ja
+
+" Default home directory.
+let t:cwd = getcwd()
+
+set secure
+
+" vim: foldmethod=marker
