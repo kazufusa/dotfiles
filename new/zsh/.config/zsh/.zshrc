@@ -33,6 +33,7 @@ export SAVEHIST=10000000
 export GPG_TTY=$(tty)
 export TERM=screen-256color
 export FZF_DEFAULT_OPTS='--layout=reverse --border --exit-0'
+export LC_ALL=en_US.UTF-8
 
 ##############################################################################
 # PATH

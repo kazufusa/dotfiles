@@ -9,6 +9,17 @@ Jetpack 'vim-denops/denops-helloworld.vim'
 Jetpack 'rafi/awesome-vim-colorschemes'
 Jetpack 'luochen1990/rainbow'
 Jetpack 'thinca/vim-quickrun'
+Jetpack 'Shougo/ddc.vim'
+Jetpack 'Shougo/ddc-around'
+Jetpack 'Shougo/ddc-omni'
+Jetpack 'Shougo/ddc-ui-native'
+Jetpack 'Shougo/ddc-source-lsp'
+Jetpack 'matsui54/ddc-source-buffer'
+Jetpack 'matsui54/ddc-dictionary'
+Jetpack 'Shougo/ddc-converter_remove_overlap'
+Jetpack 'Shougo/ddc-matcher_head'
+Jetpack 'Shougo/ddc-sorter_rank'
+Jetpack 'tani/ddc-fuzzy'
 call jetpack#end()
 
 "---------------------------------------------------------------------------
@@ -65,3 +76,28 @@ nnoremap <silent> <Leader>r <Plug>(quickrun)
 "
 let g:rainbow_active = 1
 au MyAutoCmd VimEnter * nested RainbowToggleOn
+
+
+
+"---------------------------------------------------------------------------
+" ddc.vim
+"
+" UI
+call ddc#custom#patch_global('ui', 'native')
+
+" SOURCE
+call ddc#custom#patch_global('sources', ['around', 'dictionary'])
+
+" SOURCE OPTION    (filterはここで指定)
+call ddc#custom#patch_global('sourceOptions', {
+    \ 'around': {'mark': '[Around]'},
+    \ '_': {
+    \ 'matchers': ['matcher_fuzzy'],
+    \ 'sorters': ['sorter_fuzzy'],
+    \ 'converters': ['converter_fuzzy'],
+    \ 'isVolatile': v:false
+    \ }
+    \ })
+
+" ddc.vimを有効化する
+call ddc#enable()
