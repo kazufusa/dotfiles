@@ -10,6 +10,6 @@ fi
 
 git clone https://github.com/kazufusa/dotfiles.git ~/src/github.com/kazufusa/dotfiles
 
-cd ~/src/github.com/kazufusa/dotfiles/new
+cd ~/src/github.com/kazufusa/dotfiles/
 
 make all
