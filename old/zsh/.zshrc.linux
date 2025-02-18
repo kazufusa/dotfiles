@@ -29,8 +29,8 @@ zinit snippet https://raw.githubusercontent.com/docker/compose/master/contrib/co
 zinit light "zsh-users/zsh-docker"
 
 # fzf
-zinit ice lucid wait"!0" from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zinit ice lucid wait"!0" as"command" pick"bin/fzf"
+zinit load junegunn/fzf
 zinit ice lucid wait"!0" as"command" pick"bin/fzf-tmux"
 zinit load junegunn/fzf
 zinit ice lucid wait"!0" multisrc"shell/{completion,key-bindings}.zsh"
@@ -99,9 +99,9 @@ zinit light sharkdp/bat
 
 zinit ice lucid wait"!0" from"gh-r" as"program" mv"**/lab -> lab"
 zinit light lighttiger2505/lab
-
-zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
-zinit light starship/starship
+#
+# zinit ice lucid from"gh-r" as"program" atload"eval \"\$(starship init zsh)\""
+# zinit light starship/starship
 
 #------------------------------------------------------------------------------
 # for wsl2
