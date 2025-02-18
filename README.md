@@ -1,6 +1,6 @@
 # dotfiles
 
-curl -L https://raw.githubusercontent.com/kazufusa/dotfiles/refs/heads/main/new/scripts/setup.sh | bash
+curl -L https://raw.githubusercontent.com/kazufusa/dotfiles/refs/heads/main/scripts/setup.sh | bash
 
 ```sh
 ./make.sh brew tow
