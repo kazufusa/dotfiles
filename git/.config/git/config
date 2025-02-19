@@ -42,5 +42,16 @@
 # [url "git@github.com:"]
 # 	insteadOf = https://github.com/
 
+[tig]
+	ignore-space = all
+
 [tig "bind"]
-  main = C !@git copyhash %(commit)
+	main = F !@git fetch
+	main = L !@git pull origin %(branch)
+	main = P !@git push origin $(branch)
+	main = R !git revert %(commit)
+	main = R !git rebase -i %(commit)
+	diff = R !git rebase -i %(commit)
+	main = F !git commit --fixup %(commit) --allow-empty
+	diff = F !git commit --fixup %(commit)
+	main = C !@git copyhash %(commit)
