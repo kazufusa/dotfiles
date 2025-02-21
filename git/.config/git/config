@@ -46,6 +46,7 @@
 	ignore-space = all
 
 [tig "bind"]
+	generic = + !git commit --amend --no-edit
 	main = F !@git fetch
 	main = L !@git pull origin %(branch)
 	main = P !@git push origin $(branch)

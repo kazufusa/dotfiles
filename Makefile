@@ -18,5 +18,7 @@ install:
 	curl -fLo ~/.config/vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim || :
 	git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm || :
 
+vim:
+	bash ./scripts/vim.sh
 
-.PHONY: all preparation brew install
+.PHONY: all preparation brew install vim

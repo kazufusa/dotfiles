@@ -248,3 +248,5 @@ fi
 # finalize
 ##############################################################################
 autoload -Uz compinit && compinit
+
+source $XDG_CONFIG_HOME/zsh/custom.zsh >/dev/null 2>&1 || :

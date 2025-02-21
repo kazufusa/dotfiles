@@ -16,8 +16,6 @@ set list
 set listchars=tab:▸\ ,trail:-,extends:»,precedes:«,nbsp:%
 " Always display statusline.
 set laststatus=2
-" Height of command line.
-set cmdheight=2
 " Not show command on statusline.
 set noshowcmd
 " Show title.

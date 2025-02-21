@@ -1,0 +1,11 @@
+#!/bin/bash
+
+[[ -f /usr/bin/pbcopy ]] && {
+  /usr/bin/pbcopy
+} || {
+  [[ ! -z ${WSL_DISTRO_NAME} ]] && {
+    clip.exe
+  } || {
+    xsel --clipboard --input
+  }
+}

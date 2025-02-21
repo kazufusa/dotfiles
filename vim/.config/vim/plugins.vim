@@ -20,6 +20,7 @@ Jetpack 'Shougo/ddc-converter_remove_overlap'
 Jetpack 'Shougo/ddc-matcher_head'
 Jetpack 'Shougo/ddc-sorter_rank'
 Jetpack 'tani/ddc-fuzzy'
+Jetpack 'tomtom/tcomment_vim'
 call jetpack#end()
 
 "---------------------------------------------------------------------------
@@ -77,8 +78,6 @@ nnoremap <silent> <Leader>r <Plug>(quickrun)
 let g:rainbow_active = 1
 au MyAutoCmd VimEnter * nested RainbowToggleOn
 
-
-
 "---------------------------------------------------------------------------
 " ddc.vim
 "
@@ -101,3 +100,12 @@ call ddc#custom#patch_global('sourceOptions', {
 
 " ddc.vimを有効化する
 call ddc#enable()
+
+"---------------------------------------------------------------------------
+" tcomment_vim
+"
+let g:tcomment_mapleader1 = ''
+let g:tcomment_mapleader2 = ''
+nnoremap <silent> __ :TComment<CR>
+vnoremap <silent> __ :TComment<CR>
+nmap <silent> gc <Plug>TComment-gc

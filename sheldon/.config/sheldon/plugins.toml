@@ -5,6 +5,7 @@ github = "romkatv/zsh-defer"
 
 [templates]
 defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+functions = 'fpath=("{{ dir }}"/functions(-/FN) $fpath); setopt LOCAL_OPTIONS EXTENDED_GLOB; for pluginFunction in "{{ dir }}"/functions/^([_.]*|prompt_*_setup|README*|*~)(-.N:t); do autoload -Uz $pluginFunction; done'
 
 [plugins.zimfw-environment]
 github = "zimfw/environment"
@@ -14,9 +15,14 @@ github = "zimfw/input"
 
 [plugins.zimfw-duration-info]
 github = "zimfw/duration-info"
+apply = ["functions"]
 
 [plugins.zimfw-git-info]
 github = "zimfw/git-info"
+apply = ["functions"]
+
+[plugins.zimfw-git-info.hooks]
+post = 'echo "{{ dir }}"'
 
 [plugins.zimfw-asciiship]
 github = "zimfw/asciiship"
