@@ -96,7 +96,7 @@ set fileencodings=utf-8,iso-2022-jp-3,euc-jisx0213,cp932,euc-jp,sjis,jis,latin,i
 "---------------------------------------------------------------------------
 " Others:
 "
-set viminfofile=~/.config/vim/viminfo
+" set viminfofile=~/.config/vim/viminfo
 
 " If true Vim master, use English help file.
 set helplang& helplang=en,ja

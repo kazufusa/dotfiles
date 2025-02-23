@@ -40,7 +40,7 @@ export LC_ALL=en_US.UTF-8
 ##############################################################################
 export PATH="$HOME/bin:$PATH"
 if type "zoxide" > /dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
 fi
 
 if type "mise" > /dev/null 2>&1; then
@@ -222,7 +222,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
-alias cd="z"
 
 function repo(){
   ghq list | fzf --reverse +m -q "$1" \
