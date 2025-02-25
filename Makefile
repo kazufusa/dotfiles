@@ -5,7 +5,7 @@ else ifeq ($(UNAME_S),Darwin)
 	HOMEBREW_HOME := /opt/homebrew
 endif
 
-all: preparation brew install
+all: preparation brew install vim
 
 preparation:
 	bash ./scripts/preparation.sh
