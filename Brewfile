@@ -1,6 +1,6 @@
 tap "homebrew/bundle"
 brew "fzf"
-brew "neofetch"
+brew "fastfetch"
 brew "tmux"
 brew "tokei"
 brew "watch"
