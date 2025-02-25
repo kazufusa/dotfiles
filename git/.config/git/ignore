@@ -1,5 +1,5 @@
 **/tmp/*
-.ev
+.env
 .DS_Store
 venv/*
 **/.idea/*
@@ -16,3 +16,4 @@ worktree_*
 **/__sqlfluff*
 *.json.gz
 *.gz
+**/mise.toml

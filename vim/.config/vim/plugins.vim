@@ -15,10 +15,13 @@ Jetpack 'Shougo/ddc-omni'
 Jetpack 'Shougo/ddc-ui-native'
 Jetpack 'Shougo/ddc-source-lsp'
 Jetpack 'matsui54/ddc-source-buffer'
-Jetpack 'matsui54/ddc-dictionary'
 Jetpack 'Shougo/ddc-converter_remove_overlap'
 Jetpack 'Shougo/ddc-matcher_head'
 Jetpack 'Shougo/ddc-sorter_rank'
+Jetpack 'LumaKernel/ddc-source-file'
+Jetpack 'hrsh7th/vim-vsnip'
+Jetpack 'uga-rosa/ddc-source-vsnip'
+Jetpack 'rafamadriz/friendly-snippets'
 Jetpack 'tani/ddc-fuzzy'
 Jetpack 'tomtom/tcomment_vim'
 call jetpack#end()
@@ -48,6 +51,7 @@ command! -bang -nargs=* GGrep
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 nnoremap <silent><C-f>a :<C-u>FzfFiles3<CR>
 nnoremap <silent><C-f>m :<C-u>FzfHistory<CR>
+nnoremap <silent><C-f>h :<C-u>FzfHistory:<CR>
 nnoremap <silent><C-f>f :<C-u>FzfGFiles<CR>
 nnoremap <silent><C-f>d :<C-u>FzfGFiles?<CR>
 nnoremap <silent><C-f>b :<C-u>FzfBuffers<CR>
@@ -79,13 +83,18 @@ let g:rainbow_active = 1
 au MyAutoCmd VimEnter * nested RainbowToggleOn
 
 "---------------------------------------------------------------------------
+" vsnip
+"
+let g:vsnip_filetypes = {}
+
+"---------------------------------------------------------------------------
 " ddc.vim
 "
 " UI
 call ddc#custom#patch_global('ui', 'native')
 
 " SOURCE
-call ddc#custom#patch_global('sources', ['around', 'dictionary'])
+call ddc#custom#patch_global('sources', ['vsnip', 'file', 'around' ])
 
 " SOURCE OPTION    (filterはここで指定)
 call ddc#custom#patch_global('sourceOptions', {
@@ -95,8 +104,14 @@ call ddc#custom#patch_global('sourceOptions', {
     \ 'sorters': ['sorter_fuzzy'],
     \ 'converters': ['converter_fuzzy'],
     \ 'isVolatile': v:false
-    \ }
+    \ },
+    \ 'file': {
+    \   'mark': 'F',
+    \   'isVolatile': v:true,
+    \   'forceCompletionPattern': '\S/\S*',
+    \ },
     \ })
+
 
 " ddc.vimを有効化する
 call ddc#enable()

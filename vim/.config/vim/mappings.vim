@@ -55,3 +55,7 @@ else
   cnoremap <silent> <C-s> <C-u>wa<CR>
 endif
 
+nmap <C-s> :<C-u>wa<CR>
+imap <C-s> <ESC>:<C-u>wa<CR>
+vmap <C-s> :<C-u>wa<CR>
+cmap <C-s> <C-u>wa<CR>
