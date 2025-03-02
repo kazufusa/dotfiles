@@ -1,6 +1,6 @@
 abbr "c"="git"
 abbr "dk"="docker"
-abbr "dkcm"="docker-compose"
+abbr "dkcm"="docker compose"
 abbr "g"="git"
 abbr "ga"="git add"
 abbr "ga."="git add ."
