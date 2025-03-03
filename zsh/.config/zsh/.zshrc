@@ -47,10 +47,6 @@ if type "mise" > /dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
-if type "docker" > /dev/null 2>&1; then
-  source <(docker completion zsh)
-fi
-
 ##############################################################################
 # cdr
 ##############################################################################
@@ -248,8 +244,20 @@ if [[ $(uname -a) =~ Linux ]]; then
 fi
 
 ##############################################################################
+# completions
+##############################################################################
+if type "docker" > /dev/null 2>&1; then
+  if [ ! -f "$XDG_CONFIG_HOME/zsh/completions/_docker" ]; then
+    mkdir -p "$XDG_CONFIG_HOME/zsh/completions"
+    docker completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_docker"
+  fi
+fi
+
+fpath=("$XDG_CONFIG_HOME/zsh/completions" $fpath)
+autoload -U compinit && compinit -C
+
+##############################################################################
 # finalize
 ##############################################################################
-autoload -Uz compinit && compinit
 
 source $XDG_CONFIG_HOME/zsh/custom.zsh >/dev/null 2>&1 || :
