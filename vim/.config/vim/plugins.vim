@@ -13,7 +13,6 @@ Jetpack 'Shougo/ddc.vim'
 Jetpack 'Shougo/ddc-around'
 Jetpack 'Shougo/ddc-omni'
 Jetpack 'Shougo/ddc-ui-native'
-Jetpack 'Shougo/ddc-source-lsp'
 Jetpack 'matsui54/ddc-source-buffer'
 Jetpack 'Shougo/ddc-converter_remove_overlap'
 Jetpack 'Shougo/ddc-matcher_head'
@@ -23,6 +22,9 @@ Jetpack 'hrsh7th/vim-vsnip'
 Jetpack 'uga-rosa/ddc-source-vsnip'
 Jetpack 'rafamadriz/friendly-snippets'
 Jetpack 'tani/ddc-fuzzy'
+Jetpack 'shun/ddc-source-vim-lsp'
+Jetpack 'prabirshrestha/vim-lsp'
+Jetpack 'mattn/vim-lsp-settings'
 Jetpack 'tomtom/tcomment_vim'
 call jetpack#end()
 
@@ -88,16 +90,32 @@ au MyAutoCmd VimEnter * nested RainbowToggleOn
 let g:vsnip_filetypes = {}
 
 "---------------------------------------------------------------------------
+" tcomment_vim
+"
+let g:tcomment_mapleader1 = ''
+let g:tcomment_mapleader2 = ''
+nnoremap <silent> __ :TComment<CR>
+vnoremap <silent> __ :TComment<CR>
+nmap <silent> gc <Plug>TComment-gc
+
+"---------------------------------------------------------------------------
+" lsp
+"
+" require("ddc_nvim_lsp_setup").setup()
+" require("lspconfig").denols.setup()
+
+"---------------------------------------------------------------------------
 " ddc.vim
 "
 " UI
 call ddc#custom#patch_global('ui', 'native')
 
 " SOURCE
-call ddc#custom#patch_global('sources', ['vsnip', 'file', 'around' ])
+call ddc#custom#patch_global('sources', ['vim-lsp', 'vsnip', 'file', 'around' ])
 
 " SOURCE OPTION    (filterはここで指定)
 call ddc#custom#patch_global('sourceOptions', {
+    \ 'vim-lsp': {'mark': 'lsp', 'forceCompletionPattern': '\.\w*|:\w*|->\w*'},
     \ 'around': {'mark': '[Around]'},
     \ '_': {
     \ 'matchers': ['matcher_fuzzy'],
@@ -112,15 +130,16 @@ call ddc#custom#patch_global('sourceOptions', {
     \ },
     \ })
 
+" call ddc#custom#patch_global('sourceParams', #{
+"       \   lsp: #{
+"       \     snippetEngine: denops#callback#register({
+"       \           body -> vsnip#anonymous(body)
+"       \     }),
+"       \     enableResolveItem: v:true,
+"       \     enableAdditionalTextEdit: v:true,
+"       \   }
+"       \ })
 
 " ddc.vimを有効化する
 call ddc#enable()
 
-"---------------------------------------------------------------------------
-" tcomment_vim
-"
-let g:tcomment_mapleader1 = ''
-let g:tcomment_mapleader2 = ''
-nnoremap <silent> __ :TComment<CR>
-vnoremap <silent> __ :TComment<CR>
-nmap <silent> gc <Plug>TComment-gc
