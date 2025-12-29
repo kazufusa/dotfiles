@@ -1,5 +1,6 @@
 **/tmp/*
 .env
+.env.local
 .DS_Store
 venv/*
 **/.idea/*
@@ -17,3 +18,5 @@ worktree_*
 *.json.gz
 *.gz
 **/mise.toml
+
+**/.claude/settings.local.json
