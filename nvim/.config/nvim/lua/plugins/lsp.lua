@@ -3,7 +3,7 @@ return {
   -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -45,9 +45,7 @@ return {
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "<C-l>r", vim.lsp.buf.rename, opts)
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "<leader>f", function()
-          vim.lsp.buf.format({ async = true })
-        end, opts)
+        -- Format is handled by conform.nvim (<C-l>f)
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
         vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
         vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
@@ -124,16 +122,5 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
       end
     end,
-  },
-
-  -- Mason (LSP server installer)
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-  },
-
-  -- Mason-lspconfig bridge
-  {
-    "williamboman/mason-lspconfig.nvim",
   },
 }

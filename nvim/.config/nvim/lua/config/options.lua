@@ -3,8 +3,7 @@ local opt = vim.opt
 
 -- Leader keys are set in init.lua before loading lazy.nvim
 
--- Encoding
-opt.encoding = "utf-8"
+-- File formats
 opt.fileencoding = "utf-8"
 opt.fileformats = { "unix", "mac", "dos" }
 
@@ -70,11 +69,10 @@ opt.fillchars = { vert = "|" }
 
 -- Misc
 opt.timeout = true
-opt.timeoutlen = 3000
+opt.timeoutlen = 1000
 opt.ttimeoutlen = 100
 opt.updatetime = 1000
 opt.virtualedit = "block"
-opt.ttyfast = true
 opt.display = "lastline"
 opt.report = 0
 opt.startofline = false
@@ -87,12 +85,3 @@ if vim.fn.has("clipboard") == 1 then
     opt.clipboard:append("unnamed")
   end
 end
-
--- Disable some builtin plugins
-vim.g.loaded_gzip = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1

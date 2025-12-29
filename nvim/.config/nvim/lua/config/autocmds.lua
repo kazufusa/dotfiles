@@ -13,17 +13,6 @@ autocmd("WinEnter", {
   end,
 })
 
--- Disable paste on insert leave
-autocmd("InsertLeave", {
-  group = general,
-  callback = function()
-    if vim.opt.paste:get() then
-      vim.opt.paste = false
-      print("nopaste")
-    end
-  end,
-})
-
 -- Update diff on insert leave
 autocmd("InsertLeave", {
   group = general,
