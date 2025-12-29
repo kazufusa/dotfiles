@@ -21,6 +21,10 @@ eval "$(sheldon source)"
 # env
 ##############################################################################
 
+# Default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
 export XDG_CONFIG_HOME=${HOME}/.config
 export SHELL=$(which zsh)
 if [ -d ~/Dropbox/dotfiles ]; then
@@ -38,7 +42,13 @@ export LC_ALL=en_US.UTF-8
 ##############################################################################
 # PATH
 ##############################################################################
+export PATH=~/Dropbox/forpath:$PATH
 export PATH="$HOME/bin:$PATH"
+
+# Go configuration
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
 if type "zoxide" > /dev/null 2>&1; then
   eval "$(zoxide init zsh --cmd cd)"
 fi
