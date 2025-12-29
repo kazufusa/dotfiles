@@ -1,7 +1,0 @@
-**/tmp/*
-*.tfvars
-.env
-*/.terraform/*
-*pyc
-*/terraform.tfstate*
-**/.next

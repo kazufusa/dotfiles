@@ -1,3 +1,0 @@
-#!/bin/sh
-uname -a | grep -q "microsoft" && exit 1
-uname -a | grep -q "Linux"
