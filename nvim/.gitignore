@@ -1,0 +1,14 @@
+# Neovim gitignore
+
+# Plugin lock file (optional - include if you want to lock plugin versions)
+# lazy-lock.json
+
+# Netrw history
+.netrwhist
+
+# Spell files
+spell/*.add
+spell/*.add.spl
+
+# Session files (if any)
+Session.vim
