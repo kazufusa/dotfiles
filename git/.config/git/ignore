@@ -18,5 +18,12 @@ worktree_*
 *.json.gz
 *.gz
 **/mise.toml
+**/.vscode
+**/.npmrc
+**/worktrees
+.claude/settings.json
 
 **/.claude/settings.local.json
+**/.serena/**
+**/worktree/**
+**/.mcp.json

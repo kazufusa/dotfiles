@@ -42,12 +42,11 @@ if executable("ibus")
 
   inoremap <silent> <C-[> <ESC>:call system('ibus engine xkb:us::eng')<CR>
 elseif has('mac')
-  let hankaku = ["bash", "-c", "osascript -e 'tell application \"System Events\" to key code{102}'"]
-  nnoremap <silent> <C-s> :<C-u>wa<CR>:call job_start(hankaku)<CR>
-  inoremap <silent> <C-s> <ESC>:<C-u>wa<CR>:call job_start(hankaku)<CR>
-  vnoremap <silent> <C-s> :<C-u>wa<CR>:call job_start(hankaku)<CR>
-  cnoremap <silent> <C-s> <C-u>wa<CR>:call job_start(hankaku)<CR>
-  inoremap <silent> <C-[> <ESC>:call job_start(hankaku)<CR>
+  map <C-s> <ESC>:<C-u>wa<CR>
+  map! <C-s> <ESC>:<C-u>wa<CR>
+  tmap <C-s> <C-u>wa<CR>
+  lmap <C-s> <ESC>:<C-u>wa<CR>
+  autocmd InsertLeave * :silent !im-select com.apple.keylayout.ABC
 else
   nnoremap <silent> <C-s> :<C-u>wa<CR>
   inoremap <silent> <C-s> <ESC>:<C-u>wa<CR>
@@ -55,7 +54,3 @@ else
   cnoremap <silent> <C-s> <C-u>wa<CR>
 endif
 
-nmap <C-s> :<C-u>wa<CR>
-imap <C-s> <ESC>:<C-u>wa<CR>
-vmap <C-s> :<C-u>wa<CR>
-cmap <C-s> <C-u>wa<CR>

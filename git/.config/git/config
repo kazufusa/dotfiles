@@ -17,6 +17,7 @@
   default = !"for i in master trunk main; do git branch -a --no-color | grep \"[ \\/]$i$\" > /dev/null && echo $i && exit; done"
   root = !git rev-parse --show-superproject-working-tree --show-toplevel | head -n 1
   copyhash = !git rev-parse --short "$1" | tr -d '\n' | pbcopy
+  cl = "!f() { COMMITMSG=$(claude -p 'Generate ONLY a one-line Git commit message in English, using imperative mood, summarizing what was changed and why, based strictly on the contents of `git diff --cached`. Do not add explanation or a body. Output only the commit summary line.'); git commit -m \"$COMMITMSG\" -e; }; f"
 
 [push]
 	default = nothing
@@ -56,3 +57,4 @@
 	main = F !git commit --fixup %(commit) --allow-empty
 	diff = F !git commit --fixup %(commit)
 	main = C !@git copyhash %(commit)
+	status = r refresh

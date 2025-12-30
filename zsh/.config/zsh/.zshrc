@@ -25,10 +25,14 @@ eval "$(sheldon source)"
 export EDITOR=nvim
 export VISUAL=nvim
 
+export FORCE_COLOR=1
 export XDG_CONFIG_HOME=${HOME}/.config
 export SHELL=$(which zsh)
 if [ -d ~/Dropbox/dotfiles ]; then
   export HISTFILE=~/Dropbox/dotfiles/.histfile
+elif [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  export HISTFILE=/dev/null
+  echo vscode
 else
   export HISTFILE=$ZDOTDIR/.histfile
 fi
@@ -227,7 +231,6 @@ unset key
 alias ls='exa --classify --icons -h --reverse --git'
 alias l=ll
 alias la='ll -a'
-alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias h='sudo shutdown -h'
@@ -256,14 +259,15 @@ fi
 ##############################################################################
 # completions
 ##############################################################################
-if type "docker" > /dev/null 2>&1; then
-  if [ ! -f "$XDG_CONFIG_HOME/zsh/completions/_docker" ]; then
-    mkdir -p "$XDG_CONFIG_HOME/zsh/completions"
-    docker completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_docker"
-  fi
-fi
+# if type "docker" > /dev/null 2>&1; then
+#   if [ ! -f "$XDG_CONFIG_HOME/zsh/completions/_docker" ]; then
+#     mkdir -p "$XDG_CONFIG_HOME/zsh/completions"
+#     docker completion zsh > "$XDG_CONFIG_HOME/zsh/completions/_docker"
+#   fi
+# fi
 
 fpath=("$XDG_CONFIG_HOME/zsh/completions" $fpath)
+# FPATH="$XDG_CONFIG_HOME/zsh/completions:$FPATH"
 autoload -U compinit && compinit -C
 
 ##############################################################################
