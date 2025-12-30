@@ -49,6 +49,16 @@ autocmd("BufWritePre", {
   end,
 })
 
+-- IME auto-switch on Mac (im-select)
+if vim.fn.has("mac") == 1 then
+  autocmd("InsertLeave", {
+    group = general,
+    callback = function()
+      vim.fn.system("im-select com.apple.keylayout.ABC")
+    end,
+  })
+end
+
 -- Filetype specific indentation
 local filetype_indent = augroup("FileTypeIndent", { clear = true })
 autocmd({ "BufNewFile", "BufRead" }, {
