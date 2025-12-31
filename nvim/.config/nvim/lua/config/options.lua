@@ -1,7 +1,7 @@
 -- Options migrated from vim config
 local opt = vim.opt
 
--- Leader keys are set in init.lua before loading lazy.nvim
+-- Leader keys and filetype/syntax are set in init.lua before loading lazy.nvim
 
 -- File formats
 opt.fileencoding = "utf-8"
