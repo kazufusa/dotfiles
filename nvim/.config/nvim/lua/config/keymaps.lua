@@ -47,3 +47,15 @@ end, opts)
 
 -- Tags
 keymap("n", "<C-@>", "<C-t>", opts)
+
+-- GGrep command (git grep with Telescope)
+vim.api.nvim_create_user_command("GGrep", function(opts)
+  require("telescope.builtin").live_grep({
+    prompt_title = "Git Grep",
+    cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+    additional_args = function()
+      return { "--fixed-strings" }
+    end,
+    default_text = opts.args,
+  })
+end, { nargs = "*", desc = "Git grep with Telescope" })

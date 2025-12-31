@@ -3,6 +3,9 @@ local opt = vim.opt
 
 -- Leader keys and filetype/syntax are set in init.lua before loading lazy.nvim
 
+-- Terminal
+opt.termguicolors = true -- Enable 24-bit RGB colors
+
 -- File formats
 opt.fileencoding = "utf-8"
 opt.fileformats = { "unix", "mac", "dos" }
