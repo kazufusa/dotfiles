@@ -235,6 +235,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias h='sudo shutdown -h'
 alias r='sudo shutdown -r'
+alias vim='nvim'
 
 function repo(){
   ghq list | fzf --reverse +m -q "$1" \
