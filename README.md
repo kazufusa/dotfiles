@@ -26,6 +26,21 @@ stow nvim
 nvim  # Plugins auto-install on first launch
 ```
 
+Plugin update (auto-fetch is disabled):
+```
+:Lazy check   # check for updates
+:Lazy update  # apply updates
+```
+
+## Custom configuration
+
+Machine-specific settings are gitignored. Create these files locally as needed.
+
+| File | Description |
+|---|---|
+| `~/.config/git/custom_config` | Git settings (e.g. private URL rewrites) |
+| `~/.config/zsh/custom.zsh` | Zsh settings (e.g. private env vars, aliases) |
+
 ## TODO
 
 ```

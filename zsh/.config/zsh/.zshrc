@@ -1,7 +1,9 @@
 ##############################################################################
 # Plugin manager
 ##############################################################################
-eval "$(sheldon source)"
+_eval_cache "${XDG_CACHE_HOME:-$HOME/.cache}/sheldon/source.zsh" \
+  "${XDG_CONFIG_HOME:-$HOME/.config}/sheldon/plugins.toml" \
+  sheldon source
 
 ##############################################################################
 # History
@@ -16,6 +18,7 @@ fi
 export HISTSIZE=50000
 export SAVEHIST=10000000
 
+setopt extended_history
 setopt share_history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
@@ -64,7 +67,7 @@ if type "zoxide" > /dev/null 2>&1; then
 fi
 
 if type "mise" > /dev/null 2>&1; then
-  eval "$(mise activate zsh)"
+  zsh-defer eval "$(mise activate zsh)"
 fi
 
 ##############################################################################

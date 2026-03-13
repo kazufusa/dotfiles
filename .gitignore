@@ -2,3 +2,4 @@ zsh/.config/zsh/*
 vim/.config/vim/*
 tmux/.config/tmux/*
 bin/*
+git/.config/git/custom_config

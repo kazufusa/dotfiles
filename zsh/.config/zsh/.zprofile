@@ -7,7 +7,9 @@ else
   HOMEBREW_HOME='/home/linuxbrew/.linuxbrew'
 fi
 
-eval "$($HOMEBREW_HOME/bin/brew shellenv)"
+_eval_cache "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/brew_shellenv.zsh" \
+  "$HOMEBREW_HOME/bin/brew" \
+  "$HOMEBREW_HOME/bin/brew" shellenv
 
 ##############################################################################
 # Environment variables

@@ -58,3 +58,6 @@
 	diff = F !git commit --fixup %(commit)
 	main = C !@git copyhash %(commit)
 	status = r refresh
+
+[include]
+	path = ~/.config/git/custom_config

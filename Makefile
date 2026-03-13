@@ -13,6 +13,9 @@ preparation:
 brew:
 	bash ./scripts/brew.sh || :
 
+uninstall:
+	bash -c 'eval "$$($(HOMEBREW_HOME)/bin/brew shellenv)" && STOW_DIR=$$(dirname $$(dirname $$(realpath ~/.zshenv))) && stow -d $$STOW_DIR -t ~ -D zsh tmux vim nvim git sheldon bin'
+
 install:
 	bash -c 'eval "$$($(HOMEBREW_HOME)/bin/brew shellenv)" && stow -d . -t ~ zsh tmux vim nvim git sheldon bin'
 	curl -fLo ~/.config/vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim || :
@@ -21,4 +24,4 @@ install:
 vim:
 	bash ./scripts/vim.sh
 
-.PHONY: all preparation brew install vim
+.PHONY: all preparation brew install uninstall vim
